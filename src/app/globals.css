@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #0a1628;
+  --color-navy: #0f2447;
+  --color-royal: #1d4ed8;
+  --color-royal-soft: #2f5fd6;
+  --color-steel: #5b7a9d;
+  --color-steel-dark: #3d5a7c;
+  --color-ice-50: #f5f8fc;
+  --color-ice-100: #eaf1fa;
+  --color-ice-200: #d6e4f5;
+  --color-ice-300: #b9d0ec;
+  --color-ink: #0d1b2e;
+  --color-muted: #5a6b82;
+  --color-line: #dde6f1;
+  --color-amber-note: #8a5a00;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+
+  --shadow-soft: 0 1px 2px rgba(15, 36, 71, 0.04), 0 8px 24px -12px rgba(15, 36, 71, 0.12);
+  --shadow-lift: 0 2px 4px rgba(15, 36, 71, 0.05), 0 18px 40px -16px rgba(15, 36, 71, 0.22);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+    color: var(--color-midnight);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-royal);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-royal;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-white shadow-soft transition duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-0.5 hover:shadow-lift hover:border-blue-700;
+  }
+  .input {
+    @apply w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-steel/70 transition focus:border-royal focus:outline-none focus:ring-2 focus:ring-royal/20;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-steel-dark;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(185, 208, 236, 0.18) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(185, 208, 236, 0.18) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
