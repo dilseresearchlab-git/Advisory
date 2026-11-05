@@ -10,13 +10,15 @@ import {
 import {
   GrowthIllustration,
   StatTile,
-  SensexLongTermReturns
+  SensexLongTermReturns,
 } from "@/components/Charts";
 import PlanCards from "@/components/PlanCards";
 import { services, principles } from "@/data/services";
 import { researchItems, illustrativeSeries } from "@/data/research";
 import { site } from "@/data/site";
 import AutoResearchCard from "@/components/AutoResearchCard";
+import AdsvisoryServicesSection from "@/components/pages/home/AdvisoryServices";
+import FeaturedInsightsSection from "@/components/pages/home/FeaturedInsights";
 
 export default function Home() {
   return (
@@ -83,42 +85,7 @@ export default function Home() {
       </Section>
 
       {/* Services */}
-      <Section>
-        <SectionHeading
-          eyebrow="Advisory services"
-          title="Organized around how you participate in markets"
-        >
-          Different participants need different things. Our proposed service
-          tracks are designed by need, not by feature count.
-        </SectionHeading>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <Link
-              key={s.id}
-              href="/advisory"
-              className="card card-hover block p-6"
-            >
-              <h3 className="text-xl">{s.title}</h3>
-              <p className="mt-1 text-sm font-medium text-royal">{s.tagline}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                {s.description}
-              </p>
-              <p className="mt-5 text-sm font-medium text-navy">Explore →</p>
-            </Link>
-          ))}
-          <div className="card flex flex-col justify-between bg-ice-50 p-6">
-            <div>
-              <h3 className="text-xl">Not sure where you fit?</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                Tell us about your approach and time horizon.
-              </p>
-            </div>
-            <Button href="/contact" className="mt-6 self-start">
-              Get in touch
-            </Button>
-          </div>
-        </div>
-      </Section>
+      <AdsvisoryServicesSection services={services} />
 
       {/* Research credibility */}
       <Section tone="ice">
@@ -140,10 +107,6 @@ export default function Home() {
               Read our methodology
             </Button>
           </div>
-          {/* <div className="card p-6 sm:p-8">
-            <BarChart data={illustrativeSeries.marginBridge} title="Illustrative EBITDA margin trajectory (fictional company)" />
-            <p className="mt-4 text-xs text-steel">Placeholder data for design purposes only.</p>
-          </div> */}
           <div>
             <SensexLongTermReturns />
           </div>
@@ -151,7 +114,7 @@ export default function Home() {
       </Section>
 
       {/* Featured insights */}
-      <Section>
+      {/* <Section>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
             eyebrow="Featured insights"
@@ -182,7 +145,8 @@ export default function Home() {
             recommendations.
           </Notice>
         </div>
-      </Section>
+      </Section> */}
+      <FeaturedInsightsSection researchItems={researchItems} />
 
       {/* Tools */}
       <Section tone="ice">
@@ -225,12 +189,7 @@ export default function Home() {
           eyebrow="Proposed packages"
           title="From introductory research to full coverage"
         />
-        <div className="mt-6">
-          <Notice title="Draft">
-            Pricing is a proposal pending business and regulatory approval.
-            Packages are not currently on sale.
-          </Notice>
-        </div>
+      
         <div className="mt-10">
           <PlanCards compact />
         </div>

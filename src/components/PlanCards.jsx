@@ -24,7 +24,7 @@ export default function PlanCards({ compact = false }) {
           </button>
         ))}
       </div>
-      {billing === "annual" && <p className="mt-2 text-xs text-steel">Annual shown as ~2 months free (draft).</p>}
+      {billing === "annual" && <p className="mt-2 text-xs text-steel">2 months free on annual billing</p>}
 
       <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
         {plans.map((p) => {
@@ -46,8 +46,10 @@ export default function PlanCards({ compact = false }) {
               <h3 className="text-2xl">{p.name}</h3>
               <p className="mt-1 text-xs font-medium text-royal">{p.audience}</p>
               <div className="mt-5">
-                <span className="font-serif text-4xl text-navy">{formatINR(price)}</span>
-                <span className="ml-1 text-sm text-steel">/{billing === "monthly" ? "mo" : "yr"}</span>
+                <span className={`font-serif text-4xl  ${p.recommended ? "text-emerald-600" : "text-navy"}`}>
+                  {formatINR(price)}
+                </span>
+                <span className={`ml-1 text-sm ${p.recommended ? "text-slate-600" : "text-steel"}`}>/{billing === "monthly" ? "mo" : "yr"}</span>
                 <p className="mt-0.5 text-[11px] text-steel">Draft price · excl. GST</p>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-muted">{p.summary}</p>
