@@ -34,7 +34,7 @@ export default function PlanCards({ compact = false }) {
               key={p.id}
               className={`relative flex flex-col rounded-2xl border p-6 transition duration-300 ${
                 p.recommended
-                  ? "border-royal bg-gradient-to-b from-ice-100 to-white shadow-lift xl:-mt-3 xl:pb-9"
+                  ? "border-royal bg-linear-to-b from-ice-100 to-white shadow-lift xl:-mt-3 xl:pb-9"
                   : "border-line bg-white shadow-soft hover:shadow-lift"
               }`}
             >
