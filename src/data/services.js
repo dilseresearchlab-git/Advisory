@@ -1,58 +1,102 @@
 // Advisory service tracks, organised by customer need.
 // Descriptions are draft and subject to regulatory approval.
 
+
 export const services = [
   {
     id: "beginner",
     title: "Beginner Investors",
-    tagline: "Learn the market before you commit capital",
+    focus: "Foundational research",
+    horizon: "Foundational",
+    tagline: "Build market understanding before committing capital",
     description:
-      "Plain-language market perspectives, foundational research and structured learning paths for people starting out.",
-    deliverables: ["Weekly market note", "Sector snapshots", "Concept explainers", "Quarterly result primers"],
+      "Accessible market perspectives and foundational company research designed to help newer investors understand businesses, market behaviour and essential financial concepts.",
+    bestFor:
+      "New investors seeking structured market understanding and a foundation for evaluating investment opportunities.",
+    deliverables: [
+      "Weekly market notes",
+      "Sector snapshots",
+      "Financial concept explainers",
+      "Quarterly result primers",
+    ],
     plan: "basic",
-    icon: "seed",
   },
   {
     id: "long-term",
     title: "Long-Term Investors",
-    tagline: "Business quality, valuation and patience",
+    focus: "Fundamental research",
+    horizon: "Multi-year",
+    tagline: "Business quality, valuation and long-term perspective",
     description:
-      "Fundamental research focused on durable businesses, capital allocation and valuation ranges over multi-year horizons.",
-    deliverables: ["Company deep-dives", "Valuation scenarios", "Thesis reviews", "Annual sector outlook"],
+      "Fundamental research examining business performance, financial strength, capital allocation and valuation to support a deeper understanding of companies over multi-year horizons.",
+    bestFor:
+      "Investors interested in business fundamentals, financial performance and longer-term investment perspectives.",
+    deliverables: [
+      "Company deep-dives",
+      "Valuation scenarios",
+      "Investment thesis reviews",
+      "Annual sector outlooks",
+    ],
     plan: "investor",
-    icon: "layers",
   },
   {
     id: "active",
     title: "Active Traders",
-    tagline: "Structure and risk before opinion",
+    focus: "Market analysis",
+    horizon: "Active participation",
+    tagline: "Structure, market context and risk awareness",
     description:
-      "Rules-based market insights with defined levels, risk/reward framing and position-sizing discipline.",
-    deliverables: ["Price-structure outlook", "Risk/reward frameworks", "Sizing worksheets", "Event commentary"],
+      "Structured, rules-based market research examining price behaviour, important levels, market conditions and risk/reward considerations for active trading decisions.",
+    bestFor:
+      "Market participants who actively monitor price movements and seek structured trading-oriented research.",
+    deliverables: [
+      "Price-structure outlooks",
+      "Risk/reward frameworks",
+      "Position-sizing worksheets",
+      "Event-driven commentary",
+    ],
     plan: "active-trader",
-    icon: "pulse",
   },
   {
     id: "swing",
     title: "Swing & Positional Traders",
-    tagline: "Days to weeks, with a plan for being wrong",
+    focus: "Trend research",
+    horizon: "Days to weeks",
+    tagline: "Study trends with a defined risk perspective",
     description:
-      "Multi-day to multi-week study setups combining trend, momentum and relative strength with explicit invalidation levels.",
-    deliverables: ["Setup studies", "Relative-strength screens", "Invalidation levels", "Review notes"],
+      "Multi-day to multi-week research examining trends, momentum and relative strength, alongside potential invalidation levels and changing market conditions.",
+    bestFor:
+      "Traders seeking research around developing trends and opportunities over multi-day to multi-week horizons.",
+    deliverables: [
+      "Swing and positional setup studies",
+      "Relative-strength screens",
+      "Trend and invalidation levels",
+      "Setup review notes",
+    ],
     plan: "active-trader",
-    icon: "swing",
   },
   {
     id: "advanced",
     title: "Advanced Participants",
-    tagline: "Breadth, depth and direct access",
+    focus: "Comprehensive research",
+    horizon: "Broad coverage",
+    tagline: "Greater breadth, analytical depth and research access",
     description:
-      "Wider coverage, quantitative screens, analyst sessions and bespoke thematic research for experienced market participants.",
-    deliverables: ["Quant screens", "Analyst sessions", "Thematic briefs", "Strategy review"],
+      "A comprehensive research offering combining fundamental and trading-oriented analysis, quantitative screening, wider market coverage and scheduled analyst interactions.",
+    bestFor:
+      "Experienced investors and traders seeking broader research coverage, advanced analytical perspectives and enhanced access to research discussions.",
+    deliverables: [
+      "Expanded quantitative screens",
+      "Fundamental and trading-oriented research",
+      "Scheduled group analyst sessions",
+      "Custom thematic research briefs",
+      "Priority research requests",
+      "Annual research outlook",
+    ],
     plan: "professional",
-    icon: "compass",
   },
 ];
+
 
 export const principles = [
   { title: "Evidence over narrative", text: "Every view is tied to data, filings and a written rationale that can be challenged." },

@@ -7,10 +7,7 @@ import {
   CTABand,
   Notice,
 } from "@/components/ui";
-import {
-  StatTile,
-  SensexLongTermReturns,
-} from "@/components/Charts";
+import { StatTile, SensexLongTermReturns } from "@/components/Charts";
 import PlanCards from "@/components/PlanCards";
 import { services, principles } from "@/data/services";
 import { researchItems, illustrativeSeries } from "@/data/research";
@@ -147,14 +144,29 @@ export default function Home() {
       </Section>
 
       {/* Pricing preview */}
+
       <Section>
         <SectionHeading
           eyebrow="Proposed packages"
-          title="From introductory research to full coverage"
-        />
+          title="Research access for every level of participation"
+        >
+          Choose a research package aligned with your market objectives, from
+          introductory market understanding to comprehensive professional
+          research.
+        </SectionHeading>
 
         <div className="mt-10">
           <PlanCards compact />
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/pricing"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-royal transition hover:gap-3"
+          >
+            Compare all packages
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </Section>
 

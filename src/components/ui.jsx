@@ -17,11 +17,11 @@ export function Section({ children, className = "", tone = "white", id }) {
   );
 }
 
-export function SectionHeading({ eyebrow, title, children, align = "left", light = false }) {
+export function SectionHeading({ eyebrow, title, children, align = "left", light = false, className = "" }) {
   return (
     <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}>
       {eyebrow && <p className={`eyebrow ${light ? "!text-ice-300" : ""}`}>{eyebrow}</p>}
-      <h2 className={`mt-3 text-3xl leading-tight sm:text-4xl ${light ? "!text-white" : ""}`}>{title}</h2>
+      <h2 className={`mt-3 text-3xl leading-tight sm:text-4xl ${light ? "!text-white" : ""} ${className}`}>{title}</h2>
       {children && <p className={`mt-4 leading-relaxed ${light ? "text-ice-300/90" : "text-muted"}`}>{children}</p>}
     </div>
   );

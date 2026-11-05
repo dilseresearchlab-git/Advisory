@@ -15,7 +15,7 @@ export default function Footer() {
           </div>
           {Object.entries(footerLinks).map(([group, links]) => (
             <div key={group}>
-              <h3 className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-ice-300">{group}</h3>
+              <h3 className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-ice-300/80">{group}</h3>
               <ul className="mt-4 space-y-2.5">
                 {links.map((l) => (
                   <li key={l.href}>
