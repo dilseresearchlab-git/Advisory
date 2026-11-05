@@ -19,7 +19,7 @@ export default function PricingPage() {
       <Section tone="ice">
         <SectionHeading eyebrow="Compare" title="Side by side" />
         <div className="mt-8 overflow-x-auto rounded-2xl border border-line bg-white">
-          <table className="w-full min-w-[640px] text-left text-sm">
+          <table className="w-full min-w-160 text-left text-sm">
             <thead>
               <tr className="border-b border-line bg-ice-50">
                 <th className="px-4 py-3 font-medium text-steel-dark">Feature</th>
