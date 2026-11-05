@@ -73,3 +73,27 @@
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
 }
+
+/* Home advisory services cards animation */
+
+@keyframes service-card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-card-enter {
+  animation: service-card-reveal 500ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card-enter {
+    animation: none;
+  }
+}

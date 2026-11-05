@@ -91,7 +91,7 @@ export default function AutoResearchCard() {
           Company research
         </span>
 
-        <span className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] text-ice-200">
+        <span className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] text-ice-300/80">
           Fundamental analysis
         </span>
       </div>
@@ -104,7 +104,7 @@ export default function AutoResearchCard() {
         {company.sector}
       </div>
 
-      <p className="mt-2 text-sm text-ice-300/80">
+      <p className="mt-2 text-sm text-ice-300/45">
         {company.description}
       </p>
 
@@ -126,7 +126,7 @@ export default function AutoResearchCard() {
       <div className="mt-5 grid grid-cols-3 gap-4 border-t border-white/10 pt-5">
         {company.metrics.map(([value, label]) => (
           <div key={label}>
-            <div className="font-serif text-2xl text-white">
+            <div className="font-serif text-2xl text-emerald-400">
               {value}
             </div>
             <div className="mt-1 text-[11px] leading-relaxed text-ice-300/70">
