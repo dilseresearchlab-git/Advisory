@@ -1,6 +1,7 @@
 import { PageHero, Section, SectionHeading, Notice, CTABand } from "@/components/ui";
 import { ProcessDiagram } from "@/components/Charts";
 import { researchItems, sampleReports, methodologySteps } from "@/data/research";
+import Methodology from "@/components/pages/research/Methodology";
 
 export const metadata = { title: "Research & Insights" };
 
@@ -44,7 +45,7 @@ export default function ResearchPage() {
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {sampleReports.map((s) => (
             <div key={s.title} className="card p-6">
-              <div className="flex h-28 items-end rounded-lg bg-gradient-to-br from-navy to-royal-soft p-4">
+              <div className="flex h-28 items-end rounded-lg bg-linear-to-br from-navy to-royal-soft p-4">
                 <span className="text-xs font-medium text-ice-200">{s.pages}</span>
               </div>
               <h3 className="mt-4 text-lg">{s.title}</h3>
@@ -57,7 +58,7 @@ export default function ResearchPage() {
 
       <Section>
         <SectionHeading eyebrow="Methodology" title="Five stages, every time" />
-        <div className="mt-10"><ProcessDiagram steps={methodologySteps} /></div>
+        <div className="mt-10"><Methodology steps={methodologySteps} /></div>
       </Section>
       <CTABand />
     </>
