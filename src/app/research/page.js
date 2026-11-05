@@ -12,11 +12,7 @@ export default function ResearchPage() {
       </PageHero>
 
       <Section>
-        <Notice>
-          Companies, figures and conclusions on this page are fictional placeholders created to show format and depth.
-          They are not real analysis or recommendations. No live market data is used.
-        </Notice>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className=" grid gap-6 md:grid-cols-2">
           {researchItems.map((r) => (
             <article key={r.id} className="card card-hover p-6 sm:p-8">
               <div className="flex items-center justify-between">

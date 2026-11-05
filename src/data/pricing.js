@@ -13,7 +13,8 @@ export const plans = [
     id: "basic",
     name: "Basic",
     audience: "New investors building a foundation",
-    summary: "Introductory research and market context to help you learn how to read the market.",
+    summary:
+      "Introductory research and market context to help you learn how to read the market.",
     monthly: 499,
     annual: 4990,
     recommended: false,
@@ -34,7 +35,8 @@ export const plans = [
     id: "investor",
     name: "Investor",
     audience: "Long-term investors seeking fundamental analysis",
-    summary: "In-depth company research with a multi-year view, built around business quality and valuation.",
+    summary:
+      "In-depth company research with a multi-year view, built around business quality and valuation.",
     monthly: 1499,
     annual: 14990,
     recommended: true,
@@ -55,7 +57,8 @@ export const plans = [
     id: "active-trader",
     name: "Active Trader",
     audience: "Swing and positional traders",
-    summary: "Structured, rules-based market insights with defined levels, risk context and position-sizing guidance.",
+    summary:
+      "Structured, rules-based market insights with defined levels, risk context and position-sizing guidance.",
     monthly: 2499,
     annual: 24990,
     recommended: false,
@@ -72,59 +75,57 @@ export const plans = [
       "No assurance of outcomes; trading involves substantial risk of loss",
     ],
   },
+
   {
     id: "professional",
     name: "Professional",
-    audience: "Experienced participants who need breadth and depth",
-    summary: "Combined fundamental and trading-oriented research with broader coverage and advanced analytics.",
-    monthly: 4999,
-    annual: 49990,
+    audience:
+      "Experienced investors and serious market participants.",
+    summary:
+      "Our most comprehensive research offering, combining fundamental and trading-oriented insights, advanced analytics, expanded market coverage and scheduled analyst interactions.",
+    monthly: 6999,
+    annual: 69990,
     recommended: false,
     includes: [
       "Everything in Investor and Active Trader",
-      "Expanded coverage universe",
-      "Quantitative screens and factor commentary",
-      "Monthly analyst briefing (group session)",
+      "Expanded research coverage across selected market segments",
+      "Quantitative screens and factor-based commentary",
+      "Advanced fundamental and trading-oriented research",
+      "Scheduled group analyst Q&A sessions",
+      "Custom thematic research briefs within agreed scope",
       "Priority research requests (subject to scope)",
-    ],
-    coverage: "Wide coverage including select small-caps and derivatives-context notes",
-    limitations: [
-      "Group format only; no one-to-one portfolio advice",
-      "Research requests are scoped at our discretion",
-    ],
-  },
-  {
-    id: "premium",
-    name: "Premium",
-    audience: "Serious participants seeking the highest level of access",
-    summary: "Our most comprehensive research offering with direct analyst access and enhanced scope.",
-    monthly: 9999,
-    annual: 99990,
-    recommended: false,
-    includes: [
-      "Everything in Professional",
-      "Direct analyst Q&A sessions (scheduled)",
-      "Custom thematic research briefs",
       "Early access to new research products",
-      "Annual strategy review session",
+      "Annual research outlook and strategy briefing",
     ],
-    coverage: "Full coverage universe plus bespoke thematic work",
+    coverage:
+      "Broad research coverage including select small-caps, derivatives-context notes and bespoke thematic research.",
     limitations: [
-      "Any personalised advisory is subject to regulatory approval",
-      "Limited seats to preserve service quality",
+      "Analyst interactions are directly with the consultant.",
+      "Research requests and thematic briefs are subject to scope and availability",
+      "No personalised portfolio advice or discretionary portfolio management",
+      "Any regulated advisory services will be offered only after obtaining applicable regulatory approvals",
     ],
   },
 ];
 
 export const comparisonRows = [
-  { label: "Market perspectives", values: ["Weekly", "Weekly", "Weekly", "Weekly", "Weekly"] },
-  { label: "Company research reports", values: ["—", "Yes", "—", "Yes", "Yes"] },
-  { label: "Valuation frameworks", values: ["—", "Yes", "—", "Yes", "Yes"] },
-  { label: "Price-structure outlook", values: ["—", "—", "Yes", "Yes", "Yes"] },
-  { label: "Risk/reward & sizing worksheets", values: ["—", "—", "Yes", "Yes", "Yes"] },
-  { label: "Quantitative screens", values: ["—", "—", "—", "Yes", "Yes"] },
-  { label: "Analyst sessions", values: ["—", "—", "—", "Group", "Direct"] },
-  { label: "Custom thematic briefs", values: ["—", "—", "—", "—", "Yes"] },
+  {
+    label: "Market perspectives",
+    values: ["Weekly", "Weekly", "Weekly", "Weekly"],
+  },
+  {
+    label: "Company research reports",
+    values: ["—", "Yes", "—", "Yes"],
+  },
+  { label: "Valuation frameworks", values: ["—", "Yes", "—", "Yes"] },
+  { label: "Price-structure outlook", values: ["—", "—", "Yes", "Yes" ] },
+  {
+    label: "Risk/reward & sizing worksheets",
+    values: ["—", "—", "Yes", "Yes"],
+  },
+  { label: "Quantitative screens", values: ["—", "—", "—", "Yes"] },
+  { label: "Analyst sessions", values: ["—", "—", "—", "Direct"] },
+  { label: "Custom thematic briefs", values: ["—", "—", "—", "Yes",] },
 ];
 
 export const faqs = [

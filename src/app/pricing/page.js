@@ -22,27 +22,35 @@ export default function PricingPage() {
       </PageHero>
 
       <Section>
-        <Notice title="Draft pricing">{pricingNote}</Notice>
-        <div className="mt-10">
-          <PlanCards />
-        </div>
+        <PlanCards />
       </Section>
 
       <Section tone="ice">
         <SectionHeading eyebrow="Compare" title="Side by side" />
-        <div className="mt-8 overflow-x-auto rounded-2xl border border-line bg-white">
-          <table className="w-full min-w-160 text-left text-sm">
+
+        <div className="mt-8 overflow-x-auto rounded-2xl border border-line bg-white shadow-sm">
+          <table className="w-full min-w-160 text-left text-sm border-collapse">
             <thead>
-              <tr className="border-b border-line bg-ice-50">
-                <th className="px-4 py-3 font-medium text-steel-dark">
+              <tr className="border-b border-line bg-ice-50/80">
+                <th className="px-5 py-4 font-semibold text-slate-900 w-1/4">
                   Feature
                 </th>
                 {plans.map((p) => (
                   <th
                     key={p.id}
-                    className={`px-4 py-3 font-semibold ${p.recommended ? "text-royal" : "text-navy"}`}
+                    className={`relative px-5 py-4 font-semibold text-center transition-colors ${
+                      p.recommended
+                        ? "bg-royal/4 text-royal border-x border-royal/10"
+                        : "text-slate-700"
+                    }`}
                   >
-                    {p.name}
+                    {p.recommended && (
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-x-0 top-0 h-0.75 bg-royal"
+                      />
+                    )}
+                    <div className="text-base">{p.name}</div>
                   </th>
                 ))}
               </tr>
@@ -51,17 +59,41 @@ export default function PricingPage() {
               {comparisonRows.map((row) => (
                 <tr
                   key={row.label}
-                  className="border-b border-line/70 last:border-0"
+                  className="border-b border-line/60 last:border-0 transition-colors hover:bg-slate-50/80"
                 >
-                  <td className="px-4 py-3 text-muted">{row.label}</td>
-                  {row.values.map((v, i) => (
-                    <td
-                      key={i}
-                      className={`px-4 py-3 ${v === "—" ? "text-steel/50" : "font-medium text-ink"}`}
-                    >
-                      {v}
-                    </td>
-                  ))}
+                  <td className="px-5 py-4 font-medium text-slate-700">
+                    {row.label}
+                  </td>
+                  {row.values.map((v, i) => {
+                    const isRecommendedCol = plans[i]?.recommended;
+                    const isYes = v === "Yes";
+                    const isNoOrDash = v === "—" || v === "No";
+
+                    return (
+                      <td
+                        key={i}
+                        className={`px-5 py-4 text-center transition-colors ${
+                          isRecommendedCol
+                            ? "bg-royal/2 border-x border-royal/10"
+                            : ""
+                        }`}
+                      >
+                        {isYes ? (
+                          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 font-bold">
+                            ✓
+                          </span>
+                        ) : isNoOrDash ? (
+                          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-100/80 text-slate-400">
+                            —
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-semibold">
+                            {v}
+                          </span>
+                        )}
+                      </td>
+                    );
+                  })}
                 </tr>
               ))}
             </tbody>
@@ -69,6 +101,7 @@ export default function PricingPage() {
         </div>
       </Section>
 
+      {/* FAQ Section */}
       <Section>
         <SectionHeading eyebrow="FAQ" title="Frequently asked questions" />
 

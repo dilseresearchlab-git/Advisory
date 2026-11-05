@@ -10,80 +10,152 @@ export default function PlanCards({ compact = false }) {
 
   return (
     <div>
-      <div className="inline-flex rounded-full border border-line bg-white p-1 text-sm" role="group" aria-label="Billing period">
-        {["monthly", "annual"].map((b) => (
-          <button
-            key={b}
-            onClick={() => setBilling(b)}
-            aria-pressed={billing === b}
-            className={`rounded-full px-5 py-1.5 capitalize transition ${
-              billing === b ? "bg-navy text-white" : "text-steel-dark hover:text-navy"
-            }`}
-          >
-            {b}
-          </button>
-        ))}
-      </div>
-      {billing === "annual" && <p className="mt-2 text-xs text-steel">2 months free on annual billing</p>}
+      {/* Billing selector */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div
+          className="inline-flex rounded-full border border-line bg-white p-1"
+          role="group"
+          aria-label="Billing period"
+        >
+          {["monthly", "annual"].map((b) => (
+            <button
+              key={b}
+              type="button"
+              onClick={() => setBilling(b)}
+              aria-pressed={billing === b}
+              className={`rounded-full px-5 py-2 text-sm font-medium capitalize transition ${
+                billing === b
+                  ? "bg-navy text-white shadow-sm"
+                  : "text-steel-dark hover:text-navy"
+              }`}
+            >
+              {b}
+            </button>
+          ))}
+        </div>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+        {billing === "annual" && (
+          <span className="text-xs font-medium text-emerald-700">
+            Save up to 2 months with annual billing
+          </span>
+        )}
+      </div>
+
+      {/* Package cards - strict vertical grid alignment */}
+      <div
+        className={`mt-8 grid items-stretch gap-6 ${
+          compact
+            ? "sm:grid-cols-2 xl:grid-cols-4"
+            : "md:grid-cols-2 xl:grid-cols-4"
+        }`}
+      >
         {plans.map((p) => {
           const price = billing === "monthly" ? p.monthly : p.annual;
+          const recommended = p.recommended;
+
           return (
             <article
               key={p.id}
-              className={`relative flex flex-col rounded-2xl border p-6 transition duration-300 ${
-                p.recommended
-                  ? "border-royal bg-linear-to-b from-ice-100 to-white shadow-lift xl:-mt-3 xl:pb-9"
-                  : "border-line bg-white shadow-soft hover:shadow-lift"
+              className={`relative flex min-w-0 flex-col rounded-2xl border transition duration-300 ${
+                compact ? "p-5 sm:p-6" : "p-6 sm:p-7"
+              } ${
+                recommended
+                  ? "border-royal bg-gradient-to-b from-ice-100/70 to-white shadow-lg ring-1 ring-royal/20"
+                  : "border-line bg-white shadow-soft hover:-translate-y-1 hover:shadow-lift"
               }`}
             >
-              {p.recommended && (
-                <span className="absolute -top-3 left-6 rounded-full bg-royal px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white">
+              {/* Recommended badge */}
+              {recommended && (
+                <span className="absolute -top-3 left-5 rounded-full bg-royal px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
                   Recommended
                 </span>
               )}
-              <h3 className="text-2xl">{p.name}</h3>
-              <p className="mt-1 text-xs font-medium text-royal">{p.audience}</p>
-              <div className="mt-5">
-                <span className={`font-serif text-4xl  ${p.recommended ? "text-emerald-600" : "text-navy"}`}>
-                  {formatINR(price)}
-                </span>
-                <span className={`ml-1 text-sm ${p.recommended ? "text-slate-600" : "text-steel"}`}>/{billing === "monthly" ? "mo" : "yr"}</span>
-                <p className="mt-0.5 text-[11px] text-steel">Draft price · excl. GST</p>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted">{p.summary}</p>
 
+              {/* 1. FIXED HEADER BLOCK (Ensures titles & audiences align horizontally) */}
+              <div className="min-h-[105px]">
+                <h3 className="font-serif text-2xl tracking-tight text-navy">
+                  {p.name}
+                </h3>
+                <p className="mt-2 text-xs font-medium leading-snug text-royal line-clamp-2">
+                  {p.audience}
+                </p>
+              </div>
+
+              {/* 2. FIXED PRICING BLOCK */}
+              <div className="mt-3 border-t border-slate-100 pt-4">
+                <div className="flex items-baseline gap-x-1">
+                  <span
+                    className={`font-serif text-3xl tracking-tight ${
+                      recommended ? "text-emerald-600" : "text-navy"
+                    }`}
+                  >
+                    {formatINR(price)}
+                  </span>
+                  <span className="text-sm text-steel">
+                    /{billing === "monthly" ? "mo" : "yr"}
+                  </span>
+                </div>
+                <p className="mt-0.5 text-[11px] text-steel">
+                  Proposed price · excl. GST
+                </p>
+              </div>
+
+              {/* 3. FIXED SUMMARY BLOCK */}
+              <div className="mt-4 min-h-[64px]">
+                <p className="text-xs leading-relaxed text-muted line-clamp-3">
+                  {p.summary}
+                </p>
+              </div>
+
+              {/* Full details - pricing page */}
               {!compact && (
-                <>
-                  <h4 className="mt-5 text-xs font-semibold uppercase tracking-wider text-navy">Includes</h4>
-                  <ul className="mt-2 space-y-2 text-sm text-ink">
-                    {p.includes.map((i) => (
-                      <li key={i} className="flex gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
-                        {i}
-                      </li>
-                    ))}
-                  </ul>
-                  <h4 className="mt-5 text-xs font-semibold uppercase tracking-wider text-navy">Coverage</h4>
-                  <p className="mt-2 text-sm text-muted">{p.coverage}</p>
-                  <h4 className="mt-5 text-xs font-semibold uppercase tracking-wider text-navy">Limitations</h4>
-                  <ul className="mt-2 space-y-1.5 text-sm text-muted">
-                    {p.limitations.map((l) => (
-                      <li key={l} className="flex gap-2">
-                        <span className="mt-2 h-px w-2 shrink-0 bg-steel" />
-                        {l}
-                      </li>
-                    ))}
-                  </ul>
-                </>
+                <div className="mt-6 flex flex-1 flex-col justify-between border-t border-slate-100 pt-5">
+                  <div>
+                    {/* Includes section */}
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-navy">
+                      Includes
+                    </h4>
+                    <ul className="mt-2.5 space-y-2 text-xs text-slate-700">
+                      {p.includes.slice(0, 5).map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
+                          <span className="line-clamp-2">{item}</span>
+                        </li>
+                      ))}
+                      {p.includes.length > 5 && (
+                        <li className="text-[11px] font-medium text-royal italic">
+                          + {p.includes.length - 5} more advanced perks
+                        </li>
+                      )}
+                    </ul>
+
+                    {/* Coverage section */}
+                    <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-navy">
+                      Coverage
+                    </h4>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate-600 line-clamp-2">
+                      {p.coverage}
+                    </p>
+
+                    {/* Limitations (condensed) */}
+                    <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Exclusions
+                    </h4>
+                    <p className="mt-1 text-[11px] text-slate-500 line-clamp-2">
+                      {p.limitations[0]} {p.limitations.length > 1 ? `(+${p.limitations.length - 1} more)` : ""}
+                    </p>
+                  </div>
+                </div>
               )}
 
+              {/* Action Button pinned to bottom */}
               <Link
                 href={`/contact?plan=${p.id}`}
-                className={`mt-auto inline-flex justify-center rounded-full px-5 py-2.5 text-sm font-medium transition ${
-                  p.recommended ? "bg-navy text-white hover:bg-royal" : "border border-ice-300 text-navy hover:border-royal hover:text-royal"
-                } ${compact ? "mt-6" : "mt-8"}`}
+                className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition ${
+                  recommended
+                    ? "bg-navy text-white hover:bg-royal shadow-sm"
+                    : "border border-slate-200 text-navy hover:border-royal hover:text-royal bg-white"
+                }`}
               >
                 Register interest
               </Link>
