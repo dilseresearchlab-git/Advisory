@@ -9,6 +9,7 @@ import {
 } from "@/components/ui";
 import { services } from "@/data/services";
 import { plans } from "@/data/pricing";
+import ServiceCard from "@/components/pages/advisory/ServiceCard";
 
 export const metadata = { title: "Advisory Services" };
 
@@ -42,100 +43,20 @@ export default function AdvisoryPage() {
           offered only after applicable regulatory requirements are satisfied.
         </Notice> */}
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((s, i) => {
-            const plan = plans.find((p) => p.id === s.plan);
+     <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {services.map((s, index) => {
+          const plan = plans.find((p) => p.id === s.plan);
 
-            return (
-              <article
-                key={s.id}
-                className={`card group flex flex-col p-6 sm:p-7 ${
-                  i === 1
-                    ? "border-royal/40 bg-gradient-to-b from-ice-50 to-white"
-                    : ""
-                }`}
-              >
-                {/* Card header */}
-                <div className="flex items-center justify-between">
-                  <span className="font-serif text-3xl text-ice-300">
-                    0{i + 1}
-                  </span>
-
-                  <span className="rounded-full bg-ice-50 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-royal">
-                    {s.focus}
-                  </span>
-                </div>
-
-                {/* Service information */}
-                <div className="mt-5">
-                  <h2 className="font-serif text-2xl text-navy sm:text-3xl">
-                    {s.title}
-                  </h2>
-
-                  <p className="mt-2 text-sm font-semibold text-royal">
-                    {s.tagline}
-                  </p>
-
-                  <p className="mt-4 text-sm leading-relaxed text-muted">
-                    {s.description}
-                  </p>
-                </div>
-
-                {/* Intended audience */}
-                <div className="mt-6 rounded-xl bg-ice-50/80 p-4">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-steel">
-                    Best suited for
-                  </p>
-                  <p className="mt-1 text-sm leading-relaxed text-navy">
-                    {s.bestFor}
-                  </p>
-                </div>
-
-                {/* Deliverables */}
-                <div className="mt-6">
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-navy">
-                    Research coverage
-                  </h3>
-
-                  <ul className="mt-3 space-y-2.5 text-sm text-muted">
-                    {s.deliverables.map((d) => (
-                      <li key={d} className="flex gap-2.5">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
-                        <span>{d}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Package association and action */}
-                <div className="mt-auto pt-7">
-                  <div className="flex items-center justify-between border-t border-line pt-4">
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-wider text-steel">
-                        Suggested package
-                      </p>
-                      <Link
-                        href="/pricing"
-                        className="mt-1 inline-flex text-sm font-semibold text-royal hover:underline"
-                      >
-                        {plan?.name ?? "Explore packages"}
-                      </Link>
-                    </div>
-
-                    <span className="text-xs text-steel">{s.horizon}</span>
-                  </div>
-
-                  <Button
-                    href={`/contact?plan=${s.plan}`}
-                    className="mt-5 w-full justify-center"
-                  >
-                    Register interest
-                  </Button>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+          return (
+            <ServiceCard 
+              key={s.id} 
+              service={s} 
+              plan={plan} 
+              index={index} 
+            />
+          );
+        })}
+      </div>
       </Section>
 
       {/* 03 — Find your research fit */}
