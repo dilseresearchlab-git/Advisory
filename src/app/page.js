@@ -5,7 +5,6 @@ import {
   Section,
   SectionHeading,
   CTABand,
-  Notice,
 } from "@/components/ui";
 import { StatTile, SensexLongTermReturns } from "@/components/Charts";
 import PlanCards from "@/components/PlanCards";

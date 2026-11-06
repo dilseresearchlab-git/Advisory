@@ -10,6 +10,7 @@ import {
 import { services } from "@/data/services";
 import { plans } from "@/data/pricing";
 import ServiceCard from "@/components/pages/advisory/ServiceCard";
+import GettingStarted from "@/components/pages/advisory/GettingStarted";
 
 export const metadata = { title: "Advisory Services" };
 
@@ -43,20 +44,15 @@ export default function AdvisoryPage() {
           offered only after applicable regulatory requirements are satisfied.
         </Notice> */}
 
-     <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {services.map((s, index) => {
-          const plan = plans.find((p) => p.id === s.plan);
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {services.map((s, index) => {
+            const plan = plans.find((p) => p.id === s.plan);
 
-          return (
-            <ServiceCard 
-              key={s.id} 
-              service={s} 
-              plan={plan} 
-              index={index} 
-            />
-          );
-        })}
-      </div>
+            return (
+              <ServiceCard key={s.id} service={s} plan={plan} index={index} />
+            );
+          })}
+        </div>
       </Section>
 
       {/* 03 — Find your research fit */}
@@ -69,62 +65,76 @@ export default function AdvisoryPage() {
           horizon and the depth of analysis you need.
         </SectionHeading>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          <article className="rounded-2xl border border-line bg-white p-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-royal">
-              01 / Build perspective
-            </span>
-            <h3 className="mt-4 font-serif text-2xl text-navy">
-              Understand businesses
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              Explore company fundamentals, business quality, financial
-              performance and valuation.
-            </p>
-            <p className="mt-5 border-t border-line pt-4 text-sm font-semibold text-navy">
-              Beginner Investors · Long-Term Investors
-            </p>
-          </article>
+        <div className="mt-8 grid gap-6 md:mt-12 md:grid-cols-3 md:gap-7">
+          {[
+            {
+              number: "01",
+              label: "BUILD PERSPECTIVE",
+              title: "Understand businesses",
+              description:
+                "Explore company fundamentals, business quality, financial performance and valuation.",
+              audience: "Beginner Investors · Long-Term Investors",
+            },
+            {
+              number: "02",
+              label: "STUDY OPPORTUNITIES",
+              title: "Follow market movements",
+              description:
+                "Examine price structure, momentum, relative strength and risk/reward considerations.",
+              audience: "Active Traders · Swing & Positional Traders",
+            },
+            {
+              number: "03",
+              label: "EXPAND COVERAGE",
+              title: "Access deeper analysis",
+              description:
+                "Explore wider market coverage, quantitative research and thematic perspectives.",
+              audience: "Advanced Participants",
+            },
+          ].map((item) => (
+            <article
+              key={item.number}
+              className="relative flex flex-col border-t border-line pt-4 md:pt-6"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-serif text-3xl leading-none text-blue-200 md:text-4xl">
+                  {item.number}
+                </span>
 
-          <article className="rounded-2xl border border-line bg-white p-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-royal">
-              02 / Study opportunities
-            </span>
-            <h3 className="mt-4 font-serif text-2xl text-navy">
-              Follow market movements
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              Examine price structure, momentum, relative strength and
-              risk/reward considerations.
-            </p>
-            <p className="mt-5 border-t border-line pt-4 text-sm font-semibold text-navy">
-              Active Traders · Swing & Positional Traders
-            </p>
-          </article>
+                <span className="text-[9px] font-semibold uppercase tracking-[0.13em] text-royal md:text-[10px] md:tracking-[0.15em]">
+                  {item.label}
+                </span>
+              </div>
 
-          <article className="rounded-2xl border border-line bg-white p-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-royal">
-              03 / Expand coverage
-            </span>
-            <h3 className="mt-4 font-serif text-2xl text-navy">
-              Access deeper analysis
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              Explore wider market coverage, quantitative research and thematic
-              perspectives.
-            </p>
-            <p className="mt-5 border-t border-line pt-4 text-sm font-semibold text-navy">
-              Advanced Participants
-            </p>
-          </article>
+              <h3 className="mt-4 font-serif text-xl text-navy md:mt-7 md:text-2xl">
+                {item.title}
+              </h3>
+
+              <p className="mt-2 max-w-sm text-sm leading-6 text-muted md:mt-3 md:leading-7">
+                {item.description}
+              </p>
+
+              <div className="mt-5 flex-1 border-t border-line/80 pt-3 md:mt-7 md:pt-4">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.13em] text-steel md:text-[10px]">
+                  Best aligned with
+                </p>
+                <p className="mt-1.5 text-sm font-medium leading-5 text-navy md:mt-2 md:leading-6">
+                  {item.audience}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
 
-        <div className="mt-7 text-center">
+        <div className="mt-7 border-t border-line pt-4 md:mt-10 md:pt-6">
           <Link
             href="/pricing"
-            className="text-sm font-semibold text-royal hover:underline"
+            className="group inline-flex items-center gap-2 text-sm font-semibold text-royal transition-colors hover:text-navy"
           >
-            Compare research packages →
+            Compare research packages
+            <span className="transition-transform duration-200 group-hover:translate-x-1">
+              →
+            </span>
           </Link>
         </div>
       </Section>
@@ -136,45 +146,11 @@ export default function AdvisoryPage() {
           title="A straightforward path to exploring our services."
           className="text-white"
         >
-
           Understand the proposed offering, identify your research needs and
           register your interest.
         </SectionHeading>
 
-        <div className="mt-10 grid gap-8 sm:grid-cols-3">
-          {[
-            {
-              number: "01",
-              title: "Identify your needs",
-              description:
-                "Consider your market participation, objectives and preferred research horizon.",
-            },
-            {
-              number: "02",
-              title: "Explore a suitable track",
-              description:
-                "Review the proposed service categories and their corresponding packages.",
-            },
-            {
-              number: "03",
-              title: "Register your interest",
-              description:
-                "Share your preferred package and research requirements for further information.",
-            },
-          ].map((step) => (
-            <div key={step.number} className="relative">
-              <span className="font-serif text-4xl text-ice-300">
-                {step.number}
-              </span>
-              <h3 className="mt-3 text-lg font-semibold text-white">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-ice-200">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        <GettingStarted />
       </Section>
 
       {/* 05 — Transparency */}

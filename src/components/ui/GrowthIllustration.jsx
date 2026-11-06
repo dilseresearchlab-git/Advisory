@@ -232,6 +232,7 @@ export default function GrowthIllustration() {
           fontSize="12"
           fontWeight="700"
           opacity={progress}
+          className="text-emerald-700"
         >
           ₹{(marketValue / 100000).toFixed(2)}L
         </text>
@@ -276,7 +277,7 @@ export default function GrowthIllustration() {
         <div>
           <p className="text-xs text-steel">Market-linked</p>
 
-          <p className="mt-1 text-lg font-semibold text-blue-700 tabular-nums">
+          <p className="mt-1 text-lg font-semibold text-emerald-700 tabular-nums">
             {formatINR(marketValue)}
           </p>
 
