@@ -25,7 +25,7 @@ export default function ServiceCard({ service, plan, index }) {
 
         {/* Title & Concise Tagline */}
         <div className="mt-4">
-          <h2 className="font-serif text-xl font-semibold tracking-tight text-slate-700/90 sm:text-2xl">
+          <h2 className="font-serif text-xl font-semibold tracking-tight transition-colors duration-100 text-slate-700/90 group-hover:text-emerald-600 sm:text-2xl">
             {service.title}
           </h2>
           <p className="mt-1 text-sm font-semibold text-royal">
@@ -38,10 +38,10 @@ export default function ServiceCard({ service, plan, index }) {
 
         {/* Compact 'Best Suited For' inline block */}
         <div className="mt-4 border-t border-slate-100 pt-3">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600">
             Best suited for:
           </span>
-          <p className="mt-0.5 text-xs font-medium text-slate-700 line-clamp-2">
+          <p className="mt-0.5 text-xs font-medium text-slate-700 line-clamp-3">
             {service.bestFor}
           </p>
         </div>
