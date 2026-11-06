@@ -366,7 +366,7 @@ export default function Calculators() {
   return (
     <div className="space-y-6 sm:space-y-8 w-full overflow-hidden">
       {/* Scrollable tab navigation on smaller viewports */}
-      <div className="-mx-4 sm:mx-0 flex gap-2 overflow-x-auto pl-8 sm:px-0 pb-2 sm:flex-wrap scrollbar-none" role="tablist" aria-label="Calculators">
+      <div className="-mx-4 sm:mx-0 flex gap-2 overflow-x-auto px-5 sm:px-0 pb-2 sm:flex-wrap scrollbar-none" role="tablist" aria-label="Calculators">
         {tools.map((t) => (
           <button
             key={t.id}
