@@ -1,5 +1,4 @@
-import { PageHero, Section, SectionHeading, Notice, CTABand } from "@/components/ui";
-import { ProcessDiagram } from "@/components/Charts";
+import { PageHero, Section, SectionHeading, CTABand } from "@/components/ui";
 import { researchItems, sampleReports, methodologySteps } from "@/data/research";
 import Methodology from "@/components/pages/research/Methodology";
 import ResearchArticleCard from "@/components/pages/research/ResearchArticleCard";
@@ -14,7 +13,11 @@ export default function ResearchPage() {
       </PageHero>
 
       <Section>
-        <div className=" grid gap-6 md:grid-cols-2">
+        <SectionHeading eyebrow="Research" title="Sample work" />
+        {/* <Notice tone="info" className="mt-6">
+          The following research articles are samples of our work. They are not intended to be exhaustive or representative of all research we conduct. 
+        </Notice> */}
+        <div className="mt-4 md:mt-8 grid gap-6 md:grid-cols-2">
           {researchItems.map((r) => (
             <ResearchArticleCard key={r.title} r={r} />
           ))}

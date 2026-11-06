@@ -15,13 +15,14 @@ import { RiskRewardVisual } from "./Charts";
 
 const num = (v) => (v === "" || v === null ? 0 : Number(v));
 
+// Standard text/number input component
 function Field({ label, value, onChange, suffix, step = "any", min = 0 }) {
   return (
     <div>
-      <label className="label">{label}</label>
-      <div className="relative">
+      <label className="label text-xs font-semibold uppercase tracking-wider text-slate-600">{label}</label>
+      <div className="relative mt-1.5">
         <input
-          className="input"
+          className="input w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-slate-900 shadow-xs focus:border-royal focus:outline-none focus:ring-2 focus:ring-royal/20"
           type="number"
           inputMode="decimal"
           min={min}
@@ -30,33 +31,72 @@ function Field({ label, value, onChange, suffix, step = "any", min = 0 }) {
           onChange={(e) => onChange(e.target.value)}
         />
         {suffix && (
-          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-steel">{suffix}</span>
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-slate-400">{suffix}</span>
         )}
       </div>
     </div>
   );
 }
 
-function Result({ label, value, strong = false }) {
+// Dual-mode interactive input with Range Slider + Number Field
+function RangeField({ label, value, onChange, suffix, min, max, step = "any" }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 border-b border-line/70 py-2.5 last:border-0">
-      <span className="text-sm text-muted">{label}</span>
-      <span className={strong ? "font-serif text-2xl text-navy" : "text-sm font-semibold text-ink"}>{value}</span>
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <label className="label text-xs font-semibold uppercase tracking-wider text-slate-600">{label}</label>
+        <div className="relative w-28">
+          <input
+            className="input w-full rounded-lg border border-slate-200 bg-white px-2 py-1 text-right text-xs font-bold text-navy focus:border-royal focus:outline-none"
+            type="number"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+          />
+          {suffix && (
+            <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-slate-400">{suffix}</span>
+          )}
+        </div>
+      </div>
+      {/* Interactive Range Slider */}
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value || min}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full accent-royal cursor-pointer h-1.5 bg-slate-200 rounded-lg"
+      />
+    </div>
+  );
+}
+
+function Result({ label, value, strong = false, highlight = false }) {
+  return (
+    <div className="flex items-baseline justify-between gap-4 border-b border-slate-200/60 py-3 last:border-0">
+      <span className="text-xs sm:text-sm font-medium text-slate-600">{label}</span>
+      <span className={strong ? `font-serif text-2xl sm:text-3xl tracking-tight ${highlight ? "text-emerald-600 font-bold" : "text-navy"}` : "text-sm font-semibold text-slate-900"}>
+        {value}
+      </span>
     </div>
   );
 }
 
 function Panel({ title, blurb, children, results, note }) {
   return (
-    <div className="card grid gap-8 p-6 sm:p-8 lg:grid-cols-2">
-      <div>
-        <h3 className="text-2xl">{title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted">{blurb}</p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">{children}</div>
+    <div className="card grid gap-8 rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm lg:grid-cols-12 items-start">
+      <div className="lg:col-span-7 space-y-6">
+        <div>
+          <h3 className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-navy">{title}</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">{blurb}</p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2">{children}</div>
       </div>
-      <div className="rounded-xl bg-ice-50 p-5 sm:p-6">
-        {results}
-        {note && <p className="mt-4 text-xs leading-relaxed text-steel">{note}</p>}
+      <div className="lg:col-span-5 rounded-2xl bg-gradient-to-br from-slate-50 to-ice-50/60 p-5 sm:p-6 ring-1 ring-slate-100 shadow-inner">
+        <div className="space-y-1">{results}</div>
+        {note && <p className="mt-5 text-[11px] leading-relaxed text-slate-400 border-t border-slate-200/50 pt-3">{note}</p>}
       </div>
     </div>
   );
@@ -73,6 +113,9 @@ function SIP() {
     () => sipFutureValue({ monthly: num(monthly), annualRate: num(rate), years: num(years), stepUpPct: num(step) }),
     [monthly, rate, years, step]
   );
+
+  const investedPct = r.value > 0 ? (r.invested / r.value) * 100 : 50;
+
   return (
     <Panel
       title="SIP Calculator"
@@ -80,16 +123,28 @@ function SIP() {
       results={
         <>
           <Result label="Total invested" value={formatINR(r.invested)} />
-          <Result label="Estimated gain" value={formatINR(r.gain)} />
-          <Result label="Estimated value" value={formatINR(r.value)} strong />
+          <Result label="Estimated gain" value={formatINR(r.gain)} highlight />
+          <Result label="Estimated value" value={formatINR(r.value)} strong highlight />
+          
+          {/* Proportional Visual Breakdown Bar */}
+          <div className="mt-4 pt-2">
+            <div className="flex justify-between text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
+              <span>Principal ({investedPct.toFixed(0)}%)</span>
+              <span>Returns ({100 - investedPct.toFixed(0)}%)</span>
+            </div>
+            <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden flex">
+              <div style={{ width: `${investedPct}%` }} className="bg-navy transition-all duration-500" />
+              <div style={{ width: `${100 - investedPct}%` }} className="bg-emerald-500 transition-all duration-500" />
+            </div>
+          </div>
         </>
       }
       note="Assumes a constant return, contributions at the start of each month and no taxes or costs. Actual market returns vary and can be negative."
     >
-      <Field label="Monthly investment" value={monthly} onChange={setMonthly} suffix="₹" />
-      <Field label="Expected annual return" value={rate} onChange={setRate} suffix="%" />
-      <Field label="Duration" value={years} onChange={setYears} suffix="yrs" />
-      <Field label="Annual step-up" value={step} onChange={setStep} suffix="%" />
+      <RangeField label="Monthly investment" value={monthly} onChange={setMonthly} suffix="₹" min={500} max={100000} step={500} />
+      <RangeField label="Expected annual return" value={rate} onChange={setRate} suffix="%" min={1} max={30} step={0.5} />
+      <RangeField label="Duration" value={years} onChange={setYears} suffix="yrs" min={1} max={40} step={1} />
+      <RangeField label="Annual step-up" value={step} onChange={setStep} suffix="%" min={0} max={20} step={1} />
     </Panel>
   );
 }
@@ -99,6 +154,9 @@ function Lumpsum() {
   const [rate, setRate] = useState("12");
   const [years, setYears] = useState("10");
   const r = useMemo(() => lumpsumFutureValue({ principal: num(p), annualRate: num(rate), years: num(years) }), [p, rate, years]);
+  
+  const investedPct = r.value > 0 ? (r.invested / r.value) * 100 : 50;
+
   return (
     <Panel
       title="Lumpsum Calculator"
@@ -106,15 +164,26 @@ function Lumpsum() {
       results={
         <>
           <Result label="Invested" value={formatINR(r.invested)} />
-          <Result label="Estimated gain" value={formatINR(r.gain)} />
-          <Result label="Estimated value" value={formatINR(r.value)} strong />
+          <Result label="Estimated gain" value={formatINR(r.gain)} highlight />
+          <Result label="Estimated value" value={formatINR(r.value)} strong highlight />
+          
+          <div className="mt-4 pt-2">
+            <div className="flex justify-between text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
+              <span>Principal</span>
+              <span>Compounded Gain</span>
+            </div>
+            <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden flex">
+              <div style={{ width: `${investedPct}%` }} className="bg-navy transition-all duration-500" />
+              <div style={{ width: `${100 - investedPct}%` }} className="bg-emerald-500 transition-all duration-500" />
+            </div>
+          </div>
         </>
       }
       note="Illustrative only. Assumes a constant annual return and no taxes or costs."
     >
-      <Field label="Investment amount" value={p} onChange={setP} suffix="₹" />
-      <Field label="Expected annual return" value={rate} onChange={setRate} suffix="%" />
-      <Field label="Duration" value={years} onChange={setYears} suffix="yrs" />
+      <RangeField label="Investment amount" value={p} onChange={setP} suffix="₹" min={10000} max={10000000} step={10000} />
+      <RangeField label="Expected annual return" value={rate} onChange={setRate} suffix="%" min={1} max={30} step={0.5} />
+      <RangeField label="Duration" value={years} onChange={setYears} suffix="yrs" min={1} max={30} step={1} />
     </Panel>
   );
 }
@@ -124,14 +193,16 @@ function CAGR() {
   const [end, setEnd] = useState("250000");
   const [years, setYears] = useState("7");
   const c = cagr({ start: num(start), end: num(end), years: num(years) });
+  const absoluteChange = ((num(end) - num(start)) / (num(start) || NaN)) * 100;
+
   return (
     <Panel
       title="CAGR Calculator"
       blurb="Convert a start value, end value and period into a compound annual growth rate."
       results={
         <>
-          <Result label="Absolute change" value={pct(((num(end) - num(start)) / (num(start) || NaN)) * 100)} />
-          <Result label="CAGR" value={pct(c)} strong />
+          <Result label="Absolute change" value={pct(absoluteChange)} highlight={absoluteChange >= 0} />
+          <Result label="CAGR" value={pct(c)} strong highlight={c >= 0} />
         </>
       }
       note="CAGR smooths growth into a single rate and hides interim volatility."
@@ -149,6 +220,8 @@ function Returns() {
   const [qty, setQty] = useState("100");
   const [years, setYears] = useState("1.5");
   const r = returns({ buy: num(buy), sell: num(sell), qty: num(qty), years: num(years) });
+  const isProfit = r.pnl >= 0;
+
   return (
     <Panel
       title="Returns Calculator"
@@ -157,9 +230,9 @@ function Returns() {
         <>
           <Result label="Cost" value={formatINR(r.cost)} />
           <Result label="Proceeds" value={formatINR(r.proceeds)} />
-          <Result label="Profit / loss" value={formatINR(r.pnl)} />
-          <Result label="Absolute return" value={pct(r.pct)} />
-          <Result label="Annualised return" value={pct(r.annualised)} strong />
+          <Result label="Profit / loss" value={formatINR(r.pnl)} highlight={isProfit} />
+          <Result label="Absolute return" value={pct(r.pct)} highlight={isProfit} />
+          <Result label="Annualised return" value={pct(r.annualised)} strong highlight={isProfit} />
         </>
       }
       note="Before brokerage, taxes and other charges. Example values are placeholders."
@@ -187,7 +260,7 @@ function RiskReward() {
           <Result label="Direction" value={r.long ? "Long" : "Short"} />
           <Result label="Risk per share" value={r.valid ? formatINR(r.risk, 2) : "—"} />
           <Result label="Reward per share" value={r.valid ? formatINR(r.reward, 2) : "—"} />
-          <Result label="Reward : Risk" value={r.valid ? `${r.ratio.toFixed(2)} : 1` : "Check inputs"} strong />
+          <Result label="Reward : Risk" value={r.valid ? `${r.ratio.toFixed(2)} : 1` : "Check inputs"} strong highlight={r.ratio >= 2} />
           <Result label="Break-even win rate" value={r.valid ? pct(r.breakeven, 1) : "—"} />
         </>
       }
@@ -213,7 +286,7 @@ function PositionSize() {
       results={
         <>
           <Result label="Capital at risk" value={formatINR(r.riskAmount)} />
-          <Result label="Quantity" value={r.valid ? r.qty.toLocaleString("en-IN") : "—"} strong />
+          <Result label="Quantity" value={r.valid ? r.qty.toLocaleString("en-IN") : "—"} strong highlight />
           <Result label="Position value" value={r.valid ? formatINR(r.value) : "—"} />
           <Result label="% of capital deployed" value={r.valid ? pct(r.pctOfCapital, 1) : "—"} />
         </>
@@ -236,6 +309,8 @@ function Brokerage() {
   const [mode, setMode] = useState("flat");
   const [bv, setBv] = useState("20");
   const r = brokerage({ buy: num(buy), sell: num(sell), qty: num(qty), segment, brokerageMode: mode, brokerageValue: num(bv) });
+  const isNetProfit = r.netPnl >= 0;
+
   return (
     <Panel
       title="Brokerage & Charges"
@@ -247,26 +322,26 @@ function Brokerage() {
           <Result label="Exchange + SEBI fees" value={formatINR(r.exchange + r.sebi, 2)} />
           <Result label="Stamp duty" value={formatINR(r.stamp, 2)} />
           <Result label="GST" value={formatINR(r.gst, 2)} />
-          <Result label="Total charges" value={formatINR(r.totalCharges, 2)} strong />
-          <Result label="Net P&L after charges" value={formatINR(r.netPnl, 2)} />
+          <Result label="Total charges" value={formatINR(r.totalCharges, 2)} />
+          <Result label="Net P&L after charges" value={formatINR(r.netPnl, 2)} strong highlight={isNetProfit} />
           <Result label="Break-even move / share" value={formatINR(r.breakevenPerShare, 2)} />
         </>
       }
-      note="Statutory rates are indicative defaults and may be outdated. Verify against your broker's contract note and current notifications. Rates can be edited in src/lib/calculations.js."
+      note="Statutory rates are indicative defaults and may be outdated. Verify against your broker's contract note."
     >
       <Field label="Buy price" value={buy} onChange={setBuy} suffix="₹" />
       <Field label="Sell price" value={sell} onChange={setSell} suffix="₹" />
       <Field label="Quantity" value={qty} onChange={setQty} step="1" />
       <div>
-        <label className="label">Segment</label>
-        <select className="input" value={segment} onChange={(e) => setSegment(e.target.value)}>
+        <label className="label text-xs font-semibold uppercase tracking-wider text-slate-600">Segment</label>
+        <select className="input mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-slate-900 shadow-xs focus:border-royal focus:outline-none" value={segment} onChange={(e) => setSegment(e.target.value)}>
           <option value="intraday">Equity intraday</option>
           <option value="delivery">Equity delivery</option>
         </select>
       </div>
       <div>
-        <label className="label">Brokerage type</label>
-        <select className="input" value={mode} onChange={(e) => setMode(e.target.value)}>
+        <label className="label text-xs font-semibold uppercase tracking-wider text-slate-600">Brokerage type</label>
+        <select className="input mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-slate-900 shadow-xs focus:border-royal focus:outline-none" value={mode} onChange={(e) => setMode(e.target.value)}>
           <option value="flat">Flat ₹ per order</option>
           <option value="percent">% of turnover</option>
         </select>
@@ -290,18 +365,18 @@ export default function Calculators() {
   const [active, setActive] = useState("sip");
   const Active = tools.find((t) => t.id === active).C;
   return (
-    <div>
-      <div className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:px-0" role="tablist" aria-label="Calculators">
+    <div className="space-y-8">
+      <div className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:px-0 no-scrollbar" role="tablist" aria-label="Calculators">
         {tools.map((t) => (
           <button
             key={t.id}
             role="tab"
             aria-selected={active === t.id}
             onClick={() => setActive(t.id)}
-            className={`shrink-0 rounded-full border px-4 py-2 text-sm transition ${
+            className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-all shadow-xs ${
               active === t.id
-                ? "border-navy bg-navy text-white"
-                : "border-line bg-white text-steel-dark hover:border-royal hover:text-royal"
+                ? "bg-navy text-white shadow-md scale-105"
+                : "border border-slate-200 bg-white text-slate-600 hover:border-royal hover:text-royal"
             }`}
           >
             {t.label}
