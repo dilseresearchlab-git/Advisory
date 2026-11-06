@@ -1,20 +1,40 @@
-import { PageHero, Section, SectionHeading, Notice, CTABand } from "@/components/ui";
-import { ProcessDiagram } from "@/components/Charts";
-import { researchItems, sampleReports, methodologySteps } from "@/data/research";
+import {
+  PageHero,
+  Section,
+  SectionHeading,
+  CTABand,
+  Notice,
+} from "@/components/ui";
+import {
+  researchItems,
+  sampleReports,
+  methodologySteps,
+} from "@/data/research";
 import Methodology from "@/components/pages/research/Methodology";
 import ResearchArticleCard from "@/components/pages/research/ResearchArticleCard";
+import SampleReportsSection from "@/components/pages/research/SampleReports";
 
 export const metadata = { title: "Research & Insights" };
 
 export default function ResearchPage() {
   return (
     <>
-      <PageHero eyebrow="Research & insights" title="How we think, shown through sample work">
-        Previews of company analysis, sector insight and market perspective. All content is illustrative.
+      <PageHero
+        eyebrow="Research & insights"
+        title="How we think, shown through sample work"
+      >
+        Previews of company analysis, sector insight and market perspective. All
+        content is illustrative.
       </PageHero>
 
       <Section>
-        <div className=" grid gap-6 md:grid-cols-2">
+        <SectionHeading eyebrow="Research" title="Sample work" />
+        <Notice tone="info" className="mt-6">
+          The following research articles are samples of our work. They are not
+          intended to be exhaustive or representative of all research we
+          conduct.
+        </Notice>
+        <div className="mt-4 md:mt-8 grid gap-6 md:grid-cols-2">
           {researchItems.map((r) => (
             <ResearchArticleCard key={r.title} r={r} />
           ))}
@@ -22,8 +42,11 @@ export default function ResearchPage() {
       </Section>
 
       <Section tone="ice">
-        <SectionHeading eyebrow="Sample reports" title="What a deliverable looks like" />
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <SectionHeading
+          eyebrow="Sample reports"
+          title="What a deliverable looks like"
+        />
+        {/* <div className="mt-8 grid gap-5 md:grid-cols-3">
           {sampleReports.map((s) => (
             <div key={s.title} className="card p-6">
               <div className="flex h-28 items-end rounded-lg bg-linear-to-br from-navy to-royal-soft p-4">
@@ -34,12 +57,15 @@ export default function ResearchPage() {
               <p className="mt-4 text-xs text-steel">Sample download coming soon.</p>
             </div>
           ))}
-        </div>
+        </div> */}
+        <SampleReportsSection />
       </Section>
 
       <Section>
         <SectionHeading eyebrow="Methodology" title="Five stages, every time" />
-        <div className="mt-10"><Methodology steps={methodologySteps} /></div>
+        <div className="mt-10">
+          <Methodology steps={methodologySteps} />
+        </div>
       </Section>
       <CTABand />
     </>
