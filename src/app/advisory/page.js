@@ -27,7 +27,7 @@ export default function AdvisoryPage() {
       </PageHero>
 
       {/* 02 — Advisory service tracks */}
-      <Section>
+      <Section tone="ice">
         <div className="max-w-3xl">
           <SectionHeading
             eyebrow="Explore our services"
@@ -56,7 +56,7 @@ export default function AdvisoryPage() {
       </Section>
 
       {/* 03 — Find your research fit */}
-      <Section tone="ice">
+      <Section >
         <SectionHeading
           eyebrow="Find your research fit"
           title="Start with what you want to understand."

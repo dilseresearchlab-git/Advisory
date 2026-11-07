@@ -11,10 +11,10 @@ export const site = {
     "Independent equity research, structured market perspectives and decision tools for investors and traders in India.",
   // Placeholder contact details — replace before publishing.
   contact: {
-    email: "hello@example.com",
-    phone: "+91 00000 00000",
+    email: "dilseresearchlab@gmail.com",
+    phone: "+91 9876543210",
     address: "Office address line, City, State, PIN (placeholder)",
-    hours: "Mon–Fri, 9:30 AM – 6:00 PM IST",
+    hours: "Mon–Fri, 10:00 AM – 9:00 PM IST",
   },
   social: {
     linkedin: "#",
