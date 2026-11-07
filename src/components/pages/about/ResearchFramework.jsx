@@ -1,7 +1,14 @@
+import {
+  Building2,
+  ChartNoAxesCombined,
+  Scale,
+  ChartCandlestick,
+  ShieldAlert,
+} from "lucide-react";
 
 const dimensions = [
   {
-    symbol: "⌂",
+    Icon: Building2,
     category: "01 / BUSINESS",
     title: "Business understanding",
     description:
@@ -11,7 +18,7 @@ const dimensions = [
     symbolBg: "bg-[#DCE9FC]",
   },
   {
-    symbol: "▤",
+    Icon: ChartNoAxesCombined,
     category: "02 / FINANCIALS",
     title: "Financial strength",
     description:
@@ -21,7 +28,7 @@ const dimensions = [
     symbolBg: "bg-[#DCEFE3]",
   },
   {
-    symbol: "◇",
+    Icon: Scale,
     category: "03 / VALUATION",
     title: "Valuation",
     description:
@@ -31,7 +38,7 @@ const dimensions = [
     symbolBg: "bg-[#F5E9CF]",
   },
   {
-    symbol: "⌁",
+    Icon: ChartCandlestick,
     category: "04 / MARKET",
     title: "Market behaviour",
     description:
@@ -41,7 +48,7 @@ const dimensions = [
     symbolBg: "bg-[#E9E2F5]",
   },
   {
-    symbol: "◎",
+    Icon: ShieldAlert,
     category: "05 / RISK",
     title: "Risk assessment",
     description:
@@ -63,11 +70,11 @@ export default function ResearchFramework() {
           } ${item.theme}`}
         >
           <div className="flex items-center justify-between gap-3">
-            <span
-              className={`flex h-10 w-10 items-center justify-center rounded-lg text-xl ${item.symbolBg}`}
+            <div
+              className={`flex h-10 w-10 items-center justify-center rounded-lg ${item.symbolBg} ${item.theme.split(" ").at(-1)}`}
             >
-              {item.symbol}
-            </span>
+              <item.Icon size={21} strokeWidth={1.8} />
+            </div>
             <span className="text-[9px] font-semibold tracking-[0.13em] opacity-75">
               {item.category}
             </span>
@@ -82,9 +89,7 @@ export default function ResearchFramework() {
           </p>
 
           <div className="mt-5 border-t border-current/15 pt-3">
-            <p className="text-xs font-semibold text-navy">
-              {item.detail}
-            </p>
+            <p className="text-xs font-semibold text-navy">{item.detail}</p>
           </div>
         </article>
       ))}
