@@ -3,9 +3,15 @@ import ResearchFramework from "@/components/pages/about/ResearchFramework";
 import { principles } from "@/data/services";
 import { site } from "@/data/site";
 
-export const metadata = {
-  title: "About & Methodology",
-};
+import {
+  Search,
+  FileSearch,
+  ShieldAlert,
+  RefreshCw,
+  ArrowDownToLine,
+  Scale,
+  Layers3,
+} from "lucide-react";
 
 const methodology = [
   {
@@ -13,7 +19,7 @@ const methodology = [
     title: "Identify opportunities",
     description:
       "Screen companies, sectors and market developments to identify areas worth investigating.",
-    symbol: "⌕",
+    Icon: Search,
     accent: "bg-[#4B83C5]",
     symbolColor: "text-[#37679F]",
     symbolBg: "bg-[#EAF1FB]",
@@ -23,7 +29,7 @@ const methodology = [
     title: "Examine the evidence",
     description:
       "Study business fundamentals, financial performance, valuation and relevant market data.",
-    symbol: "▤",
+    Icon: FileSearch,
     accent: "bg-[#38956A]",
     symbolColor: "text-[#347A55]",
     symbolBg: "bg-[#EAF4ED]",
@@ -33,7 +39,7 @@ const methodology = [
     title: "Test the research view",
     description:
       "Question assumptions, evaluate downside risks and consider alternative scenarios.",
-    symbol: "◇",
+    Icon: ShieldAlert,
     accent: "bg-[#C28B36]",
     symbolColor: "text-[#9A702D]",
     symbolBg: "bg-[#F8F0E2]",
@@ -43,7 +49,7 @@ const methodology = [
     title: "Review and reassess",
     description:
       "Revisit the analysis as new information emerges and update the research view when necessary.",
-    symbol: "↻",
+    Icon: RefreshCw,
     accent: "bg-[#8267B8]",
     symbolColor: "text-[#7862A7]",
     symbolBg: "bg-[#F0ECF8]",
@@ -80,7 +86,7 @@ const riskAccents = [
   "bg-emerald-50 text-emerald-700",
 ];
 
-const riskSymbols = ["↓", "◫", "◇", "↻"];
+const riskIcons = [ArrowDownToLine, Scale, Layers3, RefreshCw];
 
 const transparencyPoints = [
   "Market research involves uncertainty. No analytical framework can predict every market outcome.",
@@ -180,8 +186,6 @@ export default function AboutPage() {
         </p>
       </Section>
 
-      {/* 04 — Methodology */}
-
       {/* Research methodology */}
       <Section>
         <SectionHeading
@@ -201,9 +205,9 @@ export default function AboutPage() {
               <div className={`absolute inset-y-0 left-0 w-1 ${item.accent}`} />
 
               <div
-                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-xl ${item.symbolBg} ${item.symbolColor}`}
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${item.symbolBg} ${item.symbolColor}`}
               >
-                {item.symbol}
+                <item.Icon size={21} strokeWidth={1.8} />
               </div>
 
               <div className="min-w-0">
@@ -376,9 +380,12 @@ export default function AboutPage() {
                 }`}
               >
                 <span
-                  className={`flex h-9 w-9 items-center justify-center rounded-xl text-lg ${riskAccents[index]}`}
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${riskAccents[index]}`}
                 >
-                  {riskSymbols[index]}
+                  {(() => {
+                    const Icon = riskIcons[index];
+                    return <Icon size={19} strokeWidth={1.8} />;
+                  })()}
                 </span>
 
                 <h3
@@ -403,37 +410,36 @@ export default function AboutPage() {
       </Section>
 
       {/* 07 — Transparency */}
-      <Section tone="navy">
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ice-300">
-              Transparency & scope
-            </span>
 
-            <h2 className="mt-5 font-serif text-3xl leading-tight text-white sm:text-4xl">
-              Clear expectations. Defined boundaries.
-            </h2>
+      {/* Transparency & scope */}
+      <Section>
+        <div className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Transparency & scope"
+            title="Important things to understand."
+          />
 
-            <p className="mt-4 max-w-sm text-sm leading-7 text-ice-200/75">
-              Research should communicate its limitations as clearly as its
-              conclusions.
-            </p>
-          </div>
-
-          <div className="border-y border-white/10">
-            {transparencyPoints.map((point, index) => (
-              <div
-                key={index}
-                className="flex gap-4 border-b border-white/10 py-4 last:border-b-0"
+          <ul className="mt-7 space-y-4">
+            {[
+              "Research and market insights involve uncertainty and do not guarantee returns or trading outcomes.",
+              "No custody of client funds or discretionary portfolio management is offered.",
+              "Research coverage, deliverables and limitations are defined by the applicable service scope.",
+              "Regulated advisory or research services will commence only after obtaining the applicable registrations and approvals.",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 text-sm leading-relaxed text-muted sm:text-base"
               >
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-ice-300/30 text-xs text-ice-300">
-                  !
+                <span
+                  className="mt-0.5 shrink-0 text-amber-500"
+                  aria-hidden="true"
+                >
+                  ⚠
                 </span>
-
-                <p className="text-sm leading-6 text-ice-200/85">{point}</p>
-              </div>
+                {item}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </Section>
 
