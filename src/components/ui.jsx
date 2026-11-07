@@ -21,7 +21,7 @@ export function SectionHeading({ eyebrow, title, children, align = "left", light
   return (
     <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}>
       {eyebrow && <p className={`eyebrow ${light ? "!text-ice-300" : ""}`}>{eyebrow}</p>}
-      <h2 className={`mt-3 text-3xl leading-tight sm:text-4xl ${light ? "!text-white" : ""} ${className}`}>{title}</h2>
+      <h2 className={`mt-3 text-2xl leading-tight sm:text-3xl lg:text-4xl ${light ? "!text-white" : ""} ${className}`}>{title}</h2>
       {children && <p className={`mt-4 leading-relaxed ${light ? "text-ice-300/90" : "text-muted"}`}>{children}</p>}
     </div>
   );
@@ -52,11 +52,11 @@ export function Button({ href, children, variant = "primary", className = "", ..
 
 export function PageHero({ eyebrow, title, children }) {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-ice-100 to-white">
+    <section className="relative overflow-hidden border-b border-line bg-linear-to-b from-ice-100 to-white">
       <div className="grid-bg absolute inset-0 opacity-60" aria-hidden="true" />
-      <Container className="relative py-16 sm:py-24">
+      <Container className="relative py-12 sm:py-16 lg:py-24">
         <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-4 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">{title}</h1>
+        <h1 className="mt-4 max-w-3xl text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">{title}</h1>
         {children && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{children}</p>}
       </Container>
     </section>
