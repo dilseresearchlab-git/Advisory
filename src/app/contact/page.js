@@ -3,6 +3,9 @@ import { PageHero, Section } from "@/components/ui";
 import ContactForm from "@/components/ContactForm";
 import { site } from "@/data/site";
 
+const contact = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || site.contact.phone;
+const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL || site.contact.email;
+
 export const metadata = { title: "Contact" };
 
 export default function ContactPage() {
@@ -20,8 +23,8 @@ export default function ContactPage() {
             <div className="card p-6">
               <h2 className="text-xl">Contact details</h2>
               <dl className="mt-4 space-y-4 text-sm">
-                <div><dt className="text-xs text-steel">Email</dt><dd className="text-ink">{site.contact.email}</dd></div>
-                <div><dt className="text-xs text-steel">Phone</dt><dd className="text-ink">{site.contact.phone}</dd></div>
+                <div><dt className="text-xs text-steel">Email</dt><dd className="text-ink">{email}</dd></div>
+                <div><dt className="text-xs text-steel">Phone</dt><dd className="text-ink">{contact}</dd></div>
                 <div><dt className="text-xs text-steel">Address</dt><dd className="text-ink">{site.contact.address}</dd></div>
                 <div><dt className="text-xs text-steel">Hours</dt><dd className="text-ink">{site.contact.hours}</dd></div>
               </dl>
