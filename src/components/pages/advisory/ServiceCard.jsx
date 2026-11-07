@@ -37,7 +37,7 @@ export default function ServiceCard({ service, plan, index }) {
         </div>
 
         {/* Compact 'Best Suited For' inline block */}
-        <div className="mt-4 border-t border-slate-100 pt-3">
+        <div className="mt-2 md:mt-4 border-t border-slate-100 pt-3">
           <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600">
             Best suited for:
           </span>
@@ -47,7 +47,7 @@ export default function ServiceCard({ service, plan, index }) {
         </div>
 
         {/* Deliverables (Shortened list layout) */}
-        <div className="mt-4 border-t border-slate-100 pt-3">
+        <div className="mt-2 md:mt-4 border-t border-slate-100 pt-3">
           <h3 className="text-[10px] font-bold uppercase tracking-wider text-navy">
             Research coverage
           </h3>
@@ -63,7 +63,7 @@ export default function ServiceCard({ service, plan, index }) {
       </div>
 
       {/* Footer: Package Association & Action CTA */}
-      <div className="mt-6 border-t border-slate-100 pt-4">
+      <div className="mt-4 md:mt-6 border-t border-slate-100 pt-4">
         <div className="flex items-center justify-between text-xs">
           <div>
             <span className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
@@ -76,7 +76,7 @@ export default function ServiceCard({ service, plan, index }) {
               {plan?.name ?? "Explore packages"}
             </Link>
           </div>
-          <span className="font-medium text-slate-500">{service.horizon}</span>
+          <span className="font-medium text-orange-500">{service.horizon}</span>
         </div>
 
         <Button

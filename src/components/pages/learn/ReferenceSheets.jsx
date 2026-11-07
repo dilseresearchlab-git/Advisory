@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Section, SectionHeading } from "@/components/ui";
 import { ratios, glossary } from "@/data/learning";
 
