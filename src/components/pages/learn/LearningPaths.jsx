@@ -119,7 +119,7 @@ export default function LearningPaths({ tracks = [] }) {
             return (
               <article
                 key={track.id}
-                className={`group relative overflow-hidden rounded-2xl border ${theme.border} bg-gradient-to-br ${theme.surface} to-white p-5 transition-colors duration-300 hover:border-slate-300 sm:p-6`}
+                className={`group relative overflow-hidden rounded-2xl border ${theme.border} bg-gradient-to-br to-white p-5 transition-colors duration-300 hover:border-slate-300 sm:p-6`}
               >
                 {/* Heading row */}
                 <div className="flex items-center justify-between">
