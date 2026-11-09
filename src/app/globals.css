@@ -97,3 +97,51 @@
     animation: none;
   }
 }
+
+
+
+/* Research framework entrance animation */
+
+.research-reveal.reveal-ready .research-reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+
+  transition:
+    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.research-reveal.reveal-ready .research-reveal-item.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .research-reveal.reveal-ready .research-reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/*  MNethodology steps amnimated arrows */
+
+@keyframes flow-horizontal {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes flow-vertical {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-flow-horizontal {
+  animation: flow-horizontal 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-flow-vertical {
+  animation: flow-vertical 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

@@ -15,7 +15,7 @@ import {
 
 const methodology = [
   {
-    label: "01 / DISCOVER",
+    label: "DISCOVER",
     title: "Identify opportunities",
     description:
       "Screen companies, sectors and market developments to identify areas worth investigating.",
@@ -25,7 +25,7 @@ const methodology = [
     symbolBg: "bg-[#EAF1FB]",
   },
   {
-    label: "02 / INVESTIGATE",
+    label: "INVESTIGATE",
     title: "Examine the evidence",
     description:
       "Study business fundamentals, financial performance, valuation and relevant market data.",
@@ -35,7 +35,7 @@ const methodology = [
     symbolBg: "bg-[#EAF4ED]",
   },
   {
-    label: "03 / CHALLENGE",
+    label: "CHALLENGE",
     title: "Test the research view",
     description:
       "Question assumptions, evaluate downside risks and consider alternative scenarios.",
@@ -45,7 +45,7 @@ const methodology = [
     symbolBg: "bg-[#F8F0E2]",
   },
   {
-    label: "04 / REVISIT",
+    label: "REVISIT",
     title: "Review and reassess",
     description:
       "Revisit the analysis as new information emerges and update the research view when necessary.",
@@ -111,27 +111,19 @@ export default function AboutPage() {
       {/* 02 — Philosophy */}
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-16">
-          <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.17em] text-royal">
-              The thinking behind our work
-            </span>
-
-            <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-navy sm:text-4xl lg:text-5xl">
-              Good research begins with better questions.
-            </h2>
-
-            <p className="mt-5 max-w-lg text-sm leading-7 text-muted">
-              We believe useful market research starts with reliable
-              information, thoughtful interpretation and the willingness to
-              question an attractive conclusion.
-            </p>
-
-            <p className="mt-3 max-w-lg text-sm leading-7 text-muted">
-              The objective is not to sound certain. It is to explain what the
-              evidence suggests, which assumptions matter and where uncertainty
-              remains.
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="The thinking behind our work"
+            title="              Good research begins with better questions.
+"
+          >
+            We believe useful market research starts with reliable information,
+            thoughtful interpretation and the willingness to question an
+            attractive conclusion.
+            <br />
+            The objective is not to sound certain. It is to explain what the
+            evidence suggests, which assumptions matter and where uncertainty
+            remains.
+          </SectionHeading>
 
           <div className="relative rounded-2xl bg-midnight p-6 sm:p-8">
             <div className="absolute right-6 top-6 h-20 w-20 rounded-full border border-ice-300/15" />
@@ -187,6 +179,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Research methodology */}
+
       <Section>
         <SectionHeading
           eyebrow="Research methodology"
@@ -196,37 +189,59 @@ export default function AboutPage() {
           evidence, challenging assumptions and revisiting the findings.
         </SectionHeading>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:gap-5">
-          {methodology.map((item) => (
-            <article
-              key={item.label}
-              className="relative flex gap-4 overflow-hidden rounded-xl border border-line bg-white p-5 sm:p-6"
-            >
-              <div className={`absolute inset-y-0 left-0 w-1 ${item.accent}`} />
+        <div className="relative mt-12 lg:mt-16">
+          {/* Horizontal animated connector line — Desktop only */}
+          <div
+            className="absolute left-[12.5%] right-[12.5%] top-6 hidden h-0.5 lg:block overflow-hidden pointer-events-none"
+            aria-hidden="true"
+          >
+            <div className="absolute inset-0 bg-line opacity-50" />
+            <div className="absolute inset-0 w-full h-full animate-flow-horizontal bg-linear-to-r from-transparent via-blue-500 to-transparent opacity-80" />
+          </div>
 
-              <div
-                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${item.symbolBg} ${item.symbolColor}`}
+          <div className="grid gap-9 lg:grid-cols-4 lg:gap-6">
+            {methodology.map((item, index) => (
+              <article
+                key={item.label}
+                className="relative flex gap-4 lg:flex-col lg:items-center lg:gap-5 group"
               >
-                <item.Icon size={21} strokeWidth={1.8} />
-              </div>
+                {/* Vertical animated connector line — Mobile & Tablet (bridges gap to next item, stops at last icon) */}
+                {index < methodology.length - 1 && (
+                  <div
+                    className="absolute left-6 top-12 -bottom-9 w-0.5 lg:hidden overflow-hidden pointer-events-none z-0"
+                    aria-hidden="true"
+                  >
+                    <div className="absolute inset-0 bg-line opacity-50" />
+                    <div className="absolute inset-0 w-full h-full animate-flow-vertical bg-linear-to-b from-transparent via-blue-500 to-transparent opacity-80" />
+                  </div>
+                )}
 
-              <div className="min-w-0">
-                <p
-                  className={`text-[9px] font-semibold tracking-[0.14em] ${item.symbolColor}`}
-                >
-                  {item.label}
-                </p>
+                {/* Icon node */}
+                <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line bg-navy text-blue-700 transition-transform duration-300 group-hover:scale-105 group-hover:border-blue-500 shadow-sm">
+                  <item.Icon
+                    size={20}
+                    strokeWidth={1.7}
+                    className="text-white"
+                  />
+                </div>
 
-                <h3 className="mt-2 font-serif text-xl text-navy">
-                  {item.title}
-                </h3>
+                {/* Step content */}
+                <div className="min-w-0 pb-1 lg:text-center">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-blue-700">
+                    {item.label}
+                  </p>
 
-                <p className="mt-2 text-sm leading-6 text-muted">
-                  {item.description}
-                </p>
-              </div>
-            </article>
-          ))}
+                  <h3 className="mt-2 font-serif text-xl text-navy sm:text-[22px]">
+                    {item.title}
+                  </h3>
+
+                  <p className="mx-auto mt-3 max-w-67.5 text-sm leading-6 text-muted">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </Section>
 
@@ -408,8 +423,6 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
-
-      {/* 07 — Transparency */}
 
       {/* Transparency & scope */}
       <Section>
