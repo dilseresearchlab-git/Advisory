@@ -72,7 +72,7 @@ export default function PlanCards({ compact = false }) {
               )}
 
               {/* 1. FIXED HEADER BLOCK (Ensures titles & audiences align horizontally) */}
-              <div className="min-h-[105px]">
+              <div className="min-h-[90px]">
                 <h3 className="font-serif text-2xl tracking-tight text-navy">
                   {p.name}
                 </h3>
@@ -82,7 +82,7 @@ export default function PlanCards({ compact = false }) {
               </div>
 
               {/* 2. FIXED PRICING BLOCK */}
-              <div className="mt-3 border-t border-slate-100 pt-4">
+              <div className="mt-3 border-t border-slate-300 pt-4">
                 <div className="flex items-baseline gap-x-1">
                   <span
                     className={`font-serif text-3xl tracking-tight ${
@@ -154,7 +154,7 @@ export default function PlanCards({ compact = false }) {
                 className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition ${
                   recommended
                     ? "bg-navy text-white hover:bg-royal shadow-sm"
-                    : "border border-slate-200 text-navy hover:border-royal hover:text-royal bg-white"
+                    : "border border-slate-400 text-navy hover:border-royal hover:text-royal bg-white"
                 }`}
               >
                 Register interest
