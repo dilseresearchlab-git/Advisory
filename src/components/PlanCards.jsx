@@ -60,7 +60,7 @@ export default function PlanCards({ compact = false }) {
                 compact ? "p-5 sm:p-6" : "p-6 sm:p-7"
               } ${
                 recommended
-                  ? "border-royal bg-gradient-to-b from-ice-100/70 to-white shadow-lg ring-1 ring-royal/20"
+                  ? "border-royal bg-linear-to-b from-ice-100/70 to-white shadow-lg ring-1 ring-royal/20"
                   : "border-line bg-white shadow-soft hover:-translate-y-1 hover:shadow-lift"
               }`}
             >
@@ -72,7 +72,7 @@ export default function PlanCards({ compact = false }) {
               )}
 
               {/* 1. FIXED HEADER BLOCK (Ensures titles & audiences align horizontally) */}
-              <div className="min-h-[90px]">
+              <div className="min-h-22.5">
                 <h3 className="font-serif text-2xl tracking-tight text-navy">
                   {p.name}
                 </h3>
@@ -102,7 +102,7 @@ export default function PlanCards({ compact = false }) {
 
               {/* 3. FIXED SUMMARY BLOCK */}
               <div className="mt-4 min-h-[64px]">
-                <p className="text-xs leading-relaxed text-muted line-clamp-3">
+                <p className="text-sm leading-relaxed text-muted line-clamp-3">
                   {p.summary}
                 </p>
               </div>

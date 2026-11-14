@@ -158,7 +158,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="card space-y-5 p-4 sm:p-8 w-full max-w-full overflow-hidden">
+    <form onSubmit={onSubmit} className="card border-royal/25 space-y-5 p-4 sm:p-8 w-full max-w-full overflow-hidden">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className="label" htmlFor="name">
