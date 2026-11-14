@@ -69,12 +69,12 @@ export function KeyTakeaways({ value }) {
       aria-label={value.title || "Key takeaways"}
     >
       <div className="flex items-center gap-3 text-royal">
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white">
+        <span className="flex h-6 w-6 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white">
           <Bulb />
         </span>
-        <p className="font-serif text-xl">{value.title || "Key Takeaways"}</p>
+        <p className="font-serif text-base sm:text-xl">{value.title || "Key Takeaways"}</p>
       </div>
-      <ul className="mt-4 space-y-2.5 pl-1 text-[16px] leading-relaxed text-ink">
+      <ul className="mt-4 space-y-2.5 pl-1 text-[15px] sm:text-base leading-relaxed text-slate-600">
         {items.map((t, i) => (
           <li key={i} className="flex gap-3">
             <span
@@ -169,12 +169,12 @@ export function ArticleTable({ value }) {
                     <th
                       key={cellIndex}
                       scope="row"
-                      className="px-4 py-3 font-medium text-ink"
+                      className="px-4 py-3 font-medium text-ink text-sm sm:text-base"
                     >
                       {cell}
                     </th>
                   ) : (
-                    <td key={cellIndex} className="px-4 py-3 text-muted">
+                    <td key={cellIndex} className="px-4 py-3 text-muted text-sm sm:text-base">
                       {cell}
                     </td>
                   ),

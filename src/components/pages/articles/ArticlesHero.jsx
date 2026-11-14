@@ -35,14 +35,14 @@ export default function ArticlesHero() {
         <div className="max-w-3xl">
           <p className="eyebrow">Meridian Research &amp; Perspectives</p>
 
-          <h1 className="mt-4 text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 text-3xl md:leading-[1.1] md:text-4xl lg:text-5xl">
             Articles &amp; Insights
-            <span className="mt-2 block text-royal">
+            <span className="md:mt-2 block text-royal">
               A clearer view of the markets.
             </span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">
+          <p className="mt-4 md:mt-6 max-w-2xl text-base md:leading-8 text-muted md:text-lg">
             Independent perspectives on businesses, financial performance and
             market themes—written to explain how we think, not to tell you what
             to buy.

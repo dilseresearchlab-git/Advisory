@@ -42,10 +42,10 @@ export default function ArticleList({ articles = [] }) {
         <div className="flex flex-wrap items-end justify-between gap-5">
           <div className="max-w-2xl">
             <p className="eyebrow">From the research desk</p>
-            <h2 id="latest-title" className="mt-3 text-3xl text-midnight sm:text-4xl">
+            <h2 id="latest-title" className="mt-3 text-[28px] text-midnight sm:text-4xl">
               Latest Insights
             </h2>
-            <p className="mt-3 text-sm leading-7 text-muted sm:text-base">
+            <p className="mt-2 sm:mt-3 text-sm leading-6 sm:leading-7 text-muted sm:text-base">
               Recent research notes, company studies and market perspectives
               from the Meridian team.
             </p>
@@ -123,10 +123,10 @@ export default function ArticleList({ articles = [] }) {
                           {article.title}
                         </Link>
                       </h3>
-                      <p className="mt-2 max-w-3xl text-sm leading-7 text-muted">
+                      <p className="mt-2 max-w-3xl text-sm leading-6 sm:leading-7 text-muted">
                         {article.excerpt}
                       </p>
-                      <div className="mt-4">
+                      <div className="mt-3 md:mt-4">
                         <ArticleMeta article={article} />
                       </div>
                     </div>

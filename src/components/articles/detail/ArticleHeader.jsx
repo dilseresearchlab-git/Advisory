@@ -69,7 +69,7 @@ export default function ArticleHeader({ article }) {
         <div className="mx-auto mt-8 max-w-4xl">
           <figure>
             {src ? (
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-ice-100 shadow-sm">
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-ice-100 shadow-sm">
                 <Image
                   src={src}
                   alt={cover.alt || ""}

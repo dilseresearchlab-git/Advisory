@@ -35,7 +35,7 @@ export function Button({ href, children, variant = "primary", className = "", ..
     ghost: "text-royal hover:text-navy",
   };
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition duration-200";
+    "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-medium transition duration-200";
   if (href) {
     return (
       <Link href={href} className={`${base} ${styles[variant]} ${className}`} {...rest}>
