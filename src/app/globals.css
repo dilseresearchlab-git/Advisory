@@ -47,7 +47,7 @@
 
 @layer components {
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-royal;
+    @apply text-[10px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-royal;
   }
   .card {
     @apply rounded-2xl border border-line bg-white shadow-soft transition duration-300;

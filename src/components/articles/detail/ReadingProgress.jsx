@@ -16,8 +16,13 @@ export default function ReadingProgress({ targetId }) {
       raf = 0;
       const rect = el.getBoundingClientRect();
       const total = rect.height - window.innerHeight;
-      const done = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : rect.top < 0 ? 1 : 0;
-      bar.current.style.transform = `scaleX(${done})`;
+      const done =
+        total > 0
+          ? Math.min(1, Math.max(0, -rect.top / total))
+          : rect.top < 0
+            ? 1
+            : 0;
+      bar.current?.style?.setProperty("transform", `scaleX(${done})`);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -34,8 +39,15 @@ export default function ReadingProgress({ targetId }) {
   }, [targetId]);
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px]" aria-hidden="true">
-      <div ref={bar} className="h-full origin-left bg-royal" style={{ transform: "scaleX(0)" }} />
+    <div
+      className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px]"
+      aria-hidden="true"
+    >
+      <div
+        ref={bar}
+        className="h-full origin-left bg-royal"
+        style={{ transform: "scaleX(0)" }}
+      />
     </div>
   );
 }

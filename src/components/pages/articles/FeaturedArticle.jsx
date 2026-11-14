@@ -43,7 +43,7 @@ export default function FeaturedArticle({ article }) {
 
             <h2
               id="featured-title"
-              className="mt-4 text-3xl leading-tight text-midnight sm:text-4xl"
+              className="mt-4 text-[28px] leading-tight text-midnight sm:text-4xl"
             >
               <Link href={href} className="transition-colors hover:text-royal">
                 {article.title}
