@@ -5,7 +5,6 @@ import { imageUrl } from "@/lib/sanityImage";
 import { Container, Notice } from "@/components/ui";
 import ReadingProgress from "@/components/articles/detail/ReadingProgress";
 import ArticleHeader from "@/components/articles/detail/ArticleHeader";
-import ArticleCover from "@/components/articles/detail/ArticleCover";
 import ArticleLayout from "@/components/articles/detail/ArticleLayout";
 import ArticlePortableText from "@/components/articles/detail/ArticlePortableText";
 import ArticleAuthor from "@/components/articles/detail/ArticleAuthor";
@@ -69,7 +68,6 @@ export default async function ArticlePage({ params }) {
         </Container>
       )}
       <ArticleHeader article={article} />
-      <ArticleCover cover={article.cover} category={article.category} title={article.title} />
       <ArticleLayout headings={headings} title={article.title} canonical={canonical}>
         <ArticlePortableText value={article.body} ids={ids} />
         <ArticleAuthor author={article.author} />
