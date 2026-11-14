@@ -20,8 +20,8 @@ export function Section({ children, className = "", tone = "white", id }) {
 export function SectionHeading({ eyebrow, title, children, align = "left", light = false, className = "" }) {
   return (
     <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}>
-      {eyebrow && <p className={`eyebrow ${light ? "!text-ice-300" : ""}`}>{eyebrow}</p>}
-      <h2 className={`mt-3 text-2xl leading-tight sm:text-3xl lg:text-4xl ${light ? "!text-white" : ""} ${className}`}>{title}</h2>
+      {eyebrow && <p className={`eyebrow ${light ? "text-ice-300!" : ""}`}>{eyebrow}</p>}
+      <h2 className={`mt-3 text-2xl leading-tight sm:text-3xl lg:text-4xl ${light ? "text-white!" : ""} ${className}`}>{title}</h2>
       {children && <p className={`mt-4 leading-relaxed ${light ? "text-ice-300/90" : "text-muted"}`}>{children}</p>}
     </div>
   );
@@ -77,7 +77,7 @@ export function CTABand() {
     <section className="bg-navy">
       <Container className="flex flex-col items-start justify-between gap-6 py-14 sm:flex-row sm:items-center">
         <div className="max-w-xl">
-          <h2 className="text-3xl !text-white">Talk to our research team</h2>
+          <h2 className="text-3xl text-white!">Talk to our research team</h2>
           <p className="mt-3 text-ice-300/90">
             Tell us how you participate in markets and we will point you to the right research track.
           </p>

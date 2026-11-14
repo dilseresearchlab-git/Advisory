@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^2.2.0",
+    "@portabletext/react": "^8.0.1",
+    "@sanity/image-url": "^2.1.1",
     "framer-motion": "^14.9.1",
     "lucide-react": "^1.69.0",
     "next": "^16.0.0",
+    "next-sanity": "^13.4.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-type-animation": "^3.2.0"
