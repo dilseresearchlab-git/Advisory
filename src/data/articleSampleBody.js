@@ -61,7 +61,136 @@ const featuredBody = [
 ];
 
 // Other sample articles: a single paragraph from the excerpt (clearly a placeholder).
+// export function sampleBody(article) {
+//   if (article.slug === "earnings-quality-beyond-headline-profit") return featuredBody;
+//   return [p("p1", article.excerpt || "Sample article body.")];
+// }
+
+
 export function sampleBody(article) {
-  if (article.slug === "earnings-quality-beyond-headline-profit") return featuredBody;
-  return [p("p1", article.excerpt || "Sample article body.")];
+  if (article.slug === "earnings-quality-beyond-headline-profit") {
+    return featuredBody;
+  }
+
+  const content = {
+    "understanding-indian-banking-sector-key-ratios": {
+      intro:
+        "Bank analysis requires a slightly different framework from analysing a manufacturing or technology company. The balance sheet is central to the business itself.",
+      heading: "Four indicators worth understanding",
+      points: [
+        "Net interest margin reflects the spread between interest earned and interest paid.",
+        "Asset quality helps assess the risk embedded in the loan book.",
+        "Capital adequacy provides context on the bank's ability to absorb losses.",
+      ],
+      metrics: [
+        { label: "Net interest margin", value: "Illustrative", description: "Interest spread relative to earning assets." },
+        { label: "Gross NPA", value: "Illustrative", description: "A measure of stressed advances." },
+        { label: "Capital adequacy", value: "Illustrative", description: "Capital available against risk-weighted assets." },
+      ],
+    },
+    "what-rising-operating-margins-tell-investors": {
+      intro:
+        "Operating margin expansion can indicate improving business economics, but the percentage alone does not explain why profitability changed.",
+      heading: "What could drive an improvement?",
+      points: [
+        "Better utilisation of existing production capacity.",
+        "A shift towards products or services with stronger margins.",
+        "Improved procurement, operating efficiency or pricing discipline.",
+      ],
+      metrics: [
+        { label: "Revenue growth", value: "Illustrative", description: "Compare growth with the previous period." },
+        { label: "Operating margin", value: "Illustrative", description: "Examine the direction across several years." },
+        { label: "Operating profit", value: "Illustrative", description: "Check whether absolute profit is also increasing." },
+      ],
+    },
+    "small-cap-research-risk-framework": {
+      intro:
+        "Small-cap research should begin with the quality and resilience of the underlying business, not simply the possibility of rapid share-price appreciation.",
+      heading: "A structured research checklist",
+      points: [
+        "Understand the company's business model and customer concentration.",
+        "Examine debt, cash generation and future funding requirements.",
+        "Review promoter disclosures, governance and related-party transactions.",
+      ],
+      metrics: [
+        { label: "Business quality", value: "Review", description: "Understand competitive position and customer dependence." },
+        { label: "Financial resilience", value: "Review", description: "Assess debt, cash flows and liquidity." },
+        { label: "Governance", value: "Review", description: "Examine disclosures and management conduct." },
+      ],
+    },
+    "reading-market-breadth-beyond-index-levels": {
+      intro:
+        "Headline index performance can sometimes conceal substantial differences in the performance of individual stocks and sectors.",
+      heading: "Three ways to examine participation",
+      points: [
+        "Compare advancing stocks with declining stocks.",
+        "Examine whether multiple sectors are participating in the move.",
+        "Track the number of stocks holding above important trend levels.",
+      ],
+      metrics: [
+        { label: "Advance-decline", value: "Illustrative", description: "Compare the number of advancing and declining stocks." },
+        { label: "Sector participation", value: "Illustrative", description: "Check how broadly the move is distributed." },
+        { label: "Stock participation", value: "Illustrative", description: "Examine individual stock trends." },
+      ],
+    },
+  };
+
+  const item = content[article.slug];
+
+  if (!item) {
+    return [p("intro", article.excerpt || "Illustrative sample article.")];
+  }
+
+  return [
+    p("intro", item.intro),
+
+    {
+      _type: "keyTakeaways",
+      _key: "takeaways",
+      title: "Key Takeaways",
+      items: item.points,
+    },
+
+    block("section-heading", "h2", [span(item.heading)]),
+
+    ...item.points.map((point, index) =>
+      p(`point-${index}`, point)
+    ),
+
+    {
+      _type: "metricHighlights",
+      _key: "metrics",
+      title: "Research indicators",
+      metrics: item.metrics.map((metric, index) => ({
+        _key: `metric-${index}`,
+        ...metric,
+      })),
+    },
+
+    {
+      _type: "checklist",
+      _key: "checklist",
+      title: "Questions to investigate",
+      items: item.points.map((text, index) => ({
+        text,
+        checked: index !== 2,
+      })),
+    },
+
+    block("closing-heading", "h2", [span("Putting the research together")]),
+
+    p(
+      "closing",
+      "Individual indicators should not be interpreted in isolation. Compare the evidence across periods, understand the business context and investigate the reasons behind any material change."
+    ),
+
+    {
+      _type: "callout",
+      _key: "disclaimer",
+      variant: "info",
+      title: "Illustrative content",
+      body: "This demonstration uses placeholder indicators and does not represent verified company data, a live market assessment or an investment recommendation.",
+    },
+  ];
 }
+
