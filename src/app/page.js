@@ -30,18 +30,18 @@ export default function Home() {
           className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-royal/30 blur-3xl"
           aria-hidden="true"
         />
-        <Container className="relative grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-[1.15fr_1fr]">
+        <Container className="relative grid items-center gap-12 py-16 sm:py-28 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <p className="eyebrow text-ice-300!">
               Research &amp; Advisory · India
             </p>
-            <h1 className="mt-5 text-4xl leading-[1.08] text-white! sm:text-6xl">
+            <h1 className="mt-4 md:mt-5 text-4xl leading-[1.08] text-white! sm:text-6xl">
               Research built for people who demand{" "}
-              <span className="inline-block min-h-[1.08em] min-w-[320px] sm:min-w-[560px]">
+              <span className="inline-block min-h-[1.08em] min-w-[320px] sm:min-w-140">
                 <HeroTyping />
               </span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ice-300/90">
+            <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-ice-300/90">
               {site.fullName} produces structured, evidence-led research for
               investors and traders — with risk defined before opinion, and
               limits stated plainly.

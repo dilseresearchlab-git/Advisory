@@ -55,7 +55,7 @@ export default function AdvisoryServicesSection({ services }) {
               <Link
                 href="/advisory"
                 className={`
-                  group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border bg-white p-7
+                  group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border bg-midnight/4 p-7
                   transition-all duration-300 ease-out
                   hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(15,23,42,0.08)]
                   ${
@@ -106,7 +106,7 @@ export default function AdvisoryServicesSection({ services }) {
 
         {/* CTA Card */}
         <motion.div variants={cardVariants} className="h-full">
-          <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/70 p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/50">
+          <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/50 shadow-xl">
             <div>
               <h3 className="text-xl font-semibold tracking-tight text-slate-900">
                 Not sure where you fit?

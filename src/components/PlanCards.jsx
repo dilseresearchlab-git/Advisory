@@ -151,7 +151,7 @@ export default function PlanCards({ compact = false }) {
               {/* Action Button pinned to bottom */}
               <Link
                 href={`/contact?plan=${p.id}`}
-                className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition ${
+                className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-4 py-2.5 md:py-3 text-sm font-semibold transition ${
                   recommended
                     ? "bg-navy text-white hover:bg-royal shadow-sm"
                     : "border border-slate-400 text-navy hover:border-royal hover:text-royal bg-white"
