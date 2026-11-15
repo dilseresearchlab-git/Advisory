@@ -56,8 +56,8 @@ export function PageHero({ eyebrow, title, children }) {
       <div className="grid-bg absolute inset-0 opacity-60" aria-hidden="true" />
       <Container className="relative py-12 sm:py-16 lg:py-24">
         <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-4 max-w-3xl text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">{title}</h1>
-        {children && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{children}</p>}
+        <h1 className="mt-2 md:mt-4 max-w-3xl text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">{title}</h1>
+        {children && <p className="mt-3 md:mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-muted">{children}</p>}
       </Container>
     </section>
   );
