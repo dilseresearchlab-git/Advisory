@@ -13,7 +13,7 @@ export default function NotFound() {
   const links = nav.filter((n) => n.href !== "/");
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-ice-100 to-white">
+    <section className="relative overflow-hidden bg-linear-to-b from-ice-100 to-white">
       <div className="grid-bg absolute inset-0 opacity-60" aria-hidden="true" />
 
       <Container className="relative flex flex-col items-center py-20 text-center sm:py-28">
