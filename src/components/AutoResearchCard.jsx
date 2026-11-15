@@ -91,7 +91,7 @@ export default function AutoResearchCard() {
           Company research
         </span>
 
-        <span className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] text-ice-300/80">
+        <span className="rounded-full w-fit text-center bg-white/10 px-2.5 py-1 text-[10px] text-ice-300/80">
           Fundamental analysis
         </span>
       </div>
