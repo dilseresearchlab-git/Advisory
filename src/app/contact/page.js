@@ -14,13 +14,13 @@ export default function ContactPage() {
       <PageHero eyebrow="Contact" title="Start a conversation">
         Tell us about your approach to markets and we will suggest the most relevant research track.
       </PageHero>
-      <Section tone="ice" className="py-12 sm:py-16 lg:py-24">
+      <Section tone="i" className="py-12 sm:py-16 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr]">
           <Suspense fallback={<div className="card p-8 text-sm text-muted">Loading form…</div>}>
             <ContactForm />
           </Suspense>
           <aside className="space-y-6">
-            <div className="card p-6">
+            <div className="card p-6 bg-midnight/5">
               <h2 className="text-xl">Contact details</h2>
               <dl className="mt-4 space-y-4 text-sm">
                 <div><dt className="text-xs text-steel">Email</dt><dd className="text-ink">{email}</dd></div>

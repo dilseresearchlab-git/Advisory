@@ -48,9 +48,9 @@ export default function ServiceCard({ service, plan, index }) {
 
         {/* Deliverables (Shortened list layout) */}
         <div className="mt-2 md:mt-4 border-t border-slate-100 pt-3">
-          <p className="text-[10px]  font-bold uppercase tracking-wider text-navy">
+          <h4 className="text-[10px]  font-bold uppercase tracking-wider text-navy">
             Research coverage
-          </p>
+          </h4>
           <ul className="mt-2 space-y-1.5 text-xs text-muted">
             {service.deliverables.map((d) => (
               <li key={d} className="flex items-center gap-2">

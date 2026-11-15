@@ -251,7 +251,7 @@ export default function ContactForm() {
         <textarea
           id="message"
           name="message"
-          rows={4}
+          rows={3}
           className="input w-full resize-y"
           value={form.message}
           onChange={set("message")}
@@ -285,7 +285,7 @@ export default function ContactForm() {
 
       {/* Responsive wrapper to prevent hCaptcha from overflowing on small screens */}
       <div className="space-y-2 overflow-x-auto py-1 max-w-full">
-        <div className="min-w-[300px]">
+        <div className="min-w-75">
           <HCaptcha
             ref={captchaRef}
             sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"

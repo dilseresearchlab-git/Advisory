@@ -73,7 +73,7 @@ export default function PlanCards({ compact = false }) {
 
               {/* 1. FIXED HEADER BLOCK (Ensures titles & audiences align horizontally) */}
               <div className="min-h-22.5">
-                <h3 className="font-serif text-2xl tracking-tight text-navy">
+                <h3 className="font-serif text-2xl font-semibold tracking-tight text-navy">
                   {p.name}
                 </h3>
                 <p className="mt-2 text-xs font-medium leading-snug text-royal line-clamp-2">
