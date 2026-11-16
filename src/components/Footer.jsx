@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
           {Object.entries(footerLinks).map(([group, links]) => (
             <div key={group}>
-              <h3 className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-ice-300/80">
+              <h3 className="font-sans text-xs font-semibold uppercase underline underline-offset-5 tracking-[0.16em] text-slate-400">
                 {group}
               </h3>
               <ul className="mt-4 space-y-1 sm:space-y-2.5">
@@ -41,7 +41,7 @@ export default function Footer() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="text-xs sm:text-sm text-ice-200/85 transition hover:text-white"
+                      className="text-xs sm:text-sm text-ice-50/75 transition-all duration-150 hover:text-white hover:ml-1"
                     >
                       {l.label}
                     </Link>
