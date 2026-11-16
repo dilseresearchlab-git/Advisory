@@ -29,7 +29,7 @@ export default function ResearchPage() {
 
       <Section>
         <SectionHeading eyebrow="Research" title="Sample work" />
-        <Notice tone="info" className="mt-6">
+        <Notice tone="info">
           The following research articles are samples of our work. They are not
           intended to be exhaustive or representative of all research we
           conduct.

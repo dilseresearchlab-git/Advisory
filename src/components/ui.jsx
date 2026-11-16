@@ -65,7 +65,7 @@ export function PageHero({ eyebrow, title, children }) {
 
 export function Notice({ children, title = "Illustrative content" }) {
   return (
-    <div className="rounded-xl border border-ice-300 bg-ice-50 px-4 py-3 text-sm text-steel-dark">
+    <div className="rounded-xl border border-ice-300 bg-ice-50 px-4 py-3 text-sm text-steel-dark mt-2 md:mt-4">
       <span className="font-semibold text-navy">{title}. </span>
       {children}
     </div>
