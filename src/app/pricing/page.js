@@ -108,13 +108,13 @@ export default function PricingPage() {
         <div className="mt-8 border-t border-slate-200">
           {faqs.map((f, index) => (
             <details key={f.q} className="group border-b border-slate-200">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-4 md:py-6">
                 <div className="flex items-start gap-5">
                   <span className="mt-1 text-xs font-medium tabular-nums text-blue-600">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <h3 className="text-lg font-medium text-navy transition-colors group-hover:text-blue-700">
+                  <h3 className="text-base md:text-lg font-medium text-navy transition-colors group-hover:text-blue-700">
                     {f.q}
                   </h3>
                 </div>
@@ -125,7 +125,7 @@ export default function PricingPage() {
               </summary>
 
               <div className="pb-6 pl-10 pr-12 sm:pl-12">
-                <p className="max-w-3xl text-sm leading-7 text-muted">{f.a}</p>
+                <p className="max-w-3xl text-sm leading-relaxed md:leading-7 text-muted">{f.a}</p>
               </div>
             </details>
           ))}
