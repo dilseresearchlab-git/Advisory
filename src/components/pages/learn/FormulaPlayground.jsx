@@ -176,7 +176,7 @@ export default function FormulaPlayground() {
     <Section tone="ice">
       <div id="formula-playground" className="scroll-mt-24">
         <SectionHeading
-          eyebrow="Formula playground · 02"
+          eyebrow="Formula playground"
           title="Turn financial figures into useful ratios."
         >
           Experiment with essential calculations using ABC Ltd.'s figures.

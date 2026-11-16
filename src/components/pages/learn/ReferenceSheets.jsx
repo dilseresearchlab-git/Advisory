@@ -8,7 +8,7 @@ export default function ReferenceSheets() {
       <Section>
         <div id="ratio-reference" className="scroll-mt-24">
           <SectionHeading
-            eyebrow="Quick reference · 04"
+            eyebrow="Quick reference"
             title="Essential financial ratios."
           >
             A quick reference to commonly used ratios and what they reveal.
@@ -59,7 +59,7 @@ export default function ReferenceSheets() {
       <Section tone="ice">
         <div id="market-terminology" className="scroll-mt-24">
           <SectionHeading
-            eyebrow="Essential terminology · 05"
+            eyebrow="Essential terminology"
             title="Know the language of the market."
           >
             Important financial and market terms, explained simply.

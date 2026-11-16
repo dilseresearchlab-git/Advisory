@@ -176,7 +176,7 @@ function FinancialStory() {
     <Section tone="ice">
       <div id="financial-story" className="scroll-mt-24">
         <SectionHeading
-          eyebrow="Financial story · 01"
+          eyebrow="Financial story"
           title="Meet ABC Ltd. Follow the money."
         >
           See how sales turn into profit, explore the costs along the way
