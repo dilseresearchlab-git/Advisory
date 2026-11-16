@@ -1,10 +1,52 @@
 import { Button, Container } from "@/components/ui";
 import {
+  BookOpen,
+  BookText,
   ChartNoAxesCombined,
-  TrendingUp,
   Calculator,
-  ChartCandlestick,
 } from "lucide-react";
+
+
+
+const learningAreas = [
+  {
+    number: "01",
+    title: "Core chapters",
+    description: "Structured lessons across essential market topics",
+    icon: BookOpen,
+    color: "text-sky-300",
+    bg: "bg-sky-400/10",
+    border: "border-sky-300/15",
+  },
+  {
+    number: "02",
+    title: "Story-based analysis",
+    description: "Understand concepts through real-world examples",
+    icon: ChartNoAxesCombined,
+    color: "text-violet-300",
+    bg: "bg-violet-400/10",
+    border: "border-violet-300/15",
+  },
+  {
+    number: "03",
+    title: "Ratios & formulas",
+    description: "Financial metrics, calculations and valuation",
+    icon: Calculator,
+    color: "text-teal-300",
+    bg: "bg-teal-400/10",
+    border: "border-teal-300/15",
+  },
+  {
+    number: "04",
+    title: "Important terminologies",
+    description: "Essential financial and market language",
+    icon: BookText,
+    color: "text-amber-300",
+    bg: "bg-amber-400/10",
+    border: "border-amber-300/15",
+  },
+];
+
 
 export default function LearnHero() {
   return (
@@ -62,7 +104,7 @@ export default function LearnHero() {
               </h2>
             </div>
 
-            <span className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-ice-300/80">
+            <span className="rounded-full border border-white/15 bg-white/6 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-ice-300/80">
               04 areas
             </span>
           </div>
@@ -73,44 +115,7 @@ export default function LearnHero() {
 
           {/* Learning stages */}
           <div className="mt-6 space-y-2.5">
-            {[
-              {
-                number: "01",
-                title: "Financial fundamentals",
-                description: "Revenue, profit and cash flow",
-                icon: ChartNoAxesCombined,
-                color: "text-sky-300",
-                bg: "bg-sky-400/10",
-                border: "border-sky-300/15",
-              },
-              {
-                number: "02",
-                title: "Ratios & valuation",
-                description: "Performance, efficiency and value",
-                icon: TrendingUp,
-                color: "text-violet-300",
-                bg: "bg-violet-400/10",
-                border: "border-violet-300/15",
-              },
-              {
-                number: "03",
-                title: "Investing mathematics",
-                description: "Returns, compounding and risk",
-                icon: Calculator,
-                color: "text-teal-300",
-                bg: "bg-teal-400/10",
-                border: "border-teal-300/15",
-              },
-              {
-                number: "04",
-                title: "Trading concepts",
-                description: "Price structure and risk management",
-                icon: ChartCandlestick,
-                color: "text-amber-300",
-                bg: "bg-amber-400/10",
-                border: "border-amber-300/15",
-              },
-            ].map((item) => {
+            {learningAreas.map((item) => {
               const Icon = item.icon;
 
               return (
