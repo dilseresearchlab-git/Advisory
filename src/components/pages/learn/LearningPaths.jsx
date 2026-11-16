@@ -9,7 +9,7 @@ const themes = {
     numberColor: "text-sky-600",
     accent: "bg-sky-500",
     surface: "from-sky-50/70",
-    border: "border-sky-100/80",
+    border: "border-sky-200/80",
   },
 
   valuation: {
@@ -20,7 +20,7 @@ const themes = {
     numberColor: "text-violet-600",
     accent: "bg-violet-500",
     surface: "from-violet-50/70",
-    border: "border-violet-100/80",
+    border: "border-violet-200/80",
   },
 
   investing: {
@@ -31,7 +31,7 @@ const themes = {
     numberColor: "text-teal-600",
     accent: "bg-teal-500",
     surface: "from-teal-50/70",
-    border: "border-teal-100/80",
+    border: "border-teal-200/80",
   },
 
   trading: {
@@ -42,7 +42,7 @@ const themes = {
     numberColor: "text-amber-600",
     accent: "bg-amber-500",
     surface: "from-amber-50/70",
-    border: "border-amber-100/80",
+    border: "border-amber-200/80",
   },
 };
 
@@ -119,7 +119,7 @@ export default function LearningPaths({ tracks = [] }) {
             return (
               <article
                 key={track.id}
-                className={`group relative overflow-hidden rounded-2xl border ${theme.border} bg-gradient-to-br ${theme.surface} to-white p-5 transition-colors duration-300 hover:border-slate-300 sm:p-6`}
+                className={`group relative overflow-hidden rounded-2xl border ${theme.border} bg-linear-to-br ${theme.surface} to-white p-5 transition-colors duration-300 hover:border-slate-300 sm:p-6`}
               >
                 {/* Heading row */}
                 <div className="flex items-center justify-between">
@@ -157,7 +157,7 @@ export default function LearningPaths({ tracks = [] }) {
                 {track.outcome && (
                   <div className="mt-5 flex items-start gap-2.5 border-t border-slate-200/70 pt-4">
                     <span
-                      className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${theme.accent}`}
+                      className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400`}
                     />
 
                     <p className="text-xs leading-5 text-navy/75">
