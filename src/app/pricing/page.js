@@ -2,7 +2,6 @@ import {
   PageHero,
   Section,
   SectionHeading,
-  Notice,
   CTABand,
 } from "@/components/ui";
 import PlanCards from "@/components/PlanCards";

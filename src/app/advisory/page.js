@@ -1,11 +1,8 @@
-import Link from "next/link";
 import {
   PageHero,
   Section,
   SectionHeading,
-  Notice,
   CTABand,
-  Button,
 } from "@/components/ui";
 import { services } from "@/data/services";
 import { plans } from "@/data/pricing";

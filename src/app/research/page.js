@@ -7,7 +7,6 @@ import {
 } from "@/components/ui";
 import {
   researchItems,
-  sampleReports,
   methodologySteps,
 } from "@/data/research";
 import Methodology from "@/components/pages/research/Methodology";

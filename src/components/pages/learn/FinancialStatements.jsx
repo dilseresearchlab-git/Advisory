@@ -36,7 +36,7 @@ function StatementTab({ active, onClick, icon, title, subtitle }) {
       aria-pressed={active}
       className={`flex min-w-0 flex-1 items-center gap-2.5 rounded-xl border px-3 py-3 text-left transition ${
         active
-          ? "border-sky-200 bg-sky-50/80 text-sky-900"
+          ? "border-sky-300 bg-sky-200/40 text-sky-900"
           : "border-transparent bg-transparent text-steel hover:bg-slate-50"
       }`}
     >
@@ -833,7 +833,7 @@ export default function FinancialStatements() {
     <Section>
       <div id="financial-statements" className="scroll-mt-24">
         <SectionHeading
-          eyebrow="Financial statements · 02"
+          eyebrow="Financial statements"
           title="Three statements. One complete picture."
         >
           Explore how a company's performance, financial position and

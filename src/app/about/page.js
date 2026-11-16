@@ -125,32 +125,67 @@ export default function AboutPage() {
             remains.
           </SectionHeading>
 
-          <div className="relative rounded-2xl bg-midnight p-6 sm:p-8">
-            <div className="absolute right-6 top-6 h-20 w-20 rounded-full border border-ice-300/15" />
-            <div className="absolute right-11 top-11 h-10 w-10 rounded-full border border-ice-300/20" />
+          <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-midnight p-5 shadow-2xl sm:p-6 md:p-7">
+            <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-emerald-500/10 blur-3xl" />
 
-            <span className="text-[10px] font-semibold uppercase tracking-[0.17em] text-ice-300">
-              Research principles
-            </span>
-
-            <p className="mt-7 max-w-sm font-serif text-2xl leading-snug text-white sm:text-3xl">
-              Evidence first. Assumptions visible. Conclusions open to review.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-2">
-              {principles.map((principle) => (
-                <span
-                  key={principle.title}
-                  className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-2 text-xs text-ice-200"
-                >
-                  {principle.title}
+            {/* Top Specification Header Bar - Prevented line-wrapping on mobile */}
+            <div className="relative flex items-center justify-between gap-2 border-b border-white/10 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300" />
+                <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.15em] text-ice-300 sm:text-[11px]">
+                  Research Protocol // 01
                 </span>
+              </div>
+              <span className="hidden font-mono text-[10px] uppercase tracking-widest text-white/35 min-[380px]:inline">
+                Meridian Standard
+              </span>
+            </div>
+
+            {/* Editorial Thesis Statement - Tighter vertical spacing & responsive max-width */}
+            <div className="relative mt-4 sm:mt-5">
+              <p className="max-w-md font-serif text-xl leading-snug text-white sm:text-2xl md:max-w-xl md:text-[26px]">
+                Evidence first.{" "}
+                <span className="text-emerald-300">Assumptions visible.</span>{" "}
+                Conclusions open to review.
+              </p>
+            </div>
+
+            {/* Compact Axiom Matrix: Horizontal rows on mobile, 2x2 grid on sm+ */}
+            <div className="relative mt-5 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:mt-6 sm:grid-cols-2">
+              {principles.map((principle, index) => (
+                <div
+                  key={principle.title}
+                  className="group flex items-center justify-between bg-midnight/95 px-3.5 py-2.5 transition-colors hover:bg-white/[0.03] sm:flex-col sm:items-start sm:justify-between sm:p-3.5"
+                >
+                  <div className="flex items-center gap-2.5 sm:w-full sm:justify-between">
+                    <span className="font-mono text-[11px] text-emerald-300/90">
+                      0{index + 1}
+                    </span>
+                    {/* Mobile inline title */}
+                    <span className="text-[13px] font-medium tracking-tight text-ice-100 sm:hidden">
+                      {principle.title}
+                    </span>
+                    <span className="hidden h-1 w-1 rounded-full bg-white/20 transition-colors group-hover:bg-emerald-400 sm:block" />
+                  </div>
+
+                  {/* Tablet/Desktop stacked title */}
+                  <span className="mt-2 hidden text-sm font-medium tracking-tight text-ice-100 sm:block">
+                    {principle.title}
+                  </span>
+
+                  {/* Mobile right indicator dot */}
+                  <span className="h-1 w-1 shrink-0 rounded-full bg-white/20 transition-colors group-hover:bg-emerald-400 sm:hidden" />
+                </div>
               ))}
             </div>
 
-            <div className="mt-8 border-t border-white/10 pt-4">
-              <p className="text-xs leading-6 text-ice-200/70">
-                A research conclusion should be explainable, challengeable and
+            {/* Footer Verification Note - Compact padding */}
+            <div className="relative mt-4 flex items-start gap-2.5 sm:mt-5">
+              <span className="mt-0.5 font-mono text-xs text-emerald-300">
+                §
+              </span>
+              <p className="text-[11px] leading-relaxed text-ice-200/70 sm:text-xs">
+                A research conclusion should be explainable, challengeable, and
                 revisited when the facts change.
               </p>
             </div>
@@ -205,10 +240,10 @@ export default function AboutPage() {
                 key={item.label}
                 className="relative flex gap-4 lg:flex-col lg:items-center lg:gap-5 group"
               >
-                {/* Vertical animated connector line — Mobile & Tablet (bridges gap to next item, stops at last icon) */}
+                {/* Vertical animated connector line — Centered precisely under the 40px (h-10) node (left-5 = 20px) */}
                 {index < methodology.length - 1 && (
                   <div
-                    className="absolute left-6 top-12 -bottom-9 w-0.5 lg:hidden overflow-hidden pointer-events-none z-0"
+                    className="absolute left-5 top-10 -bottom-6 w-0.5 lg:hidden overflow-hidden pointer-events-none z-0"
                     aria-hidden="true"
                   >
                     <div className="absolute inset-0 bg-line opacity-50" />
@@ -216,10 +251,10 @@ export default function AboutPage() {
                   </div>
                 )}
 
-                {/* Icon node */}
-                <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line bg-navy text-blue-700 transition-transform duration-300 group-hover:scale-105 group-hover:border-blue-500 shadow-sm">
+                {/* Downsized Icon node: h-10 w-10 (40px) for compact mobile view */}
+                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-linear-to-br from-midnight to-royal/80 text-blue-700 transition-transform duration-300 group-hover:scale-105 group-hover:border-blue-500 shadow-sm">
                   <item.Icon
-                    size={20}
+                    size={18}
                     strokeWidth={1.7}
                     className="text-white"
                   />
@@ -231,11 +266,11 @@ export default function AboutPage() {
                     {item.label}
                   </p>
 
-                  <h3 className="mt-2 font-serif text-xl text-navy sm:text-[22px]">
+                  <h3 className="mt-1.5 font-serif text-lg text-navy sm:text-xl lg:text-[22px]">
                     {item.title}
                   </h3>
 
-                  <p className="mx-auto mt-3 max-w-67.5 text-sm leading-6 text-muted">
+                  <p className="mx-auto mt-1 sm:mt-2 max-w-67.5 text-xs leading-relaxed text-muted sm:text-sm">
                     {item.description}
                   </p>
                 </div>
@@ -279,10 +314,10 @@ export default function AboutPage() {
                   <span className="h-2 w-2 rounded-full bg-emerald-500" />
                   Business quality
                 </span>
-                <h4 className="mt-4 font-serif text-2xl text-navy">
+                <h4 className="mt-1 sm:mt-2 md:mt-4 font-serif text-lg md:text-2xl text-navy">
                   What are we buying?
                 </h4>
-                <ul className="mt-5 space-y-3 text-sm text-muted">
+                <ul className="mt-3 md:mt-5 space-y-2 md:space-y-3 text-sm text-muted">
                   <li>↗ Competitive position</li>
                   <li>↗ Earnings quality</li>
                   <li>↗ Cash generation</li>
@@ -295,10 +330,10 @@ export default function AboutPage() {
                   <span className="h-2 w-2 rounded-full bg-emerald-500" />
                   Business quality
                 </span>
-                <h4 className="mt-4 font-serif text-2xl text-navy">
+                <h4 className="mt-1 sm:mt-2 md:mt-4 font-serif text-lg md:text-2xl text-navy">
                   What are we paying?
                 </h4>
-                <ul className="mt-5 space-y-3 text-sm text-muted">
+                <ul className="mt-3 md:mt-5 space-y-2 md:space-y-3 text-sm text-muted">
                   <li>↗ Valuation multiples</li>
                   <li>↗ Growth expectations</li>
                   <li>↗ Margin of safety</li>
@@ -316,38 +351,54 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Analytical takeaway */}
-          <div className="relative flex flex-col justify-between overflow-hidden rounded-2xl bg-midnight p-6 sm:p-8">
-            <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full border border-ice-300/10" />
-            <div className="absolute -right-3 top-0 h-28 w-28 rounded-full border border-ice-300/10" />
+          <div className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800/80 bg-midnight p-6 sm:p-8">
+            {/* Soft Ambient Glow & Minimal Corner Accent */}
+            <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-ice-300/[0.04] blur-2xl" />
+            <div className="absolute right-6 top-6 font-mono text-[10px] uppercase tracking-widest text-ice-300/40">
+              Ref. 02 // Core
+            </div>
 
             <div className="relative">
               <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ice-300">
                 The research question
               </span>
 
-              <h3 className="mt-7 max-w-sm font-serif text-3xl leading-tight text-white sm:text-4xl">
+              <h3 className="mt-6 max-w-sm font-serif text-3xl leading-tight text-white sm:text-[32px]">
                 What does the market expect, and what does the evidence support?
               </h3>
 
-              <p className="mt-5 max-w-sm text-sm leading-7 text-ice-200/75">
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-ice-200/75">
                 Financial performance, valuation assumptions and market
                 expectations need to be considered together before forming a
                 balanced research view.
               </p>
             </div>
 
-            <div className="relative mt-10 flex flex-wrap gap-2">
-              {["Fundamentals", "Valuation", "Expectations", "Risk"].map(
-                (tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/15 px-3 py-2 text-[10px] text-ice-200"
+            {/* Clean Analytical Checklist / Flow (Subtle alternative to pill tags) */}
+            <div className="relative mt-8 border-t border-white/10 pt-6">
+              <div className="grid grid-cols-2 gap-y-3 gap-x-4">
+                {[
+                  { label: "Fundamentals", status: "Verified" },
+                  { label: "Valuation", status: "Model-led" },
+                  { label: "Expectations", status: "Indexed" },
+                  { label: "Risk Matrix", status: "Defined" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-center justify-between py-1"
                   >
-                    {tag}
-                  </span>
-                ),
-              )}
+                    <div className="flex items-center gap-2">
+                      <span className="h-1 w-1 rounded-full bg-ice-300/60" />
+                      <span className="text-xs font-medium text-ice-100">
+                        {item.label}
+                      </span>
+                    </div>
+                    <span className="font-mono text-[10px] text-ice-300/50 uppercase tracking-wider">
+                      {item.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -386,11 +437,11 @@ export default function AboutPage() {
             {riskRules.map((rule, index) => (
               <article
                 key={rule.title}
-                className={`rounded-2xl border border-line p-5 ${
+                className={`rounded-2xl border border-line px-5 py-4 sm:p-5 ${
                   index === 0
                     ? "bg-[#F3F7FD]"
                     : index === 3
-                      ? "bg-midnight text-white"
+                      ? "bg-midnight/85 text-white"
                       : "bg-white"
                 }`}
               >
@@ -404,7 +455,7 @@ export default function AboutPage() {
                 </span>
 
                 <h3
-                  className={`mt-5 font-serif text-xl ${
+                  className={`mt-3 md:mt-5 font-serif text-lg sm:text-xl ${
                     index === 3 ? "text-white" : "text-navy"
                   }`}
                 >
@@ -412,7 +463,7 @@ export default function AboutPage() {
                 </h3>
 
                 <p
-                  className={`mt-2 text-sm leading-6 ${
+                  className={`mt-1 sm:mt-2 text-sm leading-relaxed sm:leading-6 ${
                     index === 3 ? "text-ice-200/75" : "text-muted"
                   }`}
                 >

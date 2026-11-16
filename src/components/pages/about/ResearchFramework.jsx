@@ -117,7 +117,7 @@ export default function ResearchFramework() {
               ${index < 3 ? "lg:col-span-2" : "lg:col-span-3"}
             `}
           >
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center justify-between gap-2 sm:gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#EDF3FC] text-[#2858A5]">
                 <item.Icon size={19} strokeWidth={1.7} />
               </div>
@@ -127,11 +127,11 @@ export default function ResearchFramework() {
               </span>
             </div>
 
-            <h3 className="mt-5 font-serif text-xl text-navy sm:text-2xl">
+            <h3 className="mt-2 sm:mt-3 md:mt-5 font-serif text-[18px] md:text-xl text-navy sm:text-2xl">
               {item.title}
             </h3>
 
-            <p className="mt-2 max-w-md text-sm leading-6 text-muted">
+            <p className="mt-2 max-w-md text-sm md:leading-6 text-muted">
               {item.description}
             </p>
 

@@ -207,7 +207,7 @@ export default function InvestingMath() {
     <Section tone="ice">
       <div id="investing-mathematics" className="scroll-mt-24">
         <SectionHeading
-          eyebrow="Investing mathematics · 03"
+          eyebrow="Investing mathematics"
           title="Understand the numbers behind your decisions."
         >
           Explore investment growth, compounding and trade risk through
