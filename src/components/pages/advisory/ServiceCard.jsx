@@ -9,7 +9,7 @@ export default function ServiceCard({ service, plan, index }) {
       className={`card group relative flex flex-col justify-between p-6 transition-all duration-300 ${
         isBestValue
           ? "border-royal/50 bg-linear-to-b from-ice-50/80 to-white shadow-md ring-1 ring-royal/20"
-          : "border-slate-200/80 bg-white hover:border-royal/40"
+          : "border-slate-400/80 bg-white hover:border-royal/40"
       }`}
     >
       <div>

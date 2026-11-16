@@ -24,17 +24,17 @@ const steps = [
 
 export default function GettingStarted() {
   return (
-    <div className="mt-9 grid gap-9 md:mt-12 md:grid-cols-3 md:gap-6">
+    <div className="mt-9 grid gap-8 md:mt-12 md:grid-cols-3 md:gap-6">
       {steps.map((step, index) => (
         <article
           key={step.number}
-          className="relative rounded-2xl border border-white/10 bg-white/[0.045] p-5 transition-colors duration-300 hover:border-ice-300/30 hover:bg-white/[0.07] sm:p-6"
+          className="relative rounded-2xl border border-white/10 bg-white/4.5 p-5 transition-colors duration-300 hover:border-ice-300/30 hover:bg-white/[0.07] sm:p-6"
         >
           <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ice-300">
             {step.number}
           </span>
 
-          <h3 className="mt-4 font-serif text-xl text-white sm:text-2xl">
+          <h3 className="mt-2 md:mt-4 font-serif text-xl text-white sm:text-2xl">
             {step.title}
           </h3>
 

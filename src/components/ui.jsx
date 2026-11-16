@@ -11,7 +11,7 @@ export function Section({ children, className = "", tone = "white", id }) {
     navy: "bg-midnight text-ice-100",
   };
   return (
-    <section id={id} className={`${tones[tone]} py-16 sm:py-24 ${className}`}>
+    <section id={id} className={`${tones[tone]} py-12 sm:py-18 md:py-24 ${className}`}>
       <Container>{children}</Container>
     </section>
   );
@@ -22,7 +22,7 @@ export function SectionHeading({ eyebrow, title, children, align = "left", light
     <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}>
       {eyebrow && <p className={`eyebrow ${light ? "text-ice-300!" : ""}`}>{eyebrow}</p>}
       <h2 className={`mt-3 text-2xl leading-tight sm:text-3xl lg:text-4xl ${light ? "text-white!" : ""} ${className}`}>{title}</h2>
-      {children && <p className={`mt-4 leading-relaxed ${light ? "text-ice-300/90" : "text-muted"}`}>{children}</p>}
+      {children && <p className={`mt-3 md:mt-4 text-sm sm:text-base leading-relaxed ${light ? "text-ice-300/90" : "text-muted"}`}>{children}</p>}
     </div>
   );
 }

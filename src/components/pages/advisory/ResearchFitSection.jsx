@@ -74,6 +74,7 @@ export default function ResearchFitSection() {
     {
       number: "01",
       bg: "bg-emerald-50",
+      border: "border-emerald-200/70",
       label: "BUILD PERSPECTIVE",
       title: "Understand businesses",
       description:
@@ -84,6 +85,7 @@ export default function ResearchFitSection() {
     {
       number: "02",
       bg: "bg-amber-50",
+      border: "border-amber-200/70",
       label: "STUDY OPPORTUNITIES",
       title: "Follow market movements",
       description:
@@ -94,6 +96,7 @@ export default function ResearchFitSection() {
     {
       number: "03",
       bg: "bg-indigo-50",
+      border: "border-indigo-200/70",
       label: "EXPAND COVERAGE",
       title: "Access deeper analysis",
       description:
@@ -104,7 +107,7 @@ export default function ResearchFitSection() {
   ];
 
   return (
-    <section className="py-12 md:py-16">
+    <section>
       {/* Section Header */}
     <SectionHeading
           eyebrow="Find your research fit"
@@ -119,7 +122,7 @@ export default function ResearchFitSection() {
         {cards.map((item) => (
           <article
             key={item.number}
-            className="group relative flex flex-col justify-between rounded-2xl border border-line/80 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md md:p-7"
+            className={`group relative flex flex-col justify-between rounded-2xl border ${item.border} bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md md:p-7`}
           >
             <div>
               {/* Card Top: Number & Label */}
