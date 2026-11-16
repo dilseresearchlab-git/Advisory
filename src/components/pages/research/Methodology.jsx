@@ -19,14 +19,14 @@ export default function MethodologySteps({ steps }) {
         return (
           <li
             key={s.step}
-            className="group relative flex flex-col rounded-2xl border border-line bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-royal/30 hover:shadow-lift"
+            className="group relative flex flex-col rounded-2xl border border-line bg-white px-6 py-4 md:p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-royal/30 hover:shadow-lift"
           >
             {/* Colored Icon Container replacing the numbers */}
-            <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl border ${iconTheme} transition-transform duration-300 group-hover:scale-110`}>
-              <StepIcon className="h-6 w-6" strokeWidth={1.75} />
+            <div className={`inline-flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-lg sm:rounded-xl border ${iconTheme} transition-transform duration-300 group-hover:scale-110`}>
+              <StepIcon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.75} />
             </div>
 
-            <h3 className="mt-5 text-lg font-semibold tracking-tight text-navy">
+            <h3 className="mt-2 md:mt-5 text-base sm:text-lg font-semibold tracking-tight text-navy">
               {s.title}
             </h3>
             

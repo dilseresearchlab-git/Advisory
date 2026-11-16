@@ -40,11 +40,11 @@ export default function SampleReportsSection() {
             key={report.id}
             whileHover={{ y: -6 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-royal/40 hover:shadow-xl"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl md:rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-royal/40 hover:shadow-xl"
           >
             <div>
               {/* Cover Image / Document Preview Mockup */}
-              <div className="relative h-44 w-full overflow-hidden rounded-xl bg-linear-to-br from-navy via-royal to-blue-900 p-5 shadow-inner">
+              <div className="relative h-44 w-full overflow-hidden rounded-xl md:rounded-xl bg-linear-to-br from-navy to-royal-soft p-4 shadow-inner">
                 {/* Decorative background grid lines simulating a document cover */}
                 <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] bg-size-[16px_16px] opacity-40" />
                 
@@ -53,7 +53,7 @@ export default function SampleReportsSection() {
                     <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
                       {report.tag}
                     </span>
-                    <span className="text-xs font-medium text-slate-300">
+                    <span className="text-xs rounded-sm bg-gray-300 px-2 py-0.5 font-medium text-slate-600">
                       PDF
                     </span>
                   </div>
@@ -62,10 +62,10 @@ export default function SampleReportsSection() {
                     <div className="font-serif text-lg font-medium text-white/90 line-clamp-1">
                       {report.title.replace(" (Sample)", "")}
                     </div>
-                    <div className="mt-2 flex items-center gap-2">
-                      <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <div className="mt-1 md:mt-2 flex items-center gap-2">
+                      <span className="inline-block h-2 w-2 rounded-full bg-gray-400 animate-pulse" />
                       <span className="text-xs font-medium text-slate-200">
-                        {report.pages} · Verified Sample
+                        {report.pages} · <span className="text-emerald-300">Verified Sample</span>
                       </span>
                     </div>
                   </div>
@@ -77,17 +77,17 @@ export default function SampleReportsSection() {
 
               {/* Card Text Content */}
               <div className="mt-4">
-                <h3 className="font-serif text-xl font-semibold tracking-tight text-slate-900 transition-colors duration-200 group-hover:text-royal">
+                <h3 className="font-serif text-[18px] md:text-xl font-semibold md:tracking-tight text-slate-900 transition-colors duration-200 group-hover:text-royal">
                   {report.title}
                 </h3>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                <p className="md:mt-1 text-sm leading-relaxed text-slate-600">
                   {report.description}
                 </p>
               </div>
             </div>
 
             {/* Bottom Action Footer */}
-            <div className="mt-4 border-t border-slate-100 lex items-center justify-between">
+            <div className="mt-3 md:mt-4 border-t border-slate-100 lex items-center justify-between">
               <span className="text-xs font-medium text-slate-400">
                 {report.available ? "Ready for download" : "Sample download coming soon"}
               </span>
@@ -100,7 +100,7 @@ export default function SampleReportsSection() {
                   Download →
                 </Link>
               ) : (
-                <span className="text-xs font-semibold text-slate-300 cursor-not-allowed">
+                <span className="text-xs font-semibold text-slate-400 cursor-not-allowed ml-1.5">
                   Locked
                 </span>
               )}
