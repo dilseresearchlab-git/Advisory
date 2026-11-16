@@ -40,11 +40,11 @@ export default function SampleReportsSection() {
             key={report.id}
             whileHover={{ y: -6 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-royal/40 hover:shadow-xl"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl md:rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-royal/40 hover:shadow-xl"
           >
             <div>
               {/* Cover Image / Document Preview Mockup */}
-              <div className="relative h-44 w-full overflow-hidden rounded-xl bg-linear-to-br from-navy via-royal to-blue-900 p-5 shadow-inner">
+              <div className="relative h-44 w-full overflow-hidden rounded-xl md:rounded-xl bg-linear-to-br from-navy to-royal-soft p-4 shadow-inner">
                 {/* Decorative background grid lines simulating a document cover */}
                 <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] bg-size-[16px_16px] opacity-40" />
                 
@@ -53,7 +53,7 @@ export default function SampleReportsSection() {
                     <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
                       {report.tag}
                     </span>
-                    <span className="text-xs font-medium text-slate-300">
+                    <span className="text-xs rounded-sm bg-gray-300 px-2 py-0.5 font-medium text-slate-600">
                       PDF
                     </span>
                   </div>
