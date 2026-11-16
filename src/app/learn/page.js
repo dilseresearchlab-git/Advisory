@@ -1,4 +1,4 @@
-import { Section, SectionHeading, CTABand } from "@/components/ui";
+import { CTABand } from "@/components/ui";
 
 import LearnHero from "@/components/pages/learn/LearnHero";
 import LearningPaths from "@/components/pages/learn/LearningPaths";
