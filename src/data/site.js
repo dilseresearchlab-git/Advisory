@@ -46,11 +46,11 @@ export const nav = [
 export const footerLinks = {
   Company: [
     { href: "/about", label: "About & Methodology" },
-    { href: "/research", label: "Research & Insights" },
+    { href: "/research", label: "Research Brief" },
     { href: "/contact", label: "Contact" },
   ],
   Services: [
-    { href: "/advisory", label: "Advisory Services" },
+    { href: "/advisory", label: "Advisory Guidance" },
     { href: "/pricing", label: "Packages & Pricing" },
     { href: "/tools", label: "Tools & Calculators" },
     { href: "/learn", label: "Learning Centre" },
