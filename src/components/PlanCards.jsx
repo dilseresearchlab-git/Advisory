@@ -61,7 +61,7 @@ export default function PlanCards({ compact = false }) {
               } ${
                 recommended
                   ? "border-royal bg-linear-to-b from-ice-100/70 to-white shadow-lg ring-1 ring-royal/20"
-                  : "border-line bg-white shadow-soft hover:-translate-y-1 hover:shadow-lift"
+                  : "border-slate-400/67 bg-white shadow-soft hover:-translate-y-1 hover:shadow-lift"
               }`}
             >
               {/* Recommended badge */}
