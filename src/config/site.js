@@ -1,18 +1,25 @@
+
+const env = (key, fallback = "") =>
+  process.env[key] || fallback;
+
 export const siteConfig = {
-  name: process.env.SITE_NAME,
-  url: process.env.SITE_URL,
-  description: process.env.SITE_DESCRIPTION,
+  name: env("SITE_NAME", "Meridian Research & Advisory"),
+  url: env("SITE_URL", "https://example.com"),
+  description: env(
+    "SITE_DESCRIPTION",
+    "Structured, evidence-led research for investors and traders in India."
+  ),
 
   organization: {
-    name: process.env.ORG_NAME,
-    email: process.env.ORG_EMAIL,
-    phone: process.env.ORG_PHONE,
-    logo: process.env.ORG_LOGO_PATH,
+    name: env("ORG_NAME", "Meridian Research & Advisory"),
+    email: env("ORG_EMAIL"),
+    phone: env("ORG_PHONE"),
+    logo: env("ORG_LOGO_PATH", "/images/logo.png"),
   },
 
-  social: {
-    linkedin: process.env.ORG_LINKEDIN,
-    twitter: process.env.ORG_TWITTER,
-    youtube: process.env.ORG_YOUTUBE,
-  },
+  social: [
+    env("ORG_LINKEDIN"),
+    env("ORG_TWITTER"),
+    env("ORG_YOUTUBE"),
+  ].filter(Boolean),
 };

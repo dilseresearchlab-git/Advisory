@@ -1,23 +1,57 @@
 import { Inter, Newsreader } from "next/font/google";
 import "./globals.css";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { site } from "@/data/site";
+import JsonLd from "@/components/seo/JsonLd";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", display: "swap" });
+import { siteConfig } from "@/config/site";
+import { globalSchema } from "@/lib/seo/schemas";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
 
 export const metadata = {
-  title: { default: `${site.fullName} | Research & Advisory`, template: `%s | ${site.name}` },
-  description: site.description,
+  metadataBase: new URL(siteConfig.url),
+
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+
+  description: siteConfig.description,
+
+  applicationName: siteConfig.name,
+
+  referrer: "strict-origin-when-cross-origin",
+
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
+    <html
+      lang="en-IN"
+      className={`${inter.variable} ${newsreader.variable}`}
+    >
       <body className="min-h-screen">
+        <JsonLd data={globalSchema()} />
+
         <Header />
+
         <main>{children}</main>
+
         <Footer />
       </body>
     </html>
