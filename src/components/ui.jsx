@@ -123,7 +123,7 @@ export function CTABand() {
     <section className="border-t border-line bg-ice-50/50">
       <Container className="py-10 sm:py-12">
         {/* Compact Banner Card */}
-        <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-indigo-50/30 to-blue-50/80 px-6 py-6 shadow-xs sm:flex-row sm:px-8">
+        <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-blue-100 bg-linear-to-r from-blue-50/80 via-indigo-50/30 to-blue-50/80 px-6 py-6 shadow-xs sm:flex-row sm:px-8">
           {/* Left Side: Icon, Title & Subtitle */}
           <div className="flex items-center gap-4 text-center sm:text-left">
             {/* Trend/Graph Icon */}

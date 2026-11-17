@@ -25,9 +25,9 @@ export default function ServiceCard({ service, plan, index }) {
 
         {/* Title & Concise Tagline */}
         <div className="mt-4">
-          <h2 className="font-serif text-xl font-semibold tracking-tight transition-colors duration-100 text-slate-700/90 group-hover:text-emerald-600 sm:text-2xl">
+          <h3 className="font-serif text-xl font-semibold tracking-tight transition-colors duration-100 text-slate-700/90 group-hover:text-emerald-600 sm:text-2xl">
             {service.title}
-          </h2>
+          </h3>
           <p className="mt-1 text-sm font-semibold text-royal">
             {service.tagline}
           </p>
