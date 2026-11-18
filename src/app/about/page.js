@@ -1,3 +1,7 @@
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { pageSchema } from "@/lib/seo/schemas";
+import JsonLd from "@/components/seo/JsonLd";
+
 import { PageHero, Section, SectionHeading, CTABand } from "@/components/ui";
 import ResearchFramework from "@/components/pages/about/ResearchFramework";
 import { principles } from "@/data/services";
@@ -12,6 +16,13 @@ import {
   Scale,
   Layers3,
 } from "lucide-react";
+
+export const metadata = generatePageMetadata({
+  title: "About Our Stock Market Research & Methodology",
+  description:
+    "Learn about our approach to stock market research, company analysis, valuation, risk assessment and transparent research practices for Indian market participants.",
+  path: "/about",
+});
 
 const methodology = [
   {
@@ -98,6 +109,14 @@ const transparencyPoints = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={pageSchema({
+          path: "/about",
+          name: "About Our Stock Market Research & Methodology",
+          description:
+            "Learn about the research philosophy, company analysis framework, valuation approach, risk assessment and transparency principles behind our work.",
+        })}
+      />
       {/* 01 — Hero */}
       <PageHero
         eyebrow="About & methodology"
@@ -374,10 +393,10 @@ export default function AboutPage() {
             <div className="relative mt-8 border-t border-white/10 pt-6">
               <div className="grid grid-cols-2 gap-y-3 gap-x-4">
                 {[
-                  { label: "Fundamentals", status: "Verified" },
-                  { label: "Valuation", status: "Model-led" },
-                  { label: "Expectations", status: "Indexed" },
-                  { label: "Risk Matrix", status: "Defined" },
+                  { label: "Fundamentals", status: "Reviewed" },
+                  { label: "Valuation", status: "Assessed" },
+                  { label: "Expectations", status: "Compared" },
+                  { label: "Risk Matrix", status: "Considered" },
                 ].map((item) => (
                   <div
                     key={item.label}

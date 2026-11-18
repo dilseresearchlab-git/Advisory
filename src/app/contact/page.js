@@ -3,14 +3,31 @@ import { PageHero, Section } from "@/components/ui";
 import ContactForm from "@/components/ContactForm";
 import { site } from "@/data/site";
 
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { pageSchema } from "@/lib/seo/schemas";
+import JsonLd from "@/components/seo/JsonLd";
+
 const contact = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || site.contact.phone;
 const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL || site.contact.email;
 
-export const metadata = { title: "Contact" };
+export const metadata = generatePageMetadata({
+  title: "Contact Our Stock Market Research Team",
+  description:
+    "Get in touch to enquire about stock market research, company analysis and proposed research offerings. Find our contact details and send a general enquiry.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={pageSchema({
+          path: "/contact",
+          name: "Contact Our Stock Market Research Team",
+          description:
+            "Contact us for general enquiries about stock market research, company analysis and proposed research offerings.",
+        })}
+      />
       <PageHero eyebrow="Contact" title="Start a conversation">
         Tell us about your approach to markets and we will suggest the most relevant research track.
       </PageHero>

@@ -91,7 +91,7 @@ export default function LearnHero() {
         </div>
 
         {/* Learning overview – translucent illustration card */}
-        <div className="w-full max-w-md lg:ml-auto rounded-[24px] border border-white/15 bg-white/[0.07] p-5 sm:p-6 backdrop-blur-xl">
+        <div className="w-full max-w-md lg:ml-auto rounded-3xl border border-white/15 bg-white/[0.07] p-5 sm:p-6 backdrop-blur-xl">
           {/* Card heading */}
           <div className="flex items-center justify-between">
             <div>
@@ -104,7 +104,7 @@ export default function LearnHero() {
               </h2>
             </div>
 
-            <span className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-ice-300/80">
+            <span className="rounded-full border border-white/15 bg-white/6 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-ice-300/80">
               04 areas
             </span>
           </div>

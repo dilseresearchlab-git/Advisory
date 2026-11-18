@@ -1,3 +1,7 @@
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { pageSchema } from "@/lib/seo/schemas";
+import JsonLd from "@/components/seo/JsonLd";
+
 import { CTABand } from "@/components/ui";
 
 import LearnHero from "@/components/pages/learn/LearnHero";
@@ -10,15 +14,25 @@ import ReferenceSheets from "@/components/pages/learn/ReferenceSheets";
 
 import { learningTracks } from "@/data/learning";
 
-export const metadata = {
-  title: "Learning Centre",
+export const metadata = generatePageMetadata({
+  title: "Stock Market Learning Centre & Investing Basics",
   description:
-    "Explore financial fundamentals, company valuation, investing concepts and trading education through illustrated lessons and practical examples.",
-};
+    "Learn financial fundamentals, company financial statements, valuation concepts and investing mathematics through illustrated lessons, practical formulas and reference guides.",
+  path: "/learn",
+});
 
 export default function LearnPage() {
   return (
     <>
+      <JsonLd
+        data={pageSchema({
+          path: "/learn",
+          name: "Stock Market Learning Centre & Investing Basics",
+          description:
+            "Explore structured learning paths covering financial fundamentals, company financial statements, valuation concepts, investing mathematics and practical reference guides.",
+        })}
+      />
+
       {/* 01 — Learning centre hero */}
       <LearnHero />
 
