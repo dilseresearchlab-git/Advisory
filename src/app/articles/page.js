@@ -6,7 +6,7 @@ import ArticlesCTA from "@/components/pages/articles/ArticlesCTA";
 import { Container } from "@/components/ui";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
@@ -31,6 +31,12 @@ export default async function ArticlesPage() {
           description:
             "Explore stock market research articles, company analysis, financial insights and market perspectives for Indian investors and traders.",
         })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Articles & Insights", path: "/articles" },
+        ])}
       />
       <ArticlesHero />
 

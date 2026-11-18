@@ -3,7 +3,7 @@ import PlanCards from "@/components/PlanCards";
 import { comparisonRows, plans, pricingNote, faqs } from "@/data/pricing";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema} from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
@@ -23,6 +23,12 @@ export default function PricingPage() {
           description:
             "Compare proposed stock market research packages, research coverage, features and deliverables for Indian traders and investors.",
         })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Pricing", path: "/pricing" },
+        ])}
       />
       <PageHero
         eyebrow="Packages & pricing"

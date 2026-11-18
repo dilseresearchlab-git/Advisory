@@ -6,7 +6,7 @@ import GettingStarted from "@/components/pages/advisory/GettingStarted";
 import ResearchFitSection from "@/components/pages/advisory/ResearchFitSection";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
@@ -26,6 +26,12 @@ export default function AdvisoryPage() {
           description:
             "Explore proposed research approaches for Indian traders and investors, including different market objectives, research coverage and package options.",
         })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Advisory", path: "/advisory" },
+        ])}
       />
       {/* 01 — Hero */}
       <PageHero

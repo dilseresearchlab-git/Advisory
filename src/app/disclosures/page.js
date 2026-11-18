@@ -1,9 +1,8 @@
-
 import LegalPage from "@/components/LegalPage";
 import { regulatory } from "@/data/site";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
@@ -23,6 +22,12 @@ export default function Disclosures() {
           description:
             "Important information about Meridian's regulatory status, research content, investment risks, calculator limitations and website use.",
         })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Disclosures", path: "/disclosures" },
+        ])}
       />
 
       <LegalPage

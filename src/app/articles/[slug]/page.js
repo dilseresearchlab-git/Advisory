@@ -14,6 +14,7 @@ import ArticleCTA from "@/components/articles/detail/ArticleCTA";
 
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site";
+import { breadcrumbSchema } from "@/lib/seo/schemas";
 
 // Re-fetch from Sanity at most every 5 minutes; unknown slugs are rendered on demand.
 export const revalidate = 300;
@@ -111,9 +112,7 @@ export default async function ArticlePage({ params }) {
   const { article, source } = await getArticle(slug);
   if (!article) notFound();
 
-  const canonical = siteUrl
-  ? `${siteUrl}/articles/${article.slug}`
-  : undefined;
+  const canonical = siteUrl ? `${siteUrl}/articles/${article.slug}` : undefined;
 
   const coverUrl = article.cover
     ? imageUrl(article.cover, {
@@ -171,6 +170,16 @@ export default async function ArticlePage({ params }) {
   return (
     <>
       {source === "sanity" && <JsonLd data={articleSchema} />}
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Articles & Insights", path: "/articles" },
+          {
+            name: article.title,
+            path: `/articles/${article.slug}`,
+          },
+        ])}
+      />
       <ReadingProgress targetId="article-body" />
       {source === "sample" && (
         <Container className="pt-6">

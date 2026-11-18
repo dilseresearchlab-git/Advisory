@@ -11,7 +11,7 @@ import ResearchArticleCard from "@/components/pages/research/ResearchArticleCard
 import SampleReportsSection from "@/components/pages/research/SampleReports";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
@@ -31,6 +31,12 @@ export default function ResearchPage() {
           description:
             "Explore sample company analysis, sector insights, research report previews and the methodology used to assess financial and market information.",
         })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Research", path: "/research" },
+        ])}
       />
       <PageHero
         eyebrow="Research & insights"

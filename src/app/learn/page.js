@@ -1,5 +1,5 @@
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 import { CTABand } from "@/components/ui";
@@ -32,6 +32,12 @@ export default function LearnPage() {
             "Explore structured learning paths covering financial fundamentals, company financial statements, valuation concepts, investing mathematics and practical reference guides.",
         })}
       />
+      <JsonLd
+  data={breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Learning Centre", path: "/learn" },
+  ])}
+/>
 
       {/* 01 — Learning centre hero */}
       <LearnHero />

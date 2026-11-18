@@ -3,7 +3,7 @@ import { PageHero, Section, Notice, CTABand } from "@/components/ui";
 import Calculators from "@/components/Calculators";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
@@ -23,6 +23,12 @@ export default function ToolsPage() {
           description:
             "Explore browser-based financial calculators and numerical tools designed to help traders and investors examine calculations and structure their decisions.",
         })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Tools", path: "/tools" },
+        ])}
       />
 
       <PageHero

@@ -1,6 +1,7 @@
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { pageSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo/schemas";
 
 import { PageHero, Section, SectionHeading, CTABand } from "@/components/ui";
 import ResearchFramework from "@/components/pages/about/ResearchFramework";
@@ -116,6 +117,12 @@ export default function AboutPage() {
           description:
             "Learn about the research philosophy, company analysis framework, valuation approach, risk assessment and transparency principles behind our work.",
         })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
       />
       {/* 01 — Hero */}
       <PageHero

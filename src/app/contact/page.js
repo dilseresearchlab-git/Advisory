@@ -4,7 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import { site } from "@/data/site";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 const contact = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || site.contact.phone;
@@ -28,6 +28,12 @@ export default function ContactPage() {
             "Contact us for general enquiries about stock market research, company analysis and proposed research offerings.",
         })}
       />
+      <JsonLd
+  data={breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+  ])}
+/>
       <PageHero eyebrow="Contact" title="Start a conversation">
         Tell us about your approach to markets and we will suggest the most relevant research track.
       </PageHero>

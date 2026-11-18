@@ -1,9 +1,8 @@
-
 import LegalPage from "@/components/LegalPage";
 import { site } from "@/data/site";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema } from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
@@ -23,6 +22,13 @@ export default function Terms() {
           description:
             "Terms governing the use of Meridian's website, including research content, educational resources, financial calculators, intellectual property and enquiries.",
         })}
+      />
+
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Privacy Policy", path: "/privacy" },
+        ])}
       />
 
       <LegalPage
