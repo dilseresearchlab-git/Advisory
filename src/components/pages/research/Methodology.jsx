@@ -22,7 +22,7 @@ export default function MethodologySteps({ steps }) {
             className="group relative flex flex-col rounded-2xl border border-line bg-white px-6 py-4 md:p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-royal/30 hover:shadow-lift"
           >
             {/* Colored Icon Container replacing the numbers */}
-            <div className={`inline-flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-lg sm:rounded-xl border ${iconTheme} transition-transform duration-300 group-hover:scale-110`}>
+            <div aria-hidden="true" className={`inline-flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-lg sm:rounded-xl border ${iconTheme} transition-transform duration-300 group-hover:scale-110`}>
               <StepIcon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.75} />
             </div>
 

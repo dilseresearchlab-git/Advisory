@@ -27,9 +27,9 @@ export default function ResearchArticleCard({ r }) {
         </div>
 
         {/* Title: Responsive font sizing to prevent overflow on mobile/tablet */}
-        <h2 className="mt-3 sm:mt-4 font-serif text-lg sm:text-2xl font-semibold leading-snug tracking-tight text-slate-900 transition-colors duration-200 group-hover:text-royal">
+        <h3 className="mt-3 sm:mt-4 font-serif text-lg sm:text-2xl font-semibold leading-snug tracking-tight text-slate-900 transition-colors duration-200 group-hover:text-royal">
           {r.title}
-        </h2>
+        </h3>
 
         {/* Summary */}
         <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-600">

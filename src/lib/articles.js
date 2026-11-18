@@ -49,31 +49,36 @@ export function normalise(article) {
 }
 
 export async function getArticles() {
+  const isDevelopment = process.env.NODE_ENV === "development";
+
   if (!sanityConfigured) {
     return {
-      articles: sampleArticles.map(normalise),
-      source: "sample",
-      error: null,
+      articles: isDevelopment ? sampleArticles.map(normalise) : [],
+      source: isDevelopment ? "sample" : "unavailable",
+      error: "Sanity is not configured.",
     };
   }
 
   try {
-    const result = await sanityFetch(ARTICLES_QUERY, { revalidate: 300 });
+    const result = await sanityFetch(ARTICLES_QUERY, {
+      revalidate: 300,
+    });
+
     const articles = Array.isArray(result) ? result.map(normalise) : [];
 
     return {
       articles: articles.sort(
-        (a, b) =>
-          new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0)
+        (a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0),
       ),
       source: "sanity",
       error: null,
     };
   } catch (error) {
     console.error("[articles] Sanity fetch failed:", error);
+
     return {
-      articles: sampleArticles.map(normalise),
-      source: "sample",
+      articles: isDevelopment ? sampleArticles.map(normalise) : [],
+      source: isDevelopment ? "sample" : "unavailable",
       error: error instanceof Error ? error.message : "Unknown Sanity error",
     };
   }

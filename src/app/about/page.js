@@ -1,3 +1,8 @@
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { pageSchema } from "@/lib/seo/schemas";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo/schemas";
+
 import { PageHero, Section, SectionHeading, CTABand } from "@/components/ui";
 import ResearchFramework from "@/components/pages/about/ResearchFramework";
 import { principles } from "@/data/services";
@@ -12,6 +17,13 @@ import {
   Scale,
   Layers3,
 } from "lucide-react";
+
+export const metadata = generatePageMetadata({
+  title: "About Our Stock Market Research & Methodology",
+  description:
+    "Learn about our approach to stock market research, company analysis, valuation, risk assessment and transparent research practices for Indian market participants.",
+  path: "/about",
+});
 
 const methodology = [
   {
@@ -98,6 +110,20 @@ const transparencyPoints = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={pageSchema({
+          path: "/about",
+          name: "About Our Stock Market Research & Methodology",
+          description:
+            "Learn about the research philosophy, company analysis framework, valuation approach, risk assessment and transparency principles behind our work.",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       {/* 01 — Hero */}
       <PageHero
         eyebrow="About & methodology"
@@ -131,9 +157,8 @@ export default function AboutPage() {
             {/* Top Specification Header Bar - Prevented line-wrapping on mobile */}
             <div className="relative flex items-center justify-between gap-2 border-b border-white/10 pb-3">
               <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300" />
                 <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.15em] text-ice-300 sm:text-[11px]">
-                  Research Protocol // 01
+                  Research Protocol
                 </span>
               </div>
               <span className="hidden font-mono text-[10px] uppercase tracking-widest text-white/35 min-[380px]:inline">
@@ -181,9 +206,6 @@ export default function AboutPage() {
 
             {/* Footer Verification Note - Compact padding */}
             <div className="relative mt-4 flex items-start gap-2.5 sm:mt-5">
-              <span className="mt-0.5 font-mono text-xs text-emerald-300">
-                §
-              </span>
               <p className="text-[11px] leading-relaxed text-ice-200/70 sm:text-xs">
                 A research conclusion should be explainable, challengeable, and
                 revisited when the facts change.
@@ -225,9 +247,9 @@ export default function AboutPage() {
         </SectionHeading>
 
         <div className="relative mt-12 lg:mt-16">
-          {/* Horizontal animated connector line — Desktop only */}
+          {/* Horizontal animated connector line — Desktop only (aligned precisely from center of first icon to center of last icon) */}
           <div
-            className="absolute left-[12.5%] right-[12.5%] top-6 hidden h-0.5 lg:block overflow-hidden pointer-events-none"
+            className="absolute left-[calc(100%/8)] right-[calc(100%/8)] top-5 hidden h-0.5 lg:block overflow-hidden pointer-events-none"
             aria-hidden="true"
           >
             <div className="absolute inset-0 bg-line opacity-50" />
@@ -240,7 +262,7 @@ export default function AboutPage() {
                 key={item.label}
                 className="relative flex gap-4 lg:flex-col lg:items-center lg:gap-5 group"
               >
-                {/* Vertical animated connector line — Centered precisely under the 40px (h-10) node (left-5 = 20px) */}
+                {/* Vertical animated connector line — Mobile only */}
                 {index < methodology.length - 1 && (
                   <div
                     className="absolute left-5 top-10 -bottom-6 w-0.5 lg:hidden overflow-hidden pointer-events-none z-0"
@@ -251,7 +273,7 @@ export default function AboutPage() {
                   </div>
                 )}
 
-                {/* Downsized Icon node: h-10 w-10 (40px) for compact mobile view */}
+                {/* Downsized Icon node: h-10 w-10 (40px) */}
                 <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-linear-to-br from-midnight to-royal/80 text-blue-700 transition-transform duration-300 group-hover:scale-105 group-hover:border-blue-500 shadow-sm">
                   <item.Icon
                     size={18}
@@ -353,9 +375,9 @@ export default function AboutPage() {
 
           <div className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800/80 bg-midnight p-6 sm:p-8">
             {/* Soft Ambient Glow & Minimal Corner Accent */}
-            <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-ice-300/[0.04] blur-2xl" />
+            <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-ice-300/4 blur-2xl" />
             <div className="absolute right-6 top-6 font-mono text-[10px] uppercase tracking-widest text-ice-300/40">
-              Ref. 02 // Core
+              Core
             </div>
 
             <div className="relative">
@@ -378,10 +400,10 @@ export default function AboutPage() {
             <div className="relative mt-8 border-t border-white/10 pt-6">
               <div className="grid grid-cols-2 gap-y-3 gap-x-4">
                 {[
-                  { label: "Fundamentals", status: "Verified" },
-                  { label: "Valuation", status: "Model-led" },
-                  { label: "Expectations", status: "Indexed" },
-                  { label: "Risk Matrix", status: "Defined" },
+                  { label: "Fundamentals", status: "Reviewed" },
+                  { label: "Valuation", status: "Assessed" },
+                  { label: "Expectations", status: "Compared" },
+                  { label: "Risk Matrix", status: "Considered" },
                 ].map((item) => (
                   <div
                     key={item.label}

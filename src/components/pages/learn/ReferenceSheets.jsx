@@ -16,7 +16,7 @@ export default function ReferenceSheets() {
 
           <div className="mt-7 overflow-hidden rounded-xl border border-slate-200/80 bg-white">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[640px] text-left">
+              <table className="w-full min-w-160 text-left">
                 <thead className="bg-slate-50 text-[10px] font-semibold uppercase tracking-wider text-steel">
                   <tr>
                     <th className="px-4 py-3 sm:px-5">Ratio</th>

@@ -5,33 +5,55 @@ import {
   CTABand,
   Notice,
 } from "@/components/ui";
-import {
-  researchItems,
-  methodologySteps,
-} from "@/data/research";
+import { researchItems, methodologySteps } from "@/data/research";
 import Methodology from "@/components/pages/research/Methodology";
 import ResearchArticleCard from "@/components/pages/research/ResearchArticleCard";
 import SampleReportsSection from "@/components/pages/research/SampleReports";
 
-export const metadata = { title: "Research & Insights" };
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
+import JsonLd from "@/components/seo/JsonLd";
+
+export const metadata = generatePageMetadata({
+  title: "Stock Market Research & Sample Reports",
+  description:
+    "Explore sample stock market research, company analysis, sector insights and research methodology. See how financial information is assessed and presented for Indian market participants.",
+  path: "/research",
+});
 
 export default function ResearchPage() {
   return (
     <>
+      <JsonLd
+        data={pageSchema({
+          path: "/research",
+          name: "Stock Market Research & Sample Reports",
+          description:
+            "Explore sample company analysis, sector insights, research report previews and the methodology used to assess financial and market information.",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Research", path: "/research" },
+        ])}
+      />
       <PageHero
         eyebrow="Research & insights"
-        title="How we think, shown through sample work"
+        title="Stock market research, demonstrated through sample work"
       >
-        Previews of company analysis, sector insight and market perspective. All
-        content is illustrative.
+        Explore examples of company analysis, sector insights and market
+        perspectives, alongside previews of our research reports and the
+        methodology behind them. All examples are illustrative.
       </PageHero>
 
       <Section>
         <SectionHeading eyebrow="Research" title="Sample work" />
         <Notice tone="info">
-          The following research articles are samples of our work. They are not
-          intended to be exhaustive or representative of all research we
-          conduct.
+          These articles are illustrative examples of our research approach.
+          They are intended to demonstrate how we examine companies, sectors and
+          market developments, and may not represent the full scope of our
+          research.
         </Notice>
         <div className="mt-4 md:mt-8 grid gap-6 md:grid-cols-2">
           {researchItems.map((r) => (

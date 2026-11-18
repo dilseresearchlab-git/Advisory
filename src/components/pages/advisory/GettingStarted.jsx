@@ -1,4 +1,3 @@
-
 "use client";
 
 const steps = [
@@ -30,7 +29,10 @@ export default function GettingStarted() {
           key={step.number}
           className="relative rounded-2xl border border-white/10 bg-white/4.5 p-5 transition-colors duration-300 hover:border-ice-300/30 hover:bg-white/[0.07] sm:p-6"
         >
-          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ice-300">
+          <span
+            aria-hidden="true"
+            className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ice-300"
+          >
             {step.number}
           </span>
 
@@ -73,7 +75,8 @@ export default function GettingStarted() {
         }
 
         @keyframes arrow-right {
-          0%, 100% {
+          0%,
+          100% {
             transform: translate(0, -50%);
           }
           50% {
@@ -82,7 +85,8 @@ export default function GettingStarted() {
         }
 
         @keyframes arrow-down {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateX(-50%) rotate(90deg);
           }
           50% {

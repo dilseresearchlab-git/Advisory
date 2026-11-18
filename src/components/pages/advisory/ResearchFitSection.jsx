@@ -138,6 +138,7 @@ export default function ResearchFitSection() {
 
               {/* Illustration Area matching Card BG */}
               <div
+                aria-hidden="true"
                 className={`my-4 flex h-32 w-full items-center justify-center rounded-xl ${item.bg} p-2 transition-transform duration-300 group-hover:scale-105`}
               >
                 {item.illustration}

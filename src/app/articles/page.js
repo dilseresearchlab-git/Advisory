@@ -5,11 +5,16 @@ import ArticleList from "@/components/pages/articles/ArticleList";
 import ArticlesCTA from "@/components/pages/articles/ArticlesCTA";
 import { Container } from "@/components/ui";
 
-export const metadata = {
-  title: "Articles & Insights",
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
+import JsonLd from "@/components/seo/JsonLd";
+
+export const metadata = generatePageMetadata({
+  title: "Stock Market Research Articles & Insights",
   description:
-    "Research notes, company studies and market perspectives from Meridian Research & Advisory.",
-};
+    "Explore stock market research articles, company analysis, financial insights and market perspectives for Indian investors and traders.",
+  path: "/articles",
+});
 
 export const revalidate = 300;
 
@@ -19,17 +24,29 @@ export default async function ArticlesPage() {
 
   return (
     <>
+      <JsonLd
+        data={pageSchema({
+          path: "/articles",
+          name: "Stock Market Research Articles & Insights",
+          description:
+            "Explore stock market research articles, company analysis, financial insights and market perspectives for Indian investors and traders.",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Articles & Insights", path: "/articles" },
+        ])}
+      />
       <ArticlesHero />
 
-      {source === "sample" && (
+      {source === "unavailable" && (
         <Container className="pt-6">
           <div
             role="status"
-            className="border-l-2 border-royal bg-ice-50 px-4 py-3 text-sm leading-relaxed text-muted"
+            className="border-l-2 border-amber-500 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-muted"
           >
-            {error
-              ? "Live articles could not be loaded. Showing clearly labelled sample content instead."
-              : "Preview content is being shown. Connect the Sanity dataset to display published articles."}
+            Articles are temporarily unavailable. Please check back soon.
           </div>
         </Container>
       )}

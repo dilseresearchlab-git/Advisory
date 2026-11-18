@@ -9,17 +9,38 @@ import {
 import { StatTile, SensexLongTermReturns } from "@/components/Charts";
 import PlanCards from "@/components/PlanCards";
 import { services, principles } from "@/data/services";
-import { researchItems, illustrativeSeries } from "@/data/research";
-import { site } from "@/data/site";
+import { researchItems } from "@/data/research";
+import { siteConfig } from "@/config/site";
 import AutoResearchCard from "@/components/AutoResearchCard";
 import AdsvisoryServicesSection from "@/components/pages/home/AdvisoryServices";
 import FeaturedInsightsSection from "@/components/pages/home/FeaturedInsights";
 import HeroTyping from "@/components/ui/HeroTyping";
 import GrowthIllustration from "@/components/ui/GrowthIllustration";
 
+// SEO
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { pageSchema } from "@/lib/seo/schemas";
+import JsonLd from "@/components/seo/JsonLd";
+
+export const metadata = generatePageMetadata({
+  title: "Stock Market Research & Advisory in India",
+  description:
+    "Explore stock market research, company analysis, financial tools and market insights for Indian traders and investors. Discover Meridian's research and advisory approach.",
+  path: "/",
+});
+
 export default function Home() {
   return (
     <>
+      <JsonLd
+        data={pageSchema({
+          path: "/",
+          name: "Stock Market Research & Advisory in India",
+          description:
+            "Explore stock market research, company analysis, financial tools and market insights for Indian traders and investors.",
+        })}
+      />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-midnight">
         <div
@@ -36,13 +57,13 @@ export default function Home() {
               Research &amp; Advisory · India
             </p>
             <h1 className="mt-4 md:mt-5 text-4xl leading-[1.08] text-white! sm:text-6xl">
-              Research built for people who demand{" "}
+              Stock market research built for people who demand{" "}
               <span className="inline-block min-h-[1.08em] min-w-[320px] sm:min-w-140">
                 <HeroTyping />
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-ice-300/90">
-              {site.fullName} produces structured, evidence-led research for
+              {siteConfig.name} produces structured, evidence-led research for
               investors and traders — with risk defined before opinion, and
               limits stated plainly.
             </p>
@@ -72,10 +93,13 @@ export default function Home() {
 
       {/* Principles strip */}
       <Section tone="ice" className="py-14!">
+        <h2 className="sr-only">Our research principles</h2>
+
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {principles.map((p) => (
             <div key={p.title}>
               <h3 className="text-lg">{p.title}</h3>
+
               <p className="mt-2 text-sm leading-relaxed text-muted">
                 {p.text}
               </p>
