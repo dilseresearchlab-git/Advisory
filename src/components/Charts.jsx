@@ -186,8 +186,8 @@ export function ProcessDiagram({ steps }) {
 export function StatTile({ value, label }) {
   return (
     <div>
-      <div className="font-serif text-4xl text-navy">{value}</div>
-      <div className="mt-1 text-sm text-muted">{label}</div>
+      <div className="font-serif text-2xl md:text-4xl text-navy">{value}</div>
+      <div className="mt-1 text-xs sm:text-sm text-muted">{label}</div>
     </div>
   );
 }

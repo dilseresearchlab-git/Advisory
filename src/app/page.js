@@ -95,12 +95,12 @@ export default function Home() {
       <Section tone="ice" className="py-14!">
         <h2 className="sr-only">Our research principles</h2>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {principles.map((p) => (
             <div key={p.title}>
               <h3 className="text-lg">{p.title}</h3>
 
-              <p className="mt-2 text-sm leading-relaxed text-muted">
+              <p className="mt-1 sm:mt-2 text-sm leading-relaxed text-muted">
                 {p.text}
               </p>
             </div>

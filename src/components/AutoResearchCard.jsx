@@ -87,7 +87,7 @@ export default function AutoResearchCard() {
       }`}
     >
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ice-300">
+        <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-ice-300">
           Company research
         </span>
 
@@ -104,7 +104,7 @@ export default function AutoResearchCard() {
         {company.sector}
       </div>
 
-      <p className="mt-2 text-sm text-ice-300/45">
+      <p className="mt-2 text-xs sm:text-sm text-ice-300/45">
         {company.description}
       </p>
 
@@ -126,10 +126,10 @@ export default function AutoResearchCard() {
       <div className="mt-5 grid grid-cols-3 gap-4 border-t border-white/10 pt-5">
         {company.metrics.map(([value, label]) => (
           <div key={label}>
-            <div className="font-serif text-2xl text-emerald-400">
+            <div className="font-serif text-lg md:text-2xl text-emerald-400">
               {value}
             </div>
-            <div className="mt-1 text-[11px] leading-relaxed text-ice-300/70">
+            <div className="mt-1 text-[10px] sm:text-xs leading-relaxed text-ice-300/70">
               {label}
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function AutoResearchCard() {
       </div>
 
       <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
-        <span className="text-xs text-ice-300/80">
+        <span className="text-[9px] sm:text-xs text-ice-300/80">
           {company.takeaway}
         </span>
         <span className="text-[10px] text-ice-300/50">
