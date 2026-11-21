@@ -33,11 +33,11 @@ export default function LearnPage() {
         })}
       />
       <JsonLd
-  data={breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "Learning Centre", path: "/learn" },
-  ])}
-/>
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Learning Centre", path: "/learn" },
+        ])}
+      />
 
       {/* 01 — Learning centre hero */}
       <LearnHero />

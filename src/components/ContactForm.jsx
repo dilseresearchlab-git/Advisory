@@ -158,8 +158,8 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="card border-royal/25 space-y-5 p-4 sm:p-8 w-full max-w-full overflow-hidden">
-      <div className="grid gap-5 sm:grid-cols-2">
+    <form onSubmit={onSubmit} className="card border-royal/25 space-y-5 p-6 sm:p-8 w-full max-w-full overflow-hidden">
+      <div className="grid gap-4 md:gap-5 sm:grid-cols-2">
         <div>
           <label className="label" htmlFor="name">
             Full name *
@@ -198,7 +198,7 @@ export default function ContactForm() {
             id="phone"
             name="phone"
             type="tel"
-            className="input w-full"
+            className="input w-full max-w-full"
             value={form.phone}
             onChange={set("phone")}
           />
@@ -211,12 +211,12 @@ export default function ContactForm() {
           <select
             id="profile"
             name="profile"
-            className="input w-full"
+            className="input w-full max-w-full"
             value={form.profile}
             onChange={set("profile")}
           >
             {Object.entries(profileLabels).map(([value, label]) => (
-              <option key={value} value={value}>
+              <option key={value} value={value} className="text-xs sm:text-sm md:text-base">
                 {label}
               </option>
             ))}
@@ -235,9 +235,9 @@ export default function ContactForm() {
           value={form.plan}
           onChange={set("plan")}
         >
-          <option value="">Not sure yet</option>
+          <option value="" className="text-xs sm:text-sm md:text-base">Not sure yet</option>
           {plans.map((p) => (
-            <option key={p.id} value={p.id}>
+            <option key={p.id} value={p.id} className="text-xs sm:text-sm md:text-base">
               {p.name}
             </option>
           ))}
