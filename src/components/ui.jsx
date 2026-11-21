@@ -90,19 +90,75 @@ export function Button({
   );
 }
 
-export function PageHero({ eyebrow, title, children }) {
+// export function PageHero({ eyebrow, title, children }) {
+//   return (
+//     <section className="relative overflow-hidden border-b border-line bg-linear-to-b from-ice-100 to-white">
+//       <div className="grid-bg absolute inset-0 opacity-60" aria-hidden="true" />
+//       <Container className="relative py-12 sm:py-16 lg:py-24">
+//         <p className="eyebrow">{eyebrow}</p>
+//         <h1 className="mt-2 md:mt-4 max-w-3xl text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">
+//           {title}
+//         </h1>
+//         {children && (
+//           <p className="mt-3 md:mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-muted">
+//             {children}
+//           </p>
+//         )}
+//       </Container>
+//     </section>
+//   );
+// }
+
+export function PageHero({
+  eyebrow,
+  title,
+  children,
+  imageSrc,
+  imageAlt = "",
+}) {
+  const hasImage = Boolean(imageSrc);
+
   return (
     <section className="relative overflow-hidden border-b border-line bg-linear-to-b from-ice-100 to-white">
       <div className="grid-bg absolute inset-0 opacity-60" aria-hidden="true" />
-      <Container className="relative py-12 sm:py-16 lg:py-24">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-2 md:mt-4 max-w-3xl text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">
-          {title}
-        </h1>
-        {children && (
-          <p className="mt-3 md:mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-muted">
-            {children}
-          </p>
+      <Container className="relative py-12 sm:py-16 lg:py-20">
+        {hasImage ? (
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-7">
+              <p className="eyebrow">{eyebrow}</p>
+              <h1 className="mt-2 md:mt-4 max-w-3xl text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">
+                {title}
+              </h1>
+              {children && (
+                <p className="mt-3 md:mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-muted">
+                  {children}
+                </p>
+              )}
+            </div>
+
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="w-full max-w-md rounded-xl border border-line/80 bg-white/85 p-3 sm:p-4 shadow-xs backdrop-blur-[2px]">
+                <img
+                  src={imageSrc}
+                  alt={imageAlt}
+                  aria-hidden={imageAlt === "" ? "true" : undefined}
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <p className="eyebrow">{eyebrow}</p>
+            <h1 className="mt-2 md:mt-4 max-w-3xl text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">
+              {title}
+            </h1>
+            {children && (
+              <p className="mt-3 md:mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-muted">
+                {children}
+              </p>
+            )}
+          </>
         )}
       </Container>
     </section>
@@ -160,7 +216,7 @@ export function CTABand() {
             href="/contact"
             className="inline-flex shrink-0 items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-royal shadow-sm"
           >
-            Send an Enquiry <ArrowRight className="h-4 w-4"/>
+            Send an Enquiry <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </Container>

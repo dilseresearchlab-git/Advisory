@@ -18,10 +18,10 @@ export default function ArticlesHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-40 blur-[1px]"
+          className="object-fill object-right opacity-95s blur-[1px]"
         />
         {/* Dark/Light overlay gradient to keep text readable */}
-        <div className="absolute inset-0 bg-linear-to-r from-ice-100/95 via-ice-100/80 to-ice-100/60" />
+        <div className="absolute inset-0 bg-linear-to-r from-ice-100/90 via-ice-100/60 to-ice-100/40" />
       </div>
 
       {/* Grid pattern overlay if you want to keep it */}
