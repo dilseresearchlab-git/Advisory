@@ -128,7 +128,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About & methodology"
         title="Research built on evidence, context and discipline."
-         imageSrc={"/images/About.svg"}
+        imageSrc={"/images/About.svg"}
         imageAlt="A woman consulting a guy."
       >
         {site.fullName} aims to bring structured financial analysis, market
@@ -141,8 +141,7 @@ export default function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-16">
           <SectionHeading
             eyebrow="The thinking behind our work"
-            title="              Good research begins with better questions.
-"
+            title="Good research begins with better questions."
           >
             We believe useful market research starts with reliable information,
             thoughtful interpretation and the willingness to question an

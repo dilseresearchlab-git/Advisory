@@ -646,7 +646,7 @@ export default function Calculators() {
     <div className="space-y-6 sm:space-y-8 w-full overflow-hidden">
       {/* Scrollable tab navigation on smaller viewports */}
       <div
-        className="-mx-4 sm:mx-0 flex gap-2 overflow-x-auto px-5 sm:px-0 pb-2 sm:flex-wrap scrollbar-none"
+        className="-mx-4 sm:mx-0 flex items-center gap-2 overflow-x-auto px-5 sm:px-0 py-1.5 sm:py-1 sm:flex-wrap scrollbar-none"
         role="tablist"
         aria-label="Calculators"
       >
@@ -656,9 +656,9 @@ export default function Calculators() {
             role="tab"
             aria-selected={active === t.id}
             onClick={() => setActive(t.id)}
-            className={`shrink-0 rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-all shadow-xs ${
+            className={`shrink-0 rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-colors ${
               active === t.id
-                ? "bg-navy text-white shadow-md scale-105"
+                ? "bg-navy text-white shadow-sm"
                 : "border border-slate-200 bg-white text-slate-600 hover:border-royal hover:text-royal"
             }`}
           >
