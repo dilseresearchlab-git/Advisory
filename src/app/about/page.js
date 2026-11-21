@@ -128,6 +128,8 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About & methodology"
         title="Research built on evidence, context and discipline."
+         imageSrc={"/images/About.svg"}
+        imageAlt="A woman consulting a guy."
       >
         {site.fullName} aims to bring structured financial analysis, market
         understanding and transparent research practices to individual market

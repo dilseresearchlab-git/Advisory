@@ -137,7 +137,7 @@ export function PageHero({
             </div>
 
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="w-full max-w-md rounded-xl border border-line/80 bg-white/85 p-3 sm:p-4 shadow-xs backdrop-blur-[2px]">
+              <div className="w-full max-w-md rounded-xl p-3 sm:p-4 shadow-xs backdrop-blur-[2px]">
                 <img
                   src={imageSrc}
                   alt={imageAlt}

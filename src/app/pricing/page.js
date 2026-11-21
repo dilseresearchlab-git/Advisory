@@ -33,6 +33,8 @@ export default function PricingPage() {
       <PageHero
         eyebrow="Packages & pricing"
         title="A clear progression, divided by what you actually need"
+         imageSrc={"/images/Pricing.svg"}
+        imageAlt="A girl is showing the price banners."
       >
         Explore five proposed research packages, compare their coverage and
         deliverables, and understand which level of research aligns with your
