@@ -41,6 +41,8 @@ export default function ResearchPage() {
       <PageHero
         eyebrow="Research & insights"
         title="Stock market research, demonstrated through sample work"
+        imageSrc={"/images/Research.svg"}
+        imageAlt="An old guy analyzing with younger associate."
       >
         Explore examples of company analysis, sector insights and market
         perspectives, alongside previews of our research reports and the

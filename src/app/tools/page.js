@@ -34,6 +34,8 @@ export default function ToolsPage() {
       <PageHero
         eyebrow="Tools & calculators"
         title="Numerical tools for better-structured decisions"
+        imageSrc={"/images/Calculator.svg"}
+        imageAlt="A guy using calculator."
       >
         Practical calculators for examining financial outcomes and working
         through numerical scenarios. Everything runs in your browser. Nothing
