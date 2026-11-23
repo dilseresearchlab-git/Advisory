@@ -215,26 +215,30 @@ function IncomeStatement({ data }) {
       </div>
 
       <div className="flex flex-col gap-3">
-        <div className="rounded-2xl border border-slate-200 bg-[#173454] p-5 text-white">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-sky-200">
+        <div className="rounded-xl sm:rounded-2xl border border-slate-200 bg-[#173454] p-3.5 sm:p-5 text-white">
+          <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-sky-200">
             Final earnings · PAT
           </p>
 
-          <p className="mt-2 text-3xl font-semibold tabular-nums">
+          <p className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl font-semibold tabular-nums">
             {formatMoney(data.netProfit)}
           </p>
 
-          <div className="mt-5 grid grid-cols-2 gap-3 border-t border-white/15 pt-4">
+          <div className="mt-3.5 sm:mt-5 grid grid-cols-2 gap-2.5 sm:gap-3 border-t border-white/15 pt-3 sm:pt-4">
             <div>
-              <p className="text-[10px] text-blue-200/70">Net profit margin</p>
-              <p className="mt-1 text-xl font-semibold text-emerald-300">
+              <p className="text-[9px] sm:text-[10px] text-blue-200/70">
+                Net profit margin
+              </p>
+              <p className="mt-0.5 sm:mt-1 text-lg sm:text-xl font-semibold text-emerald-300">
                 {formatPercent(profitMargin)}
               </p>
             </div>
 
             <div>
-              <p className="text-[10px] text-blue-200/70">Operating margin</p>
-              <p className="mt-1 text-xl font-semibold text-sky-200">
+              <p className="text-[9px] sm:text-[10px] text-blue-200/70">
+                Operating margin
+              </p>
+              <p className="mt-0.5 sm:mt-1 text-lg sm:text-xl font-semibold text-sky-200">
                 {formatPercent(operatingMargin)}
               </p>
             </div>
@@ -572,7 +576,7 @@ function CashFlow({ data }) {
               Closing cash
             </p>
 
-            <p className="mt-2 text-3xl font-semibold tabular-nums text-emerald-900">
+            <p className="mt-2 text-2xl md:text-3xl font-semibold tabular-nums text-emerald-900">
               {formatMoney(calculatedClosingCash)}
             </p>
 
@@ -700,7 +704,7 @@ function KnowledgeCheck() {
   ];
 
   return (
-    <div className="mt-6 sm:mt-9 rounded-xl sm:rounded-2xl border border-slate-200 bg-[#173454] p-3.5 sm:p-5 lg:p-6 text-white">
+    <div className="mt-6 sm:mt-9 rounded-2xl border border-slate-200 bg-[#173454] p-5 lg:p-6 text-white">
       <div className="grid gap-4 sm:gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-center">
         {/* Question */}
         <div>
@@ -708,7 +712,7 @@ function KnowledgeCheck() {
             Quick knowledge check
           </p>
 
-          <h3 className="mt-1.5 sm:mt-2 font-serif text-lg sm:text-2xl text-white">
+          <h3 className="mt-3 font-serif text-[20px] leading-tight sm:text-2xl text-white">
             Which statement shows a company's financial position on 31 March?
           </h3>
 
@@ -740,7 +744,7 @@ function KnowledgeCheck() {
                       ? isRight
                         ? "border-emerald-300/40 bg-emerald-400/15 text-emerald-100"
                         : "border-amber-300/40 bg-amber-400/10 text-amber-100"
-                      : "border-white/15 bg-white/[0.04] text-white hover:bg-white/10"
+                      : "border-white/15 bg-white/4 text-white hover:bg-white/10"
                   }`}
                 >
                   {option.label}
