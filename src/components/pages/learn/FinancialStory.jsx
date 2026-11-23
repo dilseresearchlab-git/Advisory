@@ -508,10 +508,10 @@ function FinancialStory() {
 
                   if (active && correct) {
                     style =
-                      "border-emerald-300/40 bg-emerald-400/15 text-emerald-100";
+                      "border-emerald-300/40 bg-emerald-400/15 text-emerald-100 text-[11px] sm:text-xs";
                   } else if (active && !correct) {
                     style =
-                      "border-amber-300/40 bg-amber-400/10 text-amber-100";
+                      "border-amber-300/40 bg-amber-400/10 text-amber-100 ";
                   }
 
                   return (
@@ -520,7 +520,7 @@ function FinancialStory() {
                       type="button"
                       onClick={() => setSelectedAnswer(option)}
                       aria-pressed={active}
-                      className={`flex items-center justify-between rounded-lg sm:rounded-xl border px-3 sm:px-4 py-2 sm:py-2.5 text-left text-xs sm:text-sm font-medium transition ${style}`}
+                      className={`flex items-center justify-between rounded-lg sm:rounded-xl border px-3 sm:px-4 py-2 sm:py-2.5 text-left text-xs font-medium transition ${style}`}
                     >
                       {option}
                       <span className="text-[9px] sm:text-[10px] opacity-75">

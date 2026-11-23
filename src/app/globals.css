@@ -145,3 +145,22 @@
 .animate-flow-vertical {
   animation: flow-vertical 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+@keyframes chevronSway {
+  0% {
+    translate: 0px -50%;
+    animation-timing-function: cubic-bezier(0.35, 0, 0.75, 0.4);
+  }
+  40% {
+    translate: 5px -50%;
+    animation-timing-function: cubic-bezier(0.15, 0.85, 0.35, 1);
+  }
+  100% {
+    translate: 0px -50%;
+  }
+}
+
+.chevron-sway {
+  animation: chevronSway 2.4s infinite;
+  will-change: translate;
+}

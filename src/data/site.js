@@ -4,8 +4,8 @@
 // ─────────────────────────────────────────────────────────────
 
 export const site = {
-  name: "Meridian",
-  fullName: "Meridian Research & Advisory",
+  name: "Nivesh Vichar",
+  fullName: "Nivesh Vichar Research & Advisory",
   tagline: "Disciplined research for serious market participants",
   description:
     "Independent equity research, structured market perspectives and decision tools for investors and traders in India.",
@@ -29,7 +29,7 @@ export const site = {
 export const regulatory = {
   advisoryActive: false,
   statusLine:
-    "Meridian is not currently registered with SEBI as an investment adviser or research analyst. Content on this website is for general information and education only.",
+    "Nivesh Vichar is not currently registered with SEBI as an investment adviser or research analyst. Content on this website is for general information and education only.",
 };
 
 export const nav = [
