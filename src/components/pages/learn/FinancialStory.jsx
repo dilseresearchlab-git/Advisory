@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -12,15 +11,20 @@ const money = (value) =>
     maximumFractionDigits: 0,
   }).format(value);
 
-const formatNumber = (value) =>
-  new Intl.NumberFormat("en-IN").format(value);
+const formatNumber = (value) => new Intl.NumberFormat("en-IN").format(value);
 
 const initialExpenses = example.operatingExpenses;
 
 function InfoIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none"
-      stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="9" />
       <path d="M12 11v5M12 8h.01" />
     </svg>
@@ -37,8 +41,7 @@ function FinancialStory() {
   const profitBeforeTax = ebit - example.financeCosts;
 
   const tax =
-    Math.max(profitBeforeTax, 0) *
-    (example.illustrativeTaxRate / 100);
+    Math.max(profitBeforeTax, 0) * (example.illustrativeTaxRate / 100);
 
   const netProfit = profitBeforeTax - tax;
 
@@ -179,18 +182,15 @@ function FinancialStory() {
           eyebrow="Financial story"
           title="Meet ABC Ltd. Follow the money."
         >
-          See how sales turn into profit, explore the costs along the way
-          and experiment with the numbers yourself.
+          See how sales turn into profit, explore the costs along the way and
+          experiment with the numbers yourself.
         </SectionHeading>
 
         <div className="mt-9 grid gap-7 lg:grid-cols-[0.85fr_1.15fr] lg:gap-9">
-
           {/* LEFT: Company + experiment */}
           <div className="flex flex-col gap-5">
-
             {/* Company introduction */}
             <div className="relative overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50/90 to-white p-5 sm:p-6">
-
               <div className="flex items-center justify-between gap-3">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-700">
                   Your fictional business
@@ -206,8 +206,8 @@ function FinancialStory() {
               </h3>
 
               <p className="mt-2 max-w-sm text-sm leading-6 text-muted">
-                {example.description} You are the owner, exploring how
-                your business earns and spends money.
+                {example.description} You are the owner, exploring how your
+                business earns and spends money.
               </p>
 
               <div className="mt-6 rounded-xl border border-sky-100/80 bg-white/75 p-4">
@@ -240,15 +240,14 @@ function FinancialStory() {
                   Revenue isn't profit.
                 </p>
                 <p className="mt-1 text-xs leading-5 text-muted">
-                  Sales show what a business earns. Profit shows what
-                  remains after its costs.
+                  Sales show what a business earns. Profit shows what remains
+                  after its costs.
                 </p>
               </div>
             </div>
 
             {/* Interactive experiment */}
             <div className="rounded-2xl border border-amber-100 bg-white p-5 sm:p-6">
-
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-amber-700">
@@ -260,9 +259,14 @@ function FinancialStory() {
                 </div>
 
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-amber-100 bg-amber-50 text-amber-700">
-                  <svg viewBox="0 0 24 24" className="h-4 w-4"
-                    fill="none" stroke="currentColor" strokeWidth="1.7"
-                    aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    aria-hidden="true"
+                  >
                     <path d="M3 17 9 11l4 4 8-9" />
                     <path d="M15 6h6v6" />
                   </svg>
@@ -270,8 +274,8 @@ function FinancialStory() {
               </div>
 
               <p className="mt-2 text-xs leading-5 text-muted">
-                Increase or reduce operating expenses to see how
-                earnings respond.
+                Increase or reduce operating expenses to see how earnings
+                respond.
               </p>
 
               <div className="mt-5 flex items-center justify-between gap-3">
@@ -345,7 +349,6 @@ function FinancialStory() {
 
           {/* RIGHT: Financial breakdown */}
           <div className="min-w-0">
-
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-700">
@@ -367,7 +370,7 @@ function FinancialStory() {
                   const style = getStepStyle(step.type);
                   const barWidth = Math.min(
                     (Math.abs(step.value) / example.revenue) * 100,
-                    100
+                    100,
                   );
 
                   return (
@@ -377,27 +380,37 @@ function FinancialStory() {
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex min-w-0 items-center gap-2">
-                          <span className={`font-serif text-[10px] ${style.number}`}>
+                          <span
+                            className={`font-serif text-[10px] ${style.number}`}
+                          >
                             {String(index + 1).padStart(2, "0")}
                           </span>
 
                           <div className="min-w-0">
-                            <p className={`text-xs font-semibold ${style.label}`}>
+                            <p
+                              className={`text-xs font-semibold ${style.label}`}
+                            >
                               {step.label}
                             </p>
-                            <p className={`mt-0.5 text-[10px] ${style.description}`}>
+                            <p
+                              className={`mt-0.5 text-[10px] ${style.description}`}
+                            >
                               {step.description}
                             </p>
                           </div>
                         </div>
 
-                        <p className={`shrink-0 text-xs font-semibold tabular-nums sm:text-sm ${style.value}`}>
+                        <p
+                          className={`shrink-0 text-xs font-semibold tabular-nums sm:text-sm ${style.value}`}
+                        >
                           {step.type === "deduction" ? "−" : ""}
                           {money(Math.abs(step.value))}
                         </p>
                       </div>
 
-                      <div className={`mt-2 h-1 overflow-hidden rounded-full ${style.track}`}>
+                      <div
+                        className={`mt-2 h-1 overflow-hidden rounded-full ${style.track}`}
+                      >
                         <div
                           className={`h-full rounded-full transition-all duration-500 ${style.bar}`}
                           style={{ width: `${barWidth}%` }}
@@ -451,8 +464,8 @@ function FinancialStory() {
                   EBITDA, EBIT and net profit are different.
                 </p>
                 <p className="mt-1 text-xs leading-5 text-sky-900/65">
-                  EBIT includes depreciation and amortisation.
-                  Net profit also accounts for finance costs and tax.
+                  EBIT includes depreciation and amortisation. Net profit also
+                  accounts for finance costs and tax.
                 </p>
               </div>
             </div>
@@ -460,29 +473,32 @@ function FinancialStory() {
         </div>
 
         {/* Knowledge check */}
-        <div className="mt-10 rounded-2xl border border-slate-200/80 bg-[#173454] p-5 text-white sm:p-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+
+        <div className="mt-6 sm:mt-10 rounded-xl sm:rounded-2xl border border-slate-200/80 bg-[#173454] p-3.5 sm:p-5 lg:p-6 text-white">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+            {/* Question */}
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-200">
+              <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.14em] text-sky-200">
                 Quick knowledge check
               </p>
 
-              <h3 className="mt-2 font-serif text-2xl text-white">
+              <h3 className="mt-1.5 sm:mt-2 font-serif text-lg sm:text-2xl text-white">
                 Which profit measure comes next?
               </h3>
 
-              <p className="mt-2 max-w-lg text-sm leading-6 text-blue-100/70">
-                Depreciation and amortisation have been deducted from
-                EBITDA, but interest and tax haven't. What is this measure?
+              <p className="mt-1.5 sm:mt-2 max-w-lg text-xs sm:text-sm leading-relaxed sm:leading-6 text-blue-100/70">
+                Depreciation and amortisation have been deducted from EBITDA,
+                but interest and tax haven't. What is this measure?
               </p>
             </div>
 
+            {/* Answers */}
             <div>
-              <p className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-blue-200/75">
+              <p className="mb-1.5 sm:mb-2 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-blue-200/75">
                 Choose your answer
               </p>
 
-              <div className="grid gap-2">
+              <div className="grid gap-1.5 sm:gap-2">
                 {["EBITDA", "EBIT", "PAT"].map((option) => {
                   const active = selectedAnswer === option;
                   const correct = option === "EBIT";
@@ -504,10 +520,10 @@ function FinancialStory() {
                       type="button"
                       onClick={() => setSelectedAnswer(option)}
                       aria-pressed={active}
-                      className={`flex items-center justify-between rounded-xl border px-4 py-2.5 text-left text-sm font-medium transition ${style}`}
+                      className={`flex items-center justify-between rounded-lg sm:rounded-xl border px-3 sm:px-4 py-2 sm:py-2.5 text-left text-xs sm:text-sm font-medium transition ${style}`}
                     >
                       {option}
-                      <span className="text-[10px] opacity-75">
+                      <span className="text-[9px] sm:text-[10px] opacity-75">
                         {active
                           ? correct
                             ? "✓ Correct"
@@ -522,7 +538,7 @@ function FinancialStory() {
               {selectedAnswer && (
                 <p
                   aria-live="polite"
-                  className={`mt-3 rounded-lg px-3 py-2.5 text-xs leading-5 ${
+                  className={`mt-2 sm:mt-3 rounded-lg px-2.5 sm:px-3 py-2 sm:py-2.5 text-[10px] sm:text-xs leading-relaxed sm:leading-5 ${
                     isCorrect
                       ? "bg-emerald-400/10 text-emerald-100"
                       : "bg-amber-300/10 text-amber-100"
