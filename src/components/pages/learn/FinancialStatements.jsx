@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -21,8 +20,7 @@ const formatMoney = (value) => {
 
 const formatPercent = (value) => `${value.toFixed(1)}%`;
 
-const sum = (items) =>
-  items.reduce((total, item) => total + item.value, 0);
+const sum = (items) => items.reduce((total, item) => total + item.value, 0);
 
 /* ----------------------------------
    Shared components
@@ -50,9 +48,7 @@ function StatementTab({ active, onClick, icon, title, subtitle }) {
 
       <span className="min-w-0">
         <span className="block text-xs font-semibold">{title}</span>
-        <span className="mt-0.5 block text-[10px] text-muted">
-          {subtitle}
-        </span>
+        <span className="mt-0.5 block text-[10px] text-muted">{subtitle}</span>
       </span>
     </button>
   );
@@ -109,12 +105,12 @@ function SectionTotal({ label, value, tone = "blue", caption }) {
   };
 
   return (
-    <div className={`mt-3 flex items-center justify-between gap-3 rounded-xl border p-3 ${styles[tone]}`}>
+    <div
+      className={`mt-3 flex items-center justify-between gap-3 rounded-xl border p-3 ${styles[tone]}`}
+    >
       <div>
         <p className="text-xs font-semibold">{label}</p>
-        {caption && (
-          <p className="mt-0.5 text-[10px] opacity-70">{caption}</p>
-        )}
+        {caption && <p className="mt-0.5 text-[10px] opacity-70">{caption}</p>}
       </div>
 
       <p className="shrink-0 text-sm font-semibold tabular-nums">
@@ -207,10 +203,7 @@ function IncomeStatement({ data }) {
   return (
     <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
       <div>
-        <MiniHeading
-          eyebrow="Statement 01"
-          title="Income statement"
-        >
+        <MiniHeading eyebrow="Statement 01" title="Income statement">
           How the business earned and spent money during the year.
         </MiniHeading>
 
@@ -233,18 +226,14 @@ function IncomeStatement({ data }) {
 
           <div className="mt-5 grid grid-cols-2 gap-3 border-t border-white/15 pt-4">
             <div>
-              <p className="text-[10px] text-blue-200/70">
-                Net profit margin
-              </p>
+              <p className="text-[10px] text-blue-200/70">Net profit margin</p>
               <p className="mt-1 text-xl font-semibold text-emerald-300">
                 {formatPercent(profitMargin)}
               </p>
             </div>
 
             <div>
-              <p className="text-[10px] text-blue-200/70">
-                Operating margin
-              </p>
+              <p className="text-[10px] text-blue-200/70">Operating margin</p>
               <p className="mt-1 text-xl font-semibold text-sky-200">
                 {formatPercent(operatingMargin)}
               </p>
@@ -258,8 +247,8 @@ function IncomeStatement({ data }) {
           </p>
 
           <p className="mt-1.5 text-xs leading-5 text-sky-900/70">
-            EBITDA excludes depreciation. EBIT includes it.
-            PAT also accounts for finance costs and tax.
+            EBITDA excludes depreciation. EBIT includes it. PAT also accounts
+            for finance costs and tax.
           </p>
         </div>
       </div>
@@ -308,10 +297,7 @@ function BalanceSheet({ data }) {
 
   return (
     <div>
-      <MiniHeading
-        eyebrow="Statement 02"
-        title="Balance sheet"
-      >
+      <MiniHeading eyebrow="Statement 02" title="Balance sheet">
         What the business owns and owes at a specific point in time.
       </MiniHeading>
 
@@ -319,9 +305,7 @@ function BalanceSheet({ data }) {
         {/* Asset composition */}
         <div className="rounded-2xl border border-slate-200/80 bg-white p-4 sm:p-5">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-xs font-semibold text-navy">
-              Asset composition
-            </p>
+            <p className="text-xs font-semibold text-navy">Asset composition</p>
             <span className="text-xs font-semibold tabular-nums text-sky-800">
               {formatMoney(totalAssets)}
             </span>
@@ -374,7 +358,9 @@ function BalanceSheet({ data }) {
                 <p className={`text-xs font-semibold ${category.text}`}>
                   {category.title}
                 </p>
-                <p className={`text-xs font-semibold tabular-nums ${category.text}`}>
+                <p
+                  className={`text-xs font-semibold tabular-nums ${category.text}`}
+                >
                   {formatMoney(category.total)}
                 </p>
               </div>
@@ -418,9 +404,11 @@ function BalanceSheet({ data }) {
               </span>
             </div>
 
-            <div className={`mt-3 border-t border-sky-200/70 pt-3 text-xs font-semibold ${
-              balanced ? "text-emerald-700" : "text-red-700"
-            }`}>
+            <div
+              className={`mt-3 border-t border-sky-200/70 pt-3 text-xs font-semibold ${
+                balanced ? "text-emerald-700" : "text-red-700"
+              }`}
+            >
               {balanced
                 ? "✓ Balance sheet balances"
                 : "Balance sheet does not balance"}
@@ -479,10 +467,7 @@ function CashFlow({ data }) {
 
   return (
     <div>
-      <MiniHeading
-        eyebrow="Statement 03"
-        title="Cash flow statement"
-      >
+      <MiniHeading eyebrow="Statement 03" title="Cash flow statement">
         Where cash came from and where it went during the year.
       </MiniHeading>
 
@@ -504,7 +489,9 @@ function CashFlow({ data }) {
                   </p>
                 </div>
 
-                <p className={`shrink-0 text-sm font-semibold tabular-nums ${group.color}`}>
+                <p
+                  className={`shrink-0 text-sm font-semibold tabular-nums ${group.color}`}
+                >
                   {formatMoney(group.total)}
                 </p>
               </div>
@@ -618,8 +605,8 @@ function CashFlow({ data }) {
               Profit isn't the same as cash.
             </p>
             <p className="mt-1.5 text-xs leading-5 text-amber-900/70">
-              Depreciation is non-cash. Working capital changes
-              also affect operating cash flow.
+              Depreciation is non-cash. Working capital changes also affect
+              operating cash flow.
             </p>
           </div>
         </div>
@@ -677,9 +664,7 @@ function StatementConnections() {
             key={item.from}
             className="rounded-xl border border-slate-200/80 bg-white p-4"
           >
-            <p className={`text-xs font-semibold ${item.color}`}>
-              {item.from}
-            </p>
+            <p className={`text-xs font-semibold ${item.color}`}>{item.from}</p>
 
             <div className="my-2 flex items-center gap-2 text-slate-300">
               <span className="h-px flex-1 bg-slate-200" />
@@ -715,29 +700,31 @@ function KnowledgeCheck() {
   ];
 
   return (
-    <div className="mt-9 rounded-2xl border border-slate-200 bg-[#173454] p-5 text-white sm:p-6">
-      <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+    <div className="mt-6 sm:mt-9 rounded-xl sm:rounded-2xl border border-slate-200 bg-[#173454] p-3.5 sm:p-5 lg:p-6 text-white">
+      <div className="grid gap-4 sm:gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+        {/* Question */}
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-sky-200">
+          <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.14em] text-sky-200">
             Quick knowledge check
           </p>
 
-          <h3 className="mt-2 font-serif text-2xl text-white">
+          <h3 className="mt-1.5 sm:mt-2 font-serif text-lg sm:text-2xl text-white">
             Which statement shows a company's financial position on 31 March?
           </h3>
 
-          <p className="mt-2 text-xs leading-5 text-blue-100/65">
-            Think about the statement that captures assets, liabilities
-            and equity at a specific date.
+          <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-xs leading-relaxed sm:leading-5 text-blue-100/65">
+            Think about the statement that captures assets, liabilities and
+            equity at a specific date.
           </p>
         </div>
 
+        {/* Answers */}
         <div>
-          <p className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-blue-200/70">
+          <p className="mb-1.5 sm:mb-2 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-blue-200/70">
             Choose your answer
           </p>
 
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             {options.map((option) => {
               const active = answer === option.value;
               const isRight = option.value === "balance";
@@ -748,7 +735,7 @@ function KnowledgeCheck() {
                   type="button"
                   onClick={() => setAnswer(option.value)}
                   aria-pressed={active}
-                  className={`flex w-full items-center justify-between rounded-xl border px-4 py-3 text-left text-xs transition ${
+                  className={`flex w-full items-center justify-between rounded-lg sm:rounded-xl border px-3 sm:px-4 py-2 sm:py-3 text-left text-[11px] sm:text-xs transition ${
                     active
                       ? isRight
                         ? "border-emerald-300/40 bg-emerald-400/15 text-emerald-100"
@@ -757,8 +744,12 @@ function KnowledgeCheck() {
                   }`}
                 >
                   {option.label}
-                  <span className="text-[10px] opacity-70">
-                    {active ? (isRight ? "✓ Correct" : "Try again") : "Select →"}
+                  <span className="ml-2 shrink-0 text-[9px] sm:text-[10px] opacity-70">
+                    {active
+                      ? isRight
+                        ? "✓ Correct"
+                        : "Try again"
+                      : "Select →"}
                   </span>
                 </button>
               );
@@ -768,7 +759,7 @@ function KnowledgeCheck() {
           {answer && (
             <p
               aria-live="polite"
-              className={`mt-3 text-xs leading-5 ${
+              className={`mt-2 sm:mt-3 text-[10px] sm:text-xs leading-relaxed sm:leading-5 ${
                 correct ? "text-emerald-200" : "text-amber-200"
               }`}
             >
@@ -796,8 +787,14 @@ export default function FinancialStatements() {
       title: "Income statement",
       subtitle: "Business performance",
       icon: (
-        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none"
-          stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          className="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          aria-hidden="true"
+        >
           <path d="M4 19V5M4 19h17" />
           <path d="m7 15 4-4 3 2 5-6" />
         </svg>
@@ -808,8 +805,14 @@ export default function FinancialStatements() {
       title: "Balance sheet",
       subtitle: "Financial position",
       icon: (
-        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none"
-          stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          className="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          aria-hidden="true"
+        >
           <path d="M12 3v18M4 7h16M6 7l-3 7h6L6 7ZM18 7l-3 7h6l-3-7Z" />
           <path d="M7 21h10" />
         </svg>
@@ -820,8 +823,14 @@ export default function FinancialStatements() {
       title: "Cash flow",
       subtitle: "Cash movement",
       icon: (
-        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none"
-          stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          className="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          aria-hidden="true"
+        >
           <path d="M4 7h15l-3-3M20 17H5l3 3" />
           <path d="M19 7v4M5 17v-4" />
         </svg>
@@ -836,16 +845,14 @@ export default function FinancialStatements() {
           eyebrow="Financial statements"
           title="Three statements. One complete picture."
         >
-          Explore how a company's performance, financial position and
-          cash movements fit together.
+          Explore how a company's performance, financial position and cash
+          movements fit together.
         </SectionHeading>
 
         {/* Company context */}
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200/80 bg-white/70 px-4 py-3">
           <div>
-            <p className="text-xs font-semibold text-navy">
-              {example.company}
-            </p>
+            <p className="text-xs font-semibold text-navy">{example.company}</p>
             <p className="mt-0.5 text-[10px] text-muted">
               Illustrative company · {example.period}
             </p>
@@ -874,13 +881,9 @@ export default function FinancialStatements() {
               <IncomeStatement data={example.income} />
             )}
 
-            {activeTab === "balance" && (
-              <BalanceSheet data={example.balance} />
-            )}
+            {activeTab === "balance" && <BalanceSheet data={example.balance} />}
 
-            {activeTab === "cash" && (
-              <CashFlow data={example.cashFlow} />
-            )}
+            {activeTab === "cash" && <CashFlow data={example.cashFlow} />}
           </div>
         </div>
 
@@ -895,10 +898,10 @@ export default function FinancialStatements() {
           </summary>
 
           <p className="mt-3 text-xs leading-5 text-muted">
-            ABC Ltd. is a fictional business. The figures are illustrative
-            and designed to demonstrate how the three financial statements
-            work together. They are not actual company financial results
-            or investment research.
+            ABC Ltd. is a fictional business. The figures are illustrative and
+            designed to demonstrate how the three financial statements work
+            together. They are not actual company financial results or
+            investment research.
           </p>
         </details>
       </div>
