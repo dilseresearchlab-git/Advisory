@@ -37,7 +37,7 @@ export default function AdvisoryPage() {
       <PageHero
         eyebrow="Advisory services"
         title="Research aligned with your market objectives."
-        imageSrc={"/images/Advisory.svg"}
+        imageSrc={"/images/Advisory.png"}
         imageAlt="A woman consulting a guy."
       >
         Five proposed research tracks designed around different investment

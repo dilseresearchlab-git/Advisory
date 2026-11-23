@@ -215,7 +215,7 @@ function FinancialStory() {
                   Total sales
                 </p>
 
-                <p className="mt-1 text-3xl font-semibold tracking-tight text-navy tabular-nums">
+                <p className="mt-1 text-2xl md:text-3xl font-semibold tracking-tight text-navy tabular-nums">
                   {money(example.revenue)}
                 </p>
 
@@ -474,7 +474,7 @@ function FinancialStory() {
 
         {/* Knowledge check */}
 
-        <div className="mt-6 sm:mt-10 rounded-xl sm:rounded-2xl border border-slate-200/80 bg-[#173454] p-3.5 sm:p-5 lg:p-6 text-white">
+        <div className="mt-6 sm:mt-10 rounded-2xl border border-slate-200/80 bg-[#173454] p-5 lg:p-6 text-white">
           <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             {/* Question */}
             <div>
@@ -482,7 +482,7 @@ function FinancialStory() {
                 Quick knowledge check
               </p>
 
-              <h3 className="mt-1.5 sm:mt-2 font-serif text-lg sm:text-2xl text-white">
+              <h3 className="mt-2 font-serif text-[20px] leading-relaxed sm:text-2xl text-white">
                 Which profit measure comes next?
               </h3>
 
@@ -508,10 +508,10 @@ function FinancialStory() {
 
                   if (active && correct) {
                     style =
-                      "border-emerald-300/40 bg-emerald-400/15 text-emerald-100";
+                      "border-emerald-300/40 bg-emerald-400/15 text-emerald-100 text-[11px] sm:text-xs";
                   } else if (active && !correct) {
                     style =
-                      "border-amber-300/40 bg-amber-400/10 text-amber-100";
+                      "border-amber-300/40 bg-amber-400/10 text-amber-100 ";
                   }
 
                   return (
@@ -520,7 +520,7 @@ function FinancialStory() {
                       type="button"
                       onClick={() => setSelectedAnswer(option)}
                       aria-pressed={active}
-                      className={`flex items-center justify-between rounded-lg sm:rounded-xl border px-3 sm:px-4 py-2 sm:py-2.5 text-left text-xs sm:text-sm font-medium transition ${style}`}
+                      className={`flex items-center justify-between rounded-lg sm:rounded-xl border px-3 sm:px-4 py-2 sm:py-2.5 text-left text-xs font-medium transition ${style}`}
                     >
                       {option}
                       <span className="text-[9px] sm:text-[10px] opacity-75">
