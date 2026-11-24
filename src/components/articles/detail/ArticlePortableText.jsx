@@ -91,7 +91,7 @@ function ListNode({ node }) {
       ? "list-decimal marker:font-semibold marker:text-royal"
       : "list-disc marker:text-royal";
   return (
-    <Tag className={`${node.level > 1 ? "mt-2" : "mt-6"} ${cls} space-y-2 pl-6 md:text-[17px] sm:leading-[1.8] text-ink/80`}>
+    <Tag className={`${node.level > 1 ? "mt-2" : "mt-6"} ${cls} space-y-2 pl-6 text-sm sm:text-base md:text-[17px] leading-relaxed sm:leading-[1.8] text-ink/60`}>
       {node.items.map((it, i) => (
         <li key={it.entry.block._key || i} className="pl-1">
           <Spans block={it.entry.block} />
@@ -107,7 +107,7 @@ function TextBlock({ block, id, index }) {
     case "h2":
       return <h2 id={id} className="mt-14 scroll-mt-24 text-[28px] leading-tight sm:text-[2rem]"><Spans block={block} /></h2>;
     case "h3":
-      return <h3 id={id} className="mt-10 scroll-mt-24 text-[22px] leading-snug"><Spans block={block} /></h3>;
+      return <h3 id={id} className="mt-4 sm:mt-6 md:mt-10 scroll-mt-24 text-[22px] leading-snug"><Spans block={block} /></h3>;
     case "h4":
       return <h4 className="mt-8 font-serif text-xl leading-snug text-midnight/90"><Spans block={block} /></h4>;
     case "blockquote":
@@ -117,7 +117,7 @@ function TextBlock({ block, id, index }) {
         </blockquote>
       );
     default:
-      return <p className="mt-6 text-base md:text-[17px] leading-[1.8] text-ink"><Spans block={block} /></p>;
+      return <p className="mt-3 md:mt-6 text-sm sm:text-base md:text-[17px] leading-[1.8] text-ink/80 sm:text-ink"><Spans block={block} /></p>;
   }
 }
 
