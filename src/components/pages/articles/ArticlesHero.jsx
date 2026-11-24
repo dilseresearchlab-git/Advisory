@@ -33,7 +33,7 @@ export default function ArticlesHero() {
       {/* Content */}
       <Container className="relative z-20 py-16 sm:py-24">
         <div className="max-w-3xl">
-          <p className="eyebrow">Meridian Research &amp; Perspectives</p>
+          <p className="eyebrow">Nivesh Vichar Perspectives</p>
 
           <h1 className="mt-4 text-3xl md:leading-[1.1] md:text-4xl lg:text-5xl">
             Articles &amp; Insights
