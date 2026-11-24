@@ -56,7 +56,7 @@ export default async function ArticlesPage() {
       ) : (
         <section className="border-y border-line bg-white">
           <Container className="py-16 text-center sm:py-20">
-            <p className="eyebrow">Meridian Research</p>
+            <p className="eyebrow">Nivesh Vichar Research</p>
             <h2 className="mt-3 font-serif text-2xl text-midnight sm:text-3xl">
               Fresh perspectives are on the way.
             </h2>
