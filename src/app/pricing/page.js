@@ -1,9 +1,9 @@
 import { PageHero, Section, SectionHeading, CTABand } from "@/components/ui";
 import PlanCards from "@/components/PlanCards";
-import { comparisonRows, plans, pricingNote, faqs } from "@/data/pricing";
+import { comparisonRows, plans, faqs } from "@/data/pricing";
 
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { pageSchema, breadcrumbSchema} from "@/lib/seo/schemas";
+import { pageSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
@@ -33,7 +33,7 @@ export default function PricingPage() {
       <PageHero
         eyebrow="Packages & pricing"
         title="A clear progression, divided by what you actually need"
-         imageSrc={"/images/Pricing.png"}
+        imageSrc={"/images/Pricing.png"}
         imageAlt="A girl is showing the price banners."
       >
         Explore five proposed research packages, compare their coverage and
@@ -50,6 +50,10 @@ export default function PricingPage() {
 
         <div className="mt-6 overflow-x-auto rounded-xl border border-line bg-white shadow-sm">
           <table className="w-full min-w-110 border-collapse text-left text-xs sm:text-sm">
+            <caption className="sr-only">
+              Comparison of features and research coverage across proposed
+              Meridian packages.
+            </caption>
             <thead>
               <tr className="border-b border-line bg-ice-50/90">
                 <th
@@ -135,10 +139,6 @@ export default function PricingPage() {
               ))}
             </tbody>
           </table>
-          <caption className="sr-only">
-            Comparison of features and research coverage across proposed
-            Meridian packages.
-          </caption>
         </div>
       </Section>
 

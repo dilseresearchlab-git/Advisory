@@ -7,6 +7,9 @@ import { formatINR } from "./ui";
 
 export default function PlanCards({ compact = false }) {
   const [billing, setBilling] = useState("monthly");
+  const [showAllIncludes, setShowAllIncludes] = useState(false);
+  const [showFullCoverage, setShowFullCoverage] = useState(false);
+  const [showAllExclusions, setShowAllExclusions] = useState(false);
 
   return (
     <div>
@@ -101,53 +104,11 @@ export default function PlanCards({ compact = false }) {
               </div>
 
               {/* 3. FIXED SUMMARY BLOCK */}
-              <div className="mt-4 min-h-[64px]">
+              <div className="mt-4 min-h-16">
                 <p className="text-sm leading-relaxed text-muted line-clamp-3">
                   {p.summary}
                 </p>
               </div>
-
-              {/* Full details - pricing page */}
-              {!compact && (
-                <div className="mt-6 flex flex-1 flex-col justify-between border-t border-slate-100 pt-5">
-                  <div>
-                    {/* Includes section */}
-                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-navy">
-                      Includes
-                    </h4>
-                    <ul className="mt-2.5 space-y-2 text-xs text-slate-700">
-                      {p.includes.slice(0, 5).map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
-                          <span className="line-clamp-2">{item}</span>
-                        </li>
-                      ))}
-                      {p.includes.length > 5 && (
-                        <li className="text-[11px] font-medium text-royal italic">
-                          + {p.includes.length - 5} more advanced perks
-                        </li>
-                      )}
-                    </ul>
-
-                    {/* Coverage section */}
-                    <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-navy">
-                      Coverage
-                    </h4>
-                    <p className="mt-1.5 text-xs leading-relaxed text-slate-600 line-clamp-2">
-                      {p.coverage}
-                    </p>
-
-                    {/* Limitations (condensed) */}
-                    <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                      Exclusions
-                    </h4>
-                    <p className="mt-1 text-[11px] text-slate-500 line-clamp-2">
-                      {p.limitations[0]} {p.limitations.length > 1 ? `(+${p.limitations.length - 1} more)` : ""}
-                    </p>
-                  </div>
-                </div>
-              )}
-
               {/* Action Button pinned to bottom */}
               <Link
                 href={`/contact?plan=${p.id}`}
@@ -159,6 +120,108 @@ export default function PlanCards({ compact = false }) {
               >
                 Register interest
               </Link>
+
+              {/* Full details - pricing page */}
+              {!compact && (
+                <div className="mt-6 flex flex-1 flex-col justify-between border-t border-slate-100 pt-5">
+                  <div>
+                    {/* Includes section */}
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-navy">
+                      Includes
+                    </h4>
+                    <ul className="mt-2.5 space-y-2 text-xs text-slate-700">
+                      {(showAllIncludes
+                        ? p.includes
+                        : p.includes.slice(0, 5)
+                      ).map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
+                          <span
+                            className={showAllIncludes ? "" : "line-clamp-2"}
+                          >
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                      {p.includes.length > 5 && (
+                        <li>
+                          <button
+                            type="button"
+                            onClick={() => setShowAllIncludes((prev) => !prev)}
+                            aria-expanded={showAllIncludes}
+                            className="text-[11px] font-medium italic text-royal hover:underline focus:outline-none"
+                          >
+                            {showAllIncludes
+                              ? "Show fewer perks"
+                              : `+ ${p.includes.length - 5} more advanced perks`}
+                          </button>
+                        </li>
+                      )}
+                    </ul>
+
+                    {/* Coverage section */}
+                    <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-navy">
+                      Coverage
+                    </h4>
+                    <p
+                      className={`mt-1.5 text-xs leading-relaxed text-slate-600 ${
+                        showFullCoverage ? "" : "line-clamp-2"
+                      }`}
+                    >
+                      {Array.isArray(p.coverage)
+                        ? p.coverage.join(" ")
+                        : p.coverage}
+                    </p>
+                    {typeof p.coverage === "string" &&
+                      p.coverage.length > 90 && (
+                        <button
+                          type="button"
+                          onClick={() => setShowFullCoverage((prev) => !prev)}
+                          aria-expanded={showFullCoverage}
+                          className="mt-1 text-[11px] font-medium text-royal hover:underline focus:outline-none"
+                        >
+                          {showFullCoverage
+                            ? "Show less"
+                            : "Read full coverage"}
+                        </button>
+                      )}
+
+                    {/* Exclusions / Limitations */}
+                    <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Exclusions
+                    </h4>
+                    {showAllExclusions ? (
+                      <ul className="mt-1.5 space-y-1.5 text-[11px] text-slate-500">
+                        {p.limitations.map((limitation) => (
+                          <li
+                            key={limitation}
+                            className="flex items-start gap-1.5"
+                          >
+                            <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-slate-400" />
+                            <span>{limitation}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="mt-1 text-[11px] text-slate-500 line-clamp-2">
+                        {p.limitations[0]}
+                      </p>
+                    )}
+                    {p.limitations.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => setShowAllExclusions((prev) => !prev)}
+                        aria-expanded={showAllExclusions}
+                        className="mt-1 text-[11px] font-medium text-slate-500 underline-offset-2 hover:text-navy hover:underline focus:outline-none"
+                      >
+                        {showAllExclusions
+                          ? "Show fewer exclusions"
+                          : `(+${p.limitations.length - 1} more exclusions)`}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
             </article>
           );
         })}
