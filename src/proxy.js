@@ -12,7 +12,14 @@ export async function proxy(request) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.search = `?next=${encodeURIComponent(request.nextUrl.pathname)}`;
-    return NextResponse.redirect(url);
+
+    const redirectResponse = NextResponse.redirect(url);
+
+    response.cookies.getAll().forEach((cookie) => {
+      redirectResponse.cookies.set(cookie);
+    });
+
+    return redirectResponse;
   }
 
   return response;
